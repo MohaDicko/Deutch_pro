@@ -1,0 +1,12 @@
+# robots.txt — Deutsch Pro Bamako
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Block sensitive paths
+Disallow: /.gemini/
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://deutschprobamako.com/sitemap.xml
