@@ -388,6 +388,12 @@ function applyLanguage(lang) {
     if (value !== null) el.placeholder = value;
   });
 
+  // Update Dropdown Text
+  const langTextEl = document.getElementById('current-lang-text');
+  if (langTextEl) {
+    langTextEl.textContent = lang.toUpperCase();
+  }
+
   // Update active lang button + ARIA
   document.querySelectorAll('.lang-btn').forEach(btn => {
     const isActive = btn.dataset.lang === lang;
@@ -415,8 +421,11 @@ function applyLanguage(lang) {
     if (input) input.classList.remove('field-invalid');
   });
 
-  // Save preference
+  // Save preference & Update URL
   localStorage.setItem('dpb-lang', lang);
+  const newUrl = new URL(window.location);
+  newUrl.searchParams.set('lang', lang);
+  window.history.replaceState({}, '', newUrl);
 }
 
 // ============================================================
@@ -427,10 +436,14 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log("Deutsch Pro Bamako — Site initialisé ✅");
 
   // ── Language Init ──────────────────────────────────────────
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
   const savedLang = localStorage.getItem('dpb-lang');
   const browserLang = navigator.language.slice(0, 2);
   const supportedLangs = Object.keys(translations);
-  const initLang = supportedLangs.includes(savedLang)
+  const initLang = supportedLangs.includes(urlLang)
+    ? urlLang
+    : supportedLangs.includes(savedLang)
     ? savedLang
     : supportedLangs.includes(browserLang)
     ? browserLang
@@ -438,11 +451,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   applyLanguage(initLang);
 
-  // ── Language Switcher ──────────────────────────────────────
-  document.getElementById('lang-switcher').addEventListener('click', (e) => {
-    const btn = e.target.closest('.lang-btn');
-    if (btn) applyLanguage(btn.dataset.lang);
-  });
+  // ── Language Dropdown Logic ──────────────────────────────────────
+  const langDropdownToggle = document.getElementById('lang-dropdown-toggle');
+  const langDropdownMenu = document.getElementById('lang-dropdown-menu');
+
+  if (langDropdownToggle && langDropdownMenu) {
+    langDropdownToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = langDropdownToggle.getAttribute('aria-expanded') === 'true';
+      langDropdownToggle.setAttribute('aria-expanded', !isExpanded);
+      langDropdownMenu.setAttribute('aria-hidden', isExpanded ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!langDropdownToggle.contains(e.target) && !langDropdownMenu.contains(e.target)) {
+        langDropdownToggle.setAttribute('aria-expanded', 'false');
+        langDropdownMenu.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    langDropdownMenu.addEventListener('click', (e) => {
+      const btn = e.target.closest('.lang-btn');
+      if (btn) {
+        applyLanguage(btn.dataset.lang);
+        langDropdownToggle.setAttribute('aria-expanded', 'false');
+        langDropdownMenu.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
 
   // ── Smooth Scrolling (offset: topbar 36px + navbar 56px) ──
   const SCROLL_OFFSET = 95;
@@ -535,20 +571,19 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.textContent = msgs.sending;
       submitBtn.disabled = true;
 
-      setTimeout(() => {
-        window.open(`https://wa.me/22379875654?text=${waText}`, '_blank', 'noopener,noreferrer');
+      // Open immediately to bypass popup blockers on mobile
+      window.location.href = `https://wa.me/22379875654?text=${waText}`;
 
-        const successEl = document.getElementById('form-success');
-        if (successEl) {
-          successEl.textContent = msgs.success;
-          successEl.style.display = 'block';
-        }
+      const successEl = document.getElementById('form-success');
+      if (successEl) {
+        successEl.textContent = msgs.success;
+        successEl.style.display = 'block';
+      }
 
-        form.reset();
-        submitBtn.disabled = false;
-        const t = translations[lang];
-        if (t) submitBtn.textContent = t['contact.form.submit'] || 'Envoyer le message';
-      }, 600);
+      form.reset();
+      submitBtn.disabled = false;
+      const t = translations[lang];
+      if (t) submitBtn.textContent = t['contact.form.submit'] || 'Envoyer le message';
     });
 
     // Live validation on blur
@@ -592,4 +627,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     navbar.classList.toggle('scrolled', window.scrollY > 50);
   });
+
+  // ── Dark Mode Toggle ───────────────────────────────────────
+  const themeToggle = document.getElementById('theme-toggle');
+  const savedTheme = localStorage.getItem('dpb-theme') || 'light';
+  
+  if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    if(themeToggle) themeToggle.textContent = '☀️';
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('dpb-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+  }
+
+  // ── Mobile Menu Toggle ─────────────────────────────────────
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      navLinks.classList.toggle('active');
+      document.body.style.overflow = isExpanded ? 'auto' : 'hidden'; // prevent scrolling when menu is open
+    });
+
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+  }
 });

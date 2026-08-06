@@ -42,9 +42,9 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshot-desktop.jpg",
+      "src": "/screenshot-desktop.png",
       "sizes": "1280x720",
-      "type": "image/jpeg",
+      "type": "image/png",
       "form_factor": "wide",
       "label": "Deutsch Pro Bamako — Page d'accueil"
     }
