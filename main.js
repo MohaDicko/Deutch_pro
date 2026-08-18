@@ -825,7 +825,23 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.textContent = msgs.sending;
       submitBtn.disabled = true;
 
+      // ── Sauvegarde automatique dans la Base de Données Supabase ──
+      if (typeof supabaseClient !== 'undefined' && supabaseClient !== null) {
+        supabaseClient.from('contacts').insert([{
+          name: name,
+          email: email,
+          phone: phone || null,
+          message: message,
+          language: lang,
+          status: 'nouveau'
+        }]).then(({ error }) => {
+          if (error) console.error("Erreur sauvegarde contact Supabase:", error);
+          else console.log("Demande de contact enregistrée dans Supabase ✅");
+        }).catch(err => console.error("Supabase error:", err));
+      }
+
       const emailjsReady = typeof emailjs !== 'undefined' &&
+        typeof EMAILJS_CONFIG !== 'undefined' &&
         EMAILJS_CONFIG.PUBLIC_KEY !== 'VOTRE_PUBLIC_KEY' &&
         EMAILJS_CONFIG.SERVICE_ID !== 'VOTRE_SERVICE_ID' &&
         EMAILJS_CONFIG.TEMPLATE_CONTACT !== 'VOTRE_TEMPLATE_CONTACT';
@@ -1080,7 +1096,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const b2bSuccess = document.getElementById('b2b-form-success');
       if (b2bSubmitBtn) { b2bSubmitBtn.disabled = true; b2bSubmitBtn.textContent = 'Envoi en cours...'; }
 
+      // ── Sauvegarde automatique dans la Base de Données Supabase (B2B) ──
+      if (typeof supabaseClient !== 'undefined' && supabaseClient !== null) {
+        supabaseClient.from('b2b_requests').insert([{
+          company: company,
+          contact_name: contactPerson,
+          email: email,
+          phone: phone,
+          sector: sector,
+          candidates_count: count,
+          message: message || null,
+          status: 'nouveau'
+        }]).then(({ error }) => {
+          if (error) console.error("Erreur sauvegarde B2B Supabase:", error);
+          else console.log("Partenariat B2B enregistré dans Supabase ✅");
+        }).catch(err => console.error("Supabase error:", err));
+      }
+
       const emailjsB2BReady = typeof emailjs !== 'undefined' &&
+        typeof EMAILJS_CONFIG !== 'undefined' &&
         EMAILJS_CONFIG.PUBLIC_KEY !== 'VOTRE_PUBLIC_KEY' &&
         EMAILJS_CONFIG.SERVICE_ID !== 'VOTRE_SERVICE_ID' &&
         EMAILJS_CONFIG.TEMPLATE_B2B !== 'VOTRE_TEMPLATE_B2B';
