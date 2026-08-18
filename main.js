@@ -685,6 +685,14 @@ function applyLanguage(lang) {
 document.addEventListener('DOMContentLoaded', () => {
   console.log("Deutsch Pro Bamako — Site initialisé ✅");
 
+  // ── EmailJS Init ──────────────────────────────────────────
+  if (typeof emailjs !== 'undefined' && EMAILJS_CONFIG.PUBLIC_KEY !== 'VOTRE_PUBLIC_KEY') {
+    emailjs.init({ publicKey: EMAILJS_CONFIG.PUBLIC_KEY });
+    console.log('EmailJS initialisé ✅');
+  } else {
+    console.warn('EmailJS non configuré — mode WhatsApp actif.');
+  }
+
   // ── Language Init ──────────────────────────────────────────
   const urlParams = new URLSearchParams(window.location.search);
   const urlLang = urlParams.get('lang');
@@ -810,33 +818,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!valid) return;
 
-      // ── Submit via WhatsApp (pre-filled message) ──
+      // ── Submit via EmailJS ou WhatsApp (fallback) ──
       const phone = sanitize(document.getElementById('form-phone')?.value || '');
-      const waText = encodeURIComponent(
-        `🎓 *Nouveau message — Deutsch Pro Bamako*\n\n` +
-        `👤 *Nom :* ${name}\n` +
-        `📧 *Email :* ${email}\n` +
-        (phone ? `📞 *Tél :* ${phone}\n` : '') +
-        `\n💬 *Message :*\n${message}`
-      );
-
       const submitBtn = document.getElementById('form-submit-btn');
+      const successEl = document.getElementById('form-success');
       submitBtn.textContent = msgs.sending;
       submitBtn.disabled = true;
 
-      // Open immediately to bypass popup blockers on mobile
-      window.location.href = `https://wa.me/22379875654?text=${waText}`;
+      const emailjsReady = typeof emailjs !== 'undefined' &&
+        EMAILJS_CONFIG.PUBLIC_KEY !== 'VOTRE_PUBLIC_KEY' &&
+        EMAILJS_CONFIG.SERVICE_ID !== 'VOTRE_SERVICE_ID' &&
+        EMAILJS_CONFIG.TEMPLATE_CONTACT !== 'VOTRE_TEMPLATE_CONTACT';
 
-      const successEl = document.getElementById('form-success');
-      if (successEl) {
-        successEl.textContent = msgs.success;
-        successEl.style.display = 'block';
+      if (emailjsReady) {
+        // ── Envoi via EmailJS ──
+        const templateParams = {
+          from_name:    name,
+          from_email:   email,
+          phone:        phone || 'Non renseigné',
+          message:      message,
+          to_email:     EMAILJS_CONFIG.TO_EMAIL_MALI,
+          reply_to:     email,
+          site_name:    'Deutsch Pro Bamako',
+        };
+
+        emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_CONTACT, templateParams)
+          .then(() => {
+            if (successEl) { successEl.textContent = msgs.success; successEl.style.display = 'block'; }
+            form.reset();
+            submitBtn.disabled = false;
+            const t = translations[lang];
+            if (t) submitBtn.textContent = t['contact.form.submit'] || 'Envoyer le message';
+            setTimeout(() => { if (successEl) successEl.style.display = 'none'; }, 6000);
+          })
+          .catch((err) => {
+            console.error('EmailJS error:', err);
+            // Fallback WhatsApp si erreur EmailJS
+            const waText = encodeURIComponent(`🎓 *Contact — Deutsch Pro Bamako*\n\n👤 ${name}\n📧 ${email}\n💬 ${message}`);
+            window.location.href = `https://wa.me/22379875654?text=${waText}`;
+            submitBtn.disabled = false;
+            const t = translations[lang];
+            if (t) submitBtn.textContent = t['contact.form.submit'] || 'Envoyer le message';
+          });
+      } else {
+        // ── Fallback WhatsApp (EmailJS non configuré) ──
+        const waText = encodeURIComponent(
+          `🎓 *Nouveau message — Deutsch Pro Bamako*\n\n` +
+          `👤 *Nom :* ${name}\n` +
+          `📧 *Email :* ${email}\n` +
+          (phone ? `📞 *Tél :* ${phone}\n` : '') +
+          `\n💬 *Message :*\n${message}`
+        );
+        window.location.href = `https://wa.me/22379875654?text=${waText}`;
+        if (successEl) { successEl.textContent = msgs.success; successEl.style.display = 'block'; }
+        form.reset();
+        submitBtn.disabled = false;
+        const t = translations[lang];
+        if (t) submitBtn.textContent = t['contact.form.submit'] || 'Envoyer le message';
       }
-
-      form.reset();
-      submitBtn.disabled = false;
-      const t = translations[lang];
-      if (t) submitBtn.textContent = t['contact.form.submit'] || 'Envoyer le message';
     });
 
     // Live validation on blur
@@ -1037,35 +1076,69 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Format message for German Hotline WhatsApp (+49 176 719 978 30)
-      const b2bWaText = encodeURIComponent(
-        `🤝 *NEUE B2B-PARTNERANFRAGE / REKRUTIERUNG*\n\n` +
-        `🏢 *Firma/Institution:* ${company}\n` +
-        `👤 *Ansprechpartner:* ${contactPerson}\n` +
-        `📧 *E-Mail:* ${email}\n` +
-        `📞 *Tel:* ${phone}\n` +
-        `💼 *Branche:* ${sector}\n` +
-        `📊 *Bedarf:* ${count}\n` +
-        (message ? `\n📝 *Anmerkungen/Profil:* ${message}` : '')
-      );
-
       const b2bSubmitBtn = document.getElementById('b2b-submit-btn');
-      if (b2bSubmitBtn) {
-        b2bSubmitBtn.disabled = true;
-        b2bSubmitBtn.textContent = 'Wird weitergeleitet... / Envoi...';
-      }
-
-      // Redirect directly to German WhatsApp hotline
-      window.location.href = `https://wa.me/4917671997830?text=${b2bWaText}`;
-
       const b2bSuccess = document.getElementById('b2b-form-success');
-      if (b2bSuccess) {
-        b2bSuccess.textContent = 'Vielen Dank! Ihre Anfrage wird an unser deutsches Partnerbüro übermittelt. / Demande transmise avec succès !';
-        b2bSuccess.style.display = 'block';
-      }
+      if (b2bSubmitBtn) { b2bSubmitBtn.disabled = true; b2bSubmitBtn.textContent = 'Envoi en cours...'; }
 
-      b2bForm.reset();
-      if (b2bSubmitBtn) b2bSubmitBtn.disabled = false;
+      const emailjsB2BReady = typeof emailjs !== 'undefined' &&
+        EMAILJS_CONFIG.PUBLIC_KEY !== 'VOTRE_PUBLIC_KEY' &&
+        EMAILJS_CONFIG.SERVICE_ID !== 'VOTRE_SERVICE_ID' &&
+        EMAILJS_CONFIG.TEMPLATE_B2B !== 'VOTRE_TEMPLATE_B2B';
+
+      if (emailjsB2BReady) {
+        // ── Envoi via EmailJS → Partenaire DE ──
+        const b2bTemplateParams = {
+          company:       company,
+          contact_name:  contactPerson,
+          from_email:    email,
+          phone:         phone,
+          sector:        sector,
+          candidates:    count,
+          message:       message || 'Aucune note spécifique.',
+          to_email:      EMAILJS_CONFIG.TO_EMAIL_DE,
+          reply_to:      email,
+          site_name:     'Deutsch Pro Bamako — B2B',
+        };
+
+        emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_B2B, b2bTemplateParams)
+          .then(() => {
+            if (b2bSuccess) {
+              b2bSuccess.textContent = '✅ Vielen Dank! Wir melden uns innerhalb von 24h. / Demande transmise avec succès !';
+              b2bSuccess.style.display = 'block';
+            }
+            b2bForm.reset();
+            if (b2bSubmitBtn) b2bSubmitBtn.disabled = false;
+            setTimeout(() => { if (b2bSuccess) b2bSuccess.style.display = 'none'; }, 7000);
+          })
+          .catch((err) => {
+            console.error('EmailJS B2B error:', err);
+            // Fallback WhatsApp DE
+            const b2bWaText = encodeURIComponent(
+              `🤝 *B2B — Deutsch Pro Bamako*\n🏢 ${company}\n👤 ${contactPerson}\n📧 ${email}\n💼 ${sector}\n📊 ${count}`
+            );
+            window.location.href = `https://wa.me/4917671997830?text=${b2bWaText}`;
+            if (b2bSubmitBtn) b2bSubmitBtn.disabled = false;
+          });
+      } else {
+        // ── Fallback WhatsApp DE (EmailJS non configuré) ──
+        const b2bWaText = encodeURIComponent(
+          `🤝 *NEUE B2B-PARTNERANFRAGE / REKRUTIERUNG*\n\n` +
+          `🏢 *Firma:* ${company}\n` +
+          `👤 *Kontakt:* ${contactPerson}\n` +
+          `📧 *E-Mail:* ${email}\n` +
+          `📞 *Tel:* ${phone}\n` +
+          `💼 *Branche:* ${sector}\n` +
+          `📊 *Bedarf:* ${count}\n` +
+          (message ? `\n📝 *Anmerkungen:* ${message}` : '')
+        );
+        window.location.href = `https://wa.me/4917671997830?text=${b2bWaText}`;
+        if (b2bSuccess) {
+          b2bSuccess.textContent = 'Demande transmise via WhatsApp !';
+          b2bSuccess.style.display = 'block';
+        }
+        b2bForm.reset();
+        if (b2bSubmitBtn) b2bSubmitBtn.disabled = false;
+      }
     });
   }
 });
