@@ -711,12 +711,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const isExpanded = langDropdownToggle.getAttribute('aria-expanded') === 'true';
       langDropdownToggle.setAttribute('aria-expanded', !isExpanded);
       langDropdownMenu.setAttribute('aria-hidden', isExpanded ? 'true' : 'false');
+      langDropdownMenu.classList.toggle('open', !isExpanded);
     });
 
     document.addEventListener('click', (e) => {
       if (!langDropdownToggle.contains(e.target) && !langDropdownMenu.contains(e.target)) {
         langDropdownToggle.setAttribute('aria-expanded', 'false');
         langDropdownMenu.setAttribute('aria-hidden', 'true');
+        langDropdownMenu.classList.remove('open');
       }
     });
 
@@ -726,6 +728,7 @@ document.addEventListener('DOMContentLoaded', () => {
         applyLanguage(btn.dataset.lang);
         langDropdownToggle.setAttribute('aria-expanded', 'false');
         langDropdownMenu.setAttribute('aria-hidden', 'true');
+        langDropdownMenu.classList.remove('open');
       }
     });
   }
@@ -854,23 +857,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Scroll-reveal animation for cards ─────────────────────
-  const observer = new IntersectionObserver((entries, obs) => {
+  // ── Scroll-reveal animation (.reveal elements) ────────────
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        obs.unobserve(entry.target);
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.contact-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'all 0.6s ease-out';
-    observer.observe(card);
-  });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── Animated Number Counters ───────────────────────────────
+  function animateCounter(el, target, suffix = '', duration = 1800) {
+    const start = 0;
+    const startTime = performance.now();
+    function step(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+      el.textContent = Math.floor(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10);
+        const suffix = el.id === 'stat-satisfaction' ? '%' : (el.id === 'stat-reponse' ? 'h' : '+');
+        animateCounter(el, target, suffix);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
   // ── Navbar scroll effect ───────────────────────────────────
   window.addEventListener('scroll', () => {
@@ -917,6 +942,46 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'auto';
       });
     });
+  }
+
+  // ── Testimonials Carousel ─────────────────────────────────
+  const track    = document.getElementById('testimonials-track');
+  const dots     = document.querySelectorAll('.carousel-dot');
+  const prevBtn  = document.getElementById('carousel-prev');
+  const nextBtn  = document.getElementById('carousel-next');
+
+  if (track) {
+    let currentSlide = 0;
+    const totalSlides = track.children.length;
+    let autoInterval;
+
+    function goToSlide(index) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === currentSlide);
+        d.setAttribute('aria-selected', i === currentSlide ? 'true' : 'false');
+      });
+    }
+
+    function startAuto() {
+      autoInterval = setInterval(() => goToSlide(currentSlide + 1), 4500);
+    }
+    function stopAuto() { clearInterval(autoInterval); }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => { stopAuto(); goToSlide(currentSlide - 1); startAuto(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { stopAuto(); goToSlide(currentSlide + 1); startAuto(); });
+    dots.forEach(dot => dot.addEventListener('click', () => { stopAuto(); goToSlide(parseInt(dot.dataset.index, 10)); startAuto(); }));
+
+    // Swipe support
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const delta = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(delta) > 50) { stopAuto(); goToSlide(delta > 0 ? currentSlide + 1 : currentSlide - 1); startAuto(); }
+    }, { passive: true });
+
+    startAuto();
   }
 
   // ── Talent Pool Filter ────────────────────────────────────

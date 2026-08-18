@@ -209,6 +209,7 @@
           <div class="shape shape-2"></div>
           <div class="shape shape-3"></div>
         </div>
+        <div class="hero-grid-overlay" aria-hidden="true"></div>
         <div class="container hero-container">
           <div class="hero-content">
             <div class="subtitle-badge" aria-hidden="true">
@@ -232,17 +233,37 @@
             </div>
             <div class="hero-buttons">
               <a href="#contact" class="btn btn-primary" data-i18n="hero.cta.contact">Nous Contacter</a>
-              <a href="#entreprises" class="btn btn-b2b" data-i18n="hero.cta.b2b">🇩🇪 Für Unternehmen & Partner</a>
+              <a href="#entreprises" class="btn btn-b2b" data-i18n="hero.cta.b2b">🇩🇪 Pour Entreprises (Ausbildung)</a>
               <a href="#services" class="btn btn-outline" data-i18n="hero.cta.more">En Savoir Plus</a>
+            </div>
+            <!-- Hero Stats -->
+            <div class="hero-stats" aria-label="Chiffres clés">
+              <div class="stat-item">
+                <span class="stat-number" data-count="500" id="stat-etudiants">0</span>
+                <span class="stat-label">Étudiants formés</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" data-count="4" id="stat-niveaux">0</span>
+                <span class="stat-label">Niveaux A1→B2</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" data-count="98" id="stat-satisfaction">0</span>
+                <span class="stat-label">% Satisfaits</span>
+              </div>
             </div>
           </div>
           <div class="hero-image-container" aria-hidden="true">
-            <img src="./hero-image.png" alt="Étudiants" class="hero-img">
+            <img src="./hero-image.png" alt="Étudiants apprenant l'allemand à Bamako" class="hero-img">
             <div class="glass-card">
               <h3 data-i18n="hero.glass.title">Apprentissage Rapide</h3>
               <p data-i18n="hero.glass.desc">Méthode intensive et certifiée.</p>
             </div>
           </div>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator" aria-hidden="true">
+          <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+          <span>Scroll</span>
         </div>
       </header>
 
@@ -254,21 +275,21 @@
             <p class="section-subtitle" data-i18n="services.subtitle">Nous vous accompagnons de vos premiers mots en allemand jusqu'à votre installation réussie en Allemagne.</p>
           </div>
           <div class="services-grid">
-            <article class="service-card contact-card">
+            <article class="service-card reveal" data-num="01">
               <div class="icon" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg>
               </div>
               <h3 data-i18n="service1.title">Préparation aux Examens</h3>
               <p data-i18n="service1.desc">Préparation intensive et ciblée pour les examens officiels (Goethe-Zertifikat, ÖSD) avec des simulations réelles.</p>
             </article>
-            <article class="service-card contact-card">
+            <article class="service-card reveal" data-num="02" style="transition-delay:0.12s">
               <div class="icon" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
               </div>
               <h3 data-i18n="service2.title">Accompagnement Visa</h3>
               <p data-i18n="service2.desc">Assistance complète dans vos démarches consulaires, préparation de dossier et simulations d'entretiens pour le visa.</p>
             </article>
-            <article class="service-card contact-card">
+            <article class="service-card reveal" data-num="03" style="transition-delay:0.24s">
               <div class="icon" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" /></svg>
               </div>
@@ -282,12 +303,6 @@
       <!-- Section B2B / Entreprises & Partenaires Allemands -->
       <section id="entreprises" class="b2b-section" aria-labelledby="b2b-heading">
         <div class="container">
-          <div class="b2b-top-badge">
-            <span class="flag-de">🇩🇪</span> <span data-i18n="b2b.badge">REKRUTIERUNG & AUSBILDUNGSPARTNERSCHAFT</span>
-          </div>
-          <div class="section-header">
-            <h2 class="section-title" id="b2b-heading" data-i18n="b2b.title">Ihre Lösung gegen den Fachkräftemangel in Deutschland</h2>
-            <p class="section-subtitle" data-i18n="b2b.subtitle">Rechtssicher, hochqualifiziert und sprachlich vorbereitet. Wir bilden engagierte Talente in Bamako aus und begleiten sie bis zum erfolgreichen Start in Ihrem Unternehmen oder Ihrer Berufsschule.</p>
           </div>
 
           <!-- 4 Pillars of Trust / Value proposition -->
@@ -485,27 +500,32 @@
       <section id="niveaux" class="niveaux-section" aria-labelledby="niveaux-heading">
         <div class="container">
           <div class="section-header">
+            <div class="section-badge">📚 Programmes</div>
             <h2 class="section-title" id="niveaux-heading" data-i18n="levels.title">Niveaux de Langue Enseignés</h2>
             <p class="section-subtitle" data-i18n="levels.subtitle">Préparez-vous avec nos programmes adaptés à chaque étape de votre apprentissage.</p>
           </div>
           <div class="niveaux-grid">
-            <article class="niveau-card contact-card">
+            <article class="niveau-card reveal">
               <div class="niveau-badge" aria-label="Niveau A1">A1</div>
+              <div class="niveau-progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><div class="niveau-progress-bar"></div></div>
               <h3 data-i18n="a1.name">Débutant</h3>
               <p data-i18n="a1.desc">Découvrez les bases de la langue allemande. Parfait pour commencer.</p>
             </article>
-            <article class="niveau-card contact-card">
+            <article class="niveau-card reveal" style="transition-delay:0.1s">
               <div class="niveau-badge" aria-label="Niveau A2">A2</div>
+              <div class="niveau-progress" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><div class="niveau-progress-bar"></div></div>
               <h3 data-i18n="a2.name">Élémentaire</h3>
               <p data-i18n="a2.desc">Améliorez votre compréhension et communiquez avec aisance au quotidien.</p>
             </article>
-            <article class="niveau-card contact-card">
+            <article class="niveau-card reveal" style="transition-delay:0.2s">
               <div class="niveau-badge" aria-label="Niveau B1">B1</div>
+              <div class="niveau-progress" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><div class="niveau-progress-bar"></div></div>
               <h3 data-i18n="b1.name">Intermédiaire</h3>
               <p data-i18n="b1.desc">Le niveau standard requis pour les visas d'études et de travail en Allemagne.</p>
             </article>
-            <article class="niveau-card contact-card">
+            <article class="niveau-card reveal" style="transition-delay:0.3s">
               <div class="niveau-badge" aria-label="Niveau B2">B2</div>
+              <div class="niveau-progress" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><div class="niveau-progress-bar"></div></div>
               <h3 data-i18n="b2.name">Avancé</h3>
               <p data-i18n="b2.desc">Atteignez une grande fluidité pour des études supérieures ou un emploi qualifié.</p>
             </article>
@@ -517,62 +537,76 @@
       <section id="temoignages" class="testimonials-section" aria-labelledby="testimonials-heading">
         <div class="container">
           <div class="section-header">
+            <div class="section-badge">⭐ Témoignages</div>
             <h2 class="section-title" id="testimonials-heading" data-i18n="testimonials.title">Ce Que Disent Nos Étudiants</h2>
             <p class="section-subtitle" data-i18n="testimonials.subtitle">Découvrez les retours d'expérience de ceux qui nous ont fait confiance pour leur avenir en Allemagne.</p>
           </div>
-          <div class="testimonials-grid">
-            <article class="testimonial-card contact-card">
-              <div class="quote-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.192 15.757c0-.88-.23-1.618-.69-2.217-.426-.549-1.074-.82-1.947-.82-.692 0-1.369.214-2.033.641.164-1.543.793-2.91 1.883-4.098.92-.99 2.115-1.637 3.587-1.935L10.95 5.5c-1.96.22-3.627 1.057-5.002 2.511C4.42 9.61 3.655 11.757 3.655 14.453c0 1.635.435 2.946 1.305 3.931.868.983 2.015 1.474 3.442 1.474 1.258 0 2.25-.333 2.977-1.002.726-.667 1.09-1.523 1.09-2.57v-.529zm10.324 0c0-.88-.23-1.618-.69-2.217-.426-.549-1.074-.82-1.947-.82-.692 0-1.369.214-2.033.641.164-1.543.793-2.91 1.883-4.098.92-.99 2.115-1.637 3.587-1.935l-1.041 1.828c-1.96.22-3.627 1.057-5.002 2.511-1.529 1.599-2.294 3.746-2.294 6.442 0 1.635.435 2.946 1.305 3.931.868.983 2.015 1.474 3.442 1.474 1.258 0 2.25-.333 2.977-1.002.726-.667 1.09-1.523 1.09-2.57v-.529z"/></svg>
-              </div>
-              <div class="stars" aria-hidden="true" style="color: var(--ger-gold); margin-bottom: 15px; display: flex; gap: 4px;">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              </div>
-              <blockquote class="testimonial-text" data-i18n="t1.text">Grâce à Deutsch Pro Bamako, j'ai pu valider mon niveau B1 en un temps record. Les professeurs sont excellents et très pédagogues.</blockquote>
-              <footer class="testimonial-author">
-                <cite><h4 data-i18n="t1.author">Amadou T.</h4></cite>
-                <span data-i18n="t1.role">Étudiant en route pour Berlin</span>
-              </footer>
-            </article>
-            <article class="testimonial-card contact-card">
-              <div class="quote-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.192 15.757c0-.88-.23-1.618-.69-2.217-.426-.549-1.074-.82-1.947-.82-.692 0-1.369.214-2.033.641.164-1.543.793-2.91 1.883-4.098.92-.99 2.115-1.637 3.587-1.935L10.95 5.5c-1.96.22-3.627 1.057-5.002 2.511C4.42 9.61 3.655 11.757 3.655 14.453c0 1.635.435 2.946 1.305 3.931.868.983 2.015 1.474 3.442 1.474 1.258 0 2.25-.333 2.977-1.002.726-.667 1.09-1.523 1.09-2.57v-.529zm10.324 0c0-.88-.23-1.618-.69-2.217-.426-.549-1.074-.82-1.947-.82-.692 0-1.369.214-2.033.641.164-1.543.793-2.91 1.883-4.098.92-.99 2.115-1.637 3.587-1.935l-1.041 1.828c-1.96.22-3.627 1.057-5.002 2.511-1.529 1.599-2.294 3.746-2.294 6.442 0 1.635.435 2.946 1.305 3.931.868.983 2.015 1.474 3.442 1.474 1.258 0 2.25-.333 2.977-1.002.726-.667 1.09-1.523 1.09-2.57v-.529z"/></svg>
-              </div>
-              <div class="stars" aria-hidden="true" style="color: var(--ger-gold); margin-bottom: 15px; display: flex; gap: 4px;">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              </div>
-              <blockquote class="testimonial-text" data-i18n="t2.text">Une méthode d'apprentissage vraiment efficace. J'ai eu mon visa pour l'Allemagne sans difficulté. Je recommande fortement !</blockquote>
-              <footer class="testimonial-author">
-                <cite><h4 data-i18n="t2.author">Fatoumata D.</h4></cite>
-                <span data-i18n="t2.role">Infirmière qualifiée</span>
-              </footer>
-            </article>
-            <article class="testimonial-card contact-card">
-              <div class="quote-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.192 15.757c0-.88-.23-1.618-.69-2.217-.426-.549-1.074-.82-1.947-.82-.692 0-1.369.214-2.033.641.164-1.543.793-2.91 1.883-4.098.92-.99 2.115-1.637 3.587-1.935L10.95 5.5c-1.96.22-3.627 1.057-5.002 2.511C4.42 9.61 3.655 11.757 3.655 14.453c0 1.635.435 2.946 1.305 3.931.868.983 2.015 1.474 3.442 1.474 1.258 0 2.25-.333 2.977-1.002.726-.667 1.09-1.523 1.09-2.57v-.529zm10.324 0c0-.88-.23-1.618-.69-2.217-.426-.549-1.074-.82-1.947-.82-.692 0-1.369.214-2.033.641.164-1.543.793-2.91 1.883-4.098.92-.99 2.115-1.637 3.587-1.935l-1.041 1.828c-1.96.22-3.627 1.057-5.002 2.511-1.529 1.599-2.294 3.746-2.294 6.442 0 1.635.435 2.946 1.305 3.931.868.983 2.015 1.474 3.442 1.474 1.258 0 2.25-.333 2.977-1.002.726-.667 1.09-1.523 1.09-2.57v-.529z"/></svg>
-              </div>
-              <div class="stars" aria-hidden="true" style="color: var(--ger-gold); margin-bottom: 15px; display: flex; gap: 4px;">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              </div>
-              <blockquote class="testimonial-text" data-i18n="t3.text">Le centre offre un cadre idéal pour apprendre l'allemand. Les cours sont interactifs et on progresse très vite.</blockquote>
-              <footer class="testimonial-author">
-                <cite><h4 data-i18n="t3.author">Oumar C.</h4></cite>
-                <span data-i18n="t3.role">Étudiant en ingénierie</span>
-              </footer>
-            </article>
-          </div>
+          <div class="testimonials-carousel" id="testimonials-carousel" aria-live="polite">
+            <div class="testimonials-track" id="testimonials-track">
+              <article class="testimonial-card" role="tabpanel">
+                <div class="testimonial-avatar avatar-1" aria-hidden="true">A</div>
+                <div class="stars-container" aria-label="5 étoiles">
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="quote-decoration" aria-hidden="true">&ldquo;</span>
+                <blockquote class="testimonial-text" data-i18n="t1.text">Grâce à Deutsch Pro Bamako, j'ai pu valider mon niveau B1 en un temps record. Les professeurs sont excellents et très pédagogues.</blockquote>
+                <footer class="testimonial-author">
+                  <cite><h4 data-i18n="t1.author">Amadou T.</h4></cite>
+                  <span data-i18n="t1.role">Étudiant en route pour Berlin</span>
+                </footer>
+              </article>
+              <article class="testimonial-card" role="tabpanel">
+                <div class="testimonial-avatar avatar-2" aria-hidden="true">F</div>
+                <div class="stars-container" aria-label="5 étoiles">
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="quote-decoration" aria-hidden="true">&ldquo;</span>
+                <blockquote class="testimonial-text" data-i18n="t2.text">Une méthode d'apprentissage vraiment efficace. J'ai eu mon visa pour l'Allemagne sans difficulté. Je recommande fortement !</blockquote>
+                <footer class="testimonial-author">
+                  <cite><h4 data-i18n="t2.author">Fatoumata D.</h4></cite>
+                  <span data-i18n="t2.role">Infirmière qualifiée</span>
+                </footer>
+              </article>
+              <article class="testimonial-card" role="tabpanel">
+                <div class="testimonial-avatar avatar-3" aria-hidden="true">O</div>
+                <div class="stars-container" aria-label="5 étoiles">
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="quote-decoration" aria-hidden="true">&ldquo;</span>
+                <blockquote class="testimonial-text" data-i18n="t3.text">Le centre offre un cadre idéal pour apprendre l'allemand. Les cours sont interactifs et on progresse très vite.</blockquote>
+                <footer class="testimonial-author">
+                  <cite><h4 data-i18n="t3.author">Oumar C.</h4></cite>
+                  <span data-i18n="t3.role">Étudiant en ingénierie</span>
+                </footer>
+              </article>
+            </div><!-- /.testimonials-track -->
+            <!-- Carousel Navigation -->
+            <div class="carousel-arrows">
+              <button class="carousel-btn" id="carousel-prev" aria-label="Témoignage précédent">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <button class="carousel-btn" id="carousel-next" aria-label="Témoignage suivant">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+            <div class="carousel-dots" role="tablist">
+              <button class="carousel-dot active" data-index="0" role="tab" aria-label="Témoignage 1" aria-selected="true"></button>
+              <button class="carousel-dot" data-index="1" role="tab" aria-label="Témoignage 2" aria-selected="false"></button>
+              <button class="carousel-dot" data-index="2" role="tab" aria-label="Témoignage 3" aria-selected="false"></button>
+            </div>
+          </div><!-- /.testimonials-carousel -->
         </div>
       </section>
 
@@ -580,6 +614,7 @@
       <section id="contact" class="contact-section" aria-labelledby="contact-heading">
         <div class="container">
           <div class="section-header">
+            <div class="section-badge">✉️ Contact</div>
             <h2 class="section-title" id="contact-heading" data-i18n="contact.title">Contactez-nous</h2>
             <p class="section-subtitle" data-i18n="contact.subtitle">Une question ? N'hésitez pas à nous écrire ou à nous appeler. Nous vous répondrons rapidement.</p>
           </div>
