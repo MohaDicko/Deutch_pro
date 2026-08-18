@@ -69,7 +69,57 @@ const translations = {
     "label.name": "Nom complet",
     "label.email": "Adresse email",
     "label.phone": "Téléphone (optionnel)",
-    "label.message": "Message"
+    "label.message": "Message",
+    "topbar.b2b": "Hotline Partenaires DE: +49 176 719 978 30",
+    "nav.b2b": "Pour Entreprises & Partenaires",
+    "hero.cta.b2b": "🇩🇪 Pour Entreprises (Ausbildung)",
+    "b2b.badge": "RECRUTEMENT & PARTENARIATS AUSBILDUNG",
+    "b2b.title": "Votre Solution Contre la Pénurie de Main-d'Œuvre en Allemagne",
+    "b2b.subtitle": "Conforme, hautement qualifié et préparé. Nous formons des talents motivés à Bamako et les accompagnons jusqu'à leur prise de poste en Allemagne.",
+    "b2b.p1.title": "Compétence Linguistique Certifiée (Goethe/ÖSD)",
+    "b2b.p1.desc": "Nos diplômés détiennent des certificats officiels Goethe niveau B1 (Ausbildung) et B2 (Emploi qualifié) avec accent sur l'allemand professionnel.",
+    "b2b.p2.title": "Procédure Visa Conforme (FEG & §81a)",
+    "b2b.p2.desc": "Prise en charge intégrale via la procédure accélérée pour travailleurs qualifiés (§ 81a AufenthG), rendez-vous consulaires et reconnaissance des diplômes.",
+    "b2b.p3.title": "Préparation Interculturelle & Intégration",
+    "b2b.p3.desc": "Nos candidats reçoivent une formation intensive sur la culture du travail allemande, la ponctualité et la vie courante avant leur départ.",
+    "b2b.p4.title": "Interlocuteur Direct basé en Allemagne (+49)",
+    "b2b.p4.desc": "Zéro barrière de communication : Notre bureau en Allemagne (+49 176 719 978 30) coordonne les contrats et la logistique d'accueil sur place.",
+    "talent.title": "Catalogue du Talent-Pool (Aperçu)",
+    "talent.desc": "Découvrez une sélection de nos candidats pré-qualifiés prêts à rejoindre votre entreprise ou centre de formation.",
+    "talent.filter.all": "Tous les secteurs",
+    "talent.filter.pflege": "🩺 Santé & Soins",
+    "talent.filter.handwerk": "🛠️ Artisanat & Technique",
+    "talent.filter.it": "💻 Informatique & Web",
+    "talent.filter.gastro": "🏨 Hôtellerie & Restauration",
+    "talent.status.ready": "Dossier Visa Prêt",
+    "talent.status.b1": "Certifié Goethe B1",
+    "talent.status.b2": "Certifié Goethe B2",
+    "talent.spec.lang": "Niveau de langue :",
+    "talent.spec.avail": "Disponible dès :",
+    "talent.cta": "Demander ce profil",
+    "talent.c1.sector": "Santé & Soins",
+    "talent.c1.role": "Infirmier qualifié / Aide-soignant (h/f)",
+    "talent.c1.edu_label": "Diplôme :",
+    "talent.c2.sector": "Électrotechnique & Mécatronique",
+    "talent.c2.role": "Apprenti Mécatronicien / Électricien",
+    "talent.c2.edu_label": "Prérequis :",
+    "talent.c3.sector": "Informatique & Dev",
+    "talent.c3.role": "Développeur Software Junior & Web",
+    "talent.c3.edu_label": "Compétences :",
+    "talent.c4.sector": "Gastronomie & Hôtellerie",
+    "talent.c4.role": "Apprenti Cuisinier / Agent Hôtelier",
+    "talent.c4.edu_label": "Expérience :",
+    "b2b.form.title": "Demande de Partenariat & Recrutement B2B",
+    "b2b.form.subtitle": "Vous cherchez des apprentis ou des professionnels qualifiés pour votre établissement en Allemagne ? Remplissez ce formulaire et notre bureau allemand vous recontactera immédiatement.",
+    "b2b.form.company": "Nom de l'entreprise / Institution *",
+    "b2b.form.contact_person": "Interlocuteur & Fonction *",
+    "b2b.form.email": "Adresse Email Professionnelle *",
+    "b2b.form.phone": "Numéro de téléphone (DE / EU) *",
+    "b2b.form.sector": "Secteur d'activité *",
+    "b2b.form.count": "Nombre de profils recherchés *",
+    "b2b.form.message": "Besoins spécifiques / Date de démarrage souhaitée",
+    "b2b.form.submit_btn": "🤝 Envoyer la demande (Bureau Allemagne)",
+    "b2b.form.privacy": "Vos données restent strictement confidentielles. Réponse garantie sous 24h."
   },
 
   de: {
@@ -138,7 +188,57 @@ const translations = {
     "label.name": "Vollständiger Name",
     "label.email": "E-Mail-Adresse",
     "label.phone": "Telefon (optional)",
-    "label.message": "Nachricht"
+    "label.message": "Nachricht",
+    "topbar.b2b": "Partner-Hotline DE: +49 176 719 978 30",
+    "nav.b2b": "Für Unternehmen & Partner",
+    "hero.cta.b2b": "🇩🇪 Für Unternehmen (Ausbildung)",
+    "b2b.badge": "REKRUTIERUNG & AUSBILDUNGSPARTNERSCHAFT",
+    "b2b.title": "Ihre Lösung gegen den Fachkräftemangel in Deutschland",
+    "b2b.subtitle": "Rechtssicher, hochqualifiziert und sprachlich vorbereitet. Wir bilden engagierte Talente in Bamako aus und begleiten sie bis zum erfolgreichen Start in Ihrem Unternehmen oder Ihrer Berufsschule.",
+    "b2b.p1.title": "Zertifizierte Sprachkompetenz (Goethe/ÖSD)",
+    "b2b.p1.desc": "Unsere Absolventen verfügen über geprüfte Goethe-Zertifikate auf Niveau B1 (Ausbildung) und B2 (Qualifizierte Fachkraft) mit starkem Fokus auf Fachsprache.",
+    "b2b.p2.title": "Rechtssicheres Visa-Verfahren (FEG & §81a)",
+    "b2b.p2.desc": "Vollständige Begleitung durch das Beschleunigte Fachkräfteverfahren (§ 81a AufenthG), Botschaftstermine und Zeugnisanerkennung in Deutschland.",
+    "b2b.p3.title": "Interkulturelle Vorbereitung & Onboarding",
+    "b2b.p3.desc": "Unsere Azubis erhalten intensive Schulungen zu deutscher Arbeitskultur, Pünktlichkeit, Betriebsabläufen und praktischer Integration vor der Abreise.",
+    "b2b.p4.title": "Direkter Ansprechpartner in Deutschland",
+    "b2b.p4.desc": "Keine Sprachbarriere bei der Kooperation: Unser Büro in Deutschland (+49 176 719 978 30) koordiniert alle Verträge, Fristen und die Logistik vor Ort.",
+    "talent.title": "Verfügbarer Talent-Pool (Auszug)",
+    "talent.desc": "Entdecken Sie unsere vorqualifizierten Kandidaten, die für eine Ausbildung oder Anstellung in Deutschland bereitstehen.",
+    "talent.filter.all": "Alle Sektoren",
+    "talent.filter.pflege": "🩺 Pflege & Gesundheit",
+    "talent.filter.handwerk": "🛠️ Handwerk & Technik",
+    "talent.filter.it": "💻 IT & Software",
+    "talent.filter.gastro": "🏨 Gastronomie & Hotel",
+    "talent.status.ready": "Visum-bereit",
+    "talent.status.b1": "Goethe B1 Cert.",
+    "talent.status.b2": "Goethe B2 Cert.",
+    "talent.spec.lang": "Sprachniveau:",
+    "talent.spec.avail": "Verfügbar ab:",
+    "talent.cta": "Profil anfragen",
+    "talent.c1.sector": "Gesundheit & Pflege",
+    "talent.c1.role": "Pflegefachkraft / Krankenpfleger (m/w/d)",
+    "talent.c1.edu_label": "Ausbildung:",
+    "talent.c2.sector": "Elektrotechnik & Mechatronik",
+    "talent.c2.role": "Auszubildender Mechatroniker / Elektriker",
+    "talent.c2.edu_label": "Vorkenntnisse:",
+    "talent.c3.sector": "IT & Fachinformatik",
+    "talent.c3.role": "Junior Software-Entwickler & Web-Dev",
+    "talent.c3.edu_label": "Kenntnisse:",
+    "talent.c4.sector": "Gastronomie & Hotellerie",
+    "talent.c4.role": "Azubi Koch / Hotelfachmann",
+    "talent.c4.edu_label": "Erfahrung:",
+    "b2b.form.title": "Partner-Anfrage & Talentbedarf melden",
+    "b2b.form.subtitle": "Sie suchen Auszubildende oder Fachkräfte für Ihren Betrieb in Deutschland? Füllen Sie das Formular aus – unser deutsches Partnerbüro setzt sich unverzüglich mit Ihnen in Verbindung.",
+    "b2b.form.company": "Firmenname / Institution *",
+    "b2b.form.contact_person": "Ansprechpartner & Funktion *",
+    "b2b.form.email": "Geschäftliche E-Mail *",
+    "b2b.form.phone": "Telefonnummer (DE / EU) *",
+    "b2b.form.sector": "Branche / Einsatzbereich *",
+    "b2b.form.count": "Anzahl benötigter Plätze *",
+    "b2b.form.message": "Spezifische Anforderungen / Gewünschter Starttermin",
+    "b2b.form.submit_btn": "🤝 Partner-Anfrage Absenden (Direkt an DE-Büro)",
+    "b2b.form.privacy": "Ihre Daten werden streng vertraulich behandelt. Ein Berater unseres deutschen Büros antwortet Ihnen innerhalb von 24h."
   },
 
   en: {
@@ -207,7 +307,57 @@ const translations = {
     "label.name": "Full name",
     "label.email": "Email address",
     "label.phone": "Phone (optional)",
-    "label.message": "Message"
+    "label.message": "Message",
+    "topbar.b2b": "DE Partner Hotline: +49 176 719 978 30",
+    "nav.b2b": "For Companies & Partners",
+    "hero.cta.b2b": "🇩🇪 For Employers (Ausbildung)",
+    "b2b.badge": "RECRUITMENT & VOCATIONAL PARTNERSHIP",
+    "b2b.title": "Your Solution to Skilled Labor Shortages in Germany",
+    "b2b.subtitle": "Fully compliant, qualified, and language-prepared. We train motivated talents in Bamako and guide them all the way to their start in your German company or vocational school.",
+    "b2b.p1.title": "Certified Language Proficiency (Goethe/ÖSD)",
+    "b2b.p1.desc": "Our graduates hold official Goethe certificates at B1 (Ausbildung) and B2 (Qualified Specialist) levels with heavy focus on professional terminology.",
+    "b2b.p2.title": "Compliant Visa & Entry Procedure (FEG & §81a)",
+    "b2b.p2.desc": "Full support through the Fast-Track Procedure for Skilled Workers (§ 81a AufenthG), embassy appointments, and credential recognition in Germany.",
+    "b2b.p3.title": "Intercultural Onboarding & Integration",
+    "b2b.p3.desc": "Candidates receive intensive training on German work culture, punctuality, and workplace integration prior to departure.",
+    "b2b.p4.title": "Direct Contact Person in Germany (+49)",
+    "b2b.p4.desc": "Zero communication friction: Our office in Germany (+49 176 719 978 30) coordinates all contracts, deadlines, and local arrival logistics.",
+    "talent.title": "Available Talent Pool (Sample)",
+    "talent.desc": "Discover pre-qualified candidates ready for vocational training (Ausbildung) or employment in Germany.",
+    "talent.filter.all": "All Sectors",
+    "talent.filter.pflege": "🩺 Healthcare & Nursing",
+    "talent.filter.handwerk": "🛠️ Craft & Engineering",
+    "talent.filter.it": "💻 IT & Software",
+    "talent.filter.gastro": "🏨 Hospitality & Gastronomy",
+    "talent.status.ready": "Visa Ready",
+    "talent.status.b1": "Goethe B1 Cert.",
+    "talent.status.b2": "Goethe B2 Cert.",
+    "talent.spec.lang": "Language Level:",
+    "talent.spec.avail": "Available from:",
+    "talent.cta": "Request Profile",
+    "talent.c1.sector": "Healthcare & Nursing",
+    "talent.c1.role": "Qualified Nurse / Care Assistant",
+    "talent.c1.edu_label": "Degree:",
+    "talent.c2.sector": "Electrical & Mechatronics",
+    "talent.c2.role": "Apprentice Mechatronics Technician",
+    "talent.c2.edu_label": "Background:",
+    "talent.c3.sector": "IT & Software Dev",
+    "talent.c3.role": "Junior Software Developer",
+    "talent.c3.edu_label": "Skills:",
+    "talent.c4.sector": "Hospitality & Gastronomy",
+    "talent.c4.role": "Apprentice Chef / Hotel Specialist",
+    "talent.c4.edu_label": "Experience:",
+    "b2b.form.title": "B2B Partnership & Recruitment Request",
+    "b2b.form.subtitle": "Looking for apprentices or skilled workers for your German organization? Fill in the form and our German office will contact you immediately.",
+    "b2b.form.company": "Company Name / Institution *",
+    "b2b.form.contact_person": "Contact Person & Role *",
+    "b2b.form.email": "Business Email *",
+    "b2b.form.phone": "Phone Number (DE / EU) *",
+    "b2b.form.sector": "Industry Sector *",
+    "b2b.form.count": "Number of Candidates Required *",
+    "b2b.form.message": "Specific Requirements / Preferred Start Date",
+    "b2b.form.submit_btn": "🤝 Send Partnership Request (Direct to DE Office)",
+    "b2b.form.privacy": "Your information is strictly confidential. Response guaranteed within 24h."
   },
 
   ar: {
@@ -276,7 +426,57 @@ const translations = {
     "label.name": "الاسم الكامل",
     "label.email": "البريد الإلكتروني",
     "label.phone": "الهاتف (اختياري)",
-    "label.message": "الرسالة"
+    "label.message": "الرسالة",
+    "topbar.b2b": "خط الشركاء في ألمانيا: 30 978 719 176 49+",
+    "nav.b2b": "للشركات والشركاء",
+    "hero.cta.b2b": "🇩🇪 للشركات والمؤسسات (Ausbildung)",
+    "b2b.badge": "التوظيف والشراكات المهنية في ألمانيا",
+    "b2b.title": "حلّك لنقص العمالة الماهرة والمهنية في ألمانيا",
+    "b2b.subtitle": "قانوني، مؤهل عالياً، ومعدّ لغوياً. ندرب مواهب متحمسة في باماكو ونرافقهم حتى استقرارهم في شركتك أو مركز تدريبك في ألمانيا.",
+    "b2b.p1.title": "كفاءة لغوية معتمدة (Goethe/ÖSD)",
+    "b2b.p1.desc": "يحمل خريجونا شهادات غوته رسمية بمستوى B1 (التدريب المهني) و B2 (المتخصصين) مع تركيز قوي على المصطلحات المهنية.",
+    "b2b.p2.title": "إجراءات تأشيرة مطابقة للقانون (FEG & §81a)",
+    "b2b.p2.desc": "دعم كامل عبر المسار السريع للعمال المهرة (§ 81a AufenthG)، ومواعيد السفارة، ومعادلة الشهادات في ألمانيا.",
+    "b2b.p3.title": "إعداد وتأهيل ثقافي للعمل",
+    "b2b.p3.desc": "يتلقى مرشحونا تدريباً مكثفاً حول ثقافة العمل الألمانية، والانضباط، والتكامل في بيئة العمل قبل المغادرة.",
+    "b2b.p4.title": "جهة اتصال مباشرة في ألمانيا (+49)",
+    "b2b.p4.desc": "تواصل سلس بدون عوائق: مكتبنا في ألمانيا ينظم العقود، المواعيد، واللوجستيات فور الوصول.",
+    "talent.title": "كتالوج المواهب المتاحة (عينات)",
+    "talent.desc": "اكتشف مرشحين مؤهلين مسبقاً وجاهزين للبدء في التدريب المهني أو العمل في ألمانيا.",
+    "talent.filter.all": "جميع القطاعات",
+    "talent.filter.pflege": "🩺 الصحة والتمريض",
+    "talent.filter.handwerk": "🛠️ الحرف والتكنولوجيا",
+    "talent.filter.it": "💻 تكنولوجيا المعلومات",
+    "talent.filter.gastro": "🏨 الفندقة والمطاعم",
+    "talent.status.ready": "ملف التأشيرة جاهز",
+    "talent.status.b1": "شهادة Goethe B1",
+    "talent.status.b2": "شهادة Goethe B2",
+    "talent.spec.lang": "مستوى اللغة:",
+    "talent.spec.avail": "متاح اعتباراً من:",
+    "talent.cta": "طلب هذا الملف",
+    "talent.c1.sector": "الصحة والتمريض",
+    "talent.c1.role": "ممرض مؤهل / مساعد تمريض",
+    "talent.c1.edu_label": "الشهادة:",
+    "talent.c2.sector": "الهندسة الكهربائية والميكاترونكس",
+    "talent.c2.role": "متدرب ميكاترونكس / كهربائي",
+    "talent.c2.edu_label": "المعرفة السابقة:",
+    "talent.c3.sector": "تكنولوجيا المعلومات والبرمجيات",
+    "talent.c3.role": "مطور برمجيات مبتدئ وموقع",
+    "talent.c3.edu_label": "المهارات:",
+    "talent.c4.sector": "الفندقة والمطاعم",
+    "talent.c4.role": "متدرب طاهٍ / أخصائي فندقي",
+    "talent.c4.edu_label": "الخبرة:",
+    "b2b.form.title": "طلب شراكة وتوظيف B2B",
+    "b2b.form.subtitle": "هل تبحث عن متدربين أو مهنيين مؤهلين لمؤسستك في ألمانيا؟ املأ النموذج وسيتم التواصل معك من قبل مكتبنا في ألمانيا فوراً.",
+    "b2b.form.company": "اسم الشركة / المؤسسة *",
+    "b2b.form.contact_person": "الشخص المسؤول والوظيفة *",
+    "b2b.form.email": "البريد الإلكتروني المهني *",
+    "b2b.form.phone": "رقم الهاتف (DE / EU) *",
+    "b2b.form.sector": "مجال النشاط *",
+    "b2b.form.count": "عدد الكفاءات المطلوبة *",
+    "b2b.form.message": "متطلبات خاصة / تاريخ البدء المفضّل",
+    "b2b.form.submit_btn": "🤝 إرسال طلب الشراكة (مباشرة لمكتب ألمانيا)",
+    "b2b.form.privacy": "بياناتك سرية للغاية. نضمن الرد خلال 24 ساعة."
   },
 
   zh: {
@@ -345,7 +545,57 @@ const translations = {
     "label.name": "全名",
     "label.email": "电子邮件地址",
     "label.phone": "电话（可选）",
-    "label.message": "留言"
+    "label.message": "留言",
+    "topbar.b2b": "德国合作方热线: +49 176 719 978 30",
+    "nav.b2b": "企业与合作伙伴",
+    "hero.cta.b2b": "🇩🇪 雇主合作 (Ausbildung)",
+    "b2b.badge": "德国招聘与职业培训合作",
+    "b2b.title": "解决您在德国的技术人才短缺方案",
+    "b2b.subtitle": "合规、高素质、语言完备。我们在巴马科培训有积极性的优秀人才，并全程陪同他们直到在您的德国企业或职业学校成功入职。",
+    "b2b.p1.title": "认证语言能力 (Goethe/ÖSD)",
+    "b2b.p1.desc": "我们的毕业生持有歌德学院官方B1（职业培训）和B2（专业技术人员）证书，重点掌握职业德语。",
+    "b2b.p2.title": "合规签证与入境流程 (FEG & §81a)",
+    "b2b.p2.desc": "通过专业人才快速通关程序 (§ 81a AufenthG)、大使馆预约及德国学历认证提供全方位支持。",
+    "b2b.p3.title": "跨文化培训与入职准备",
+    "b2b.p3.desc": "我们的学员在出发前接受有关德国工作文化、守时习惯和工作场所融入的密集培训。",
+    "b2b.p4.title": "德国本地直接联系人 (+49)",
+    "b2b.p4.desc": "沟通零障碍：我们设在德国的办公室 (+49 176 719 978 30) 协调所有合同、期限及当地接应物流。",
+    "talent.title": "可用人才库（精选）",
+    "talent.desc": "探索已预先筛选、准备好赴德进行职业培训（Ausbildung）或工作的优秀候选人。",
+    "talent.filter.all": "所有行业",
+    "talent.filter.pflege": "🩺 医疗与护理",
+    "talent.filter.handwerk": "🛠️ 手工业与工程",
+    "talent.filter.it": "💻 IT与软件",
+    "talent.filter.gastro": "🏨 餐饮与酒店",
+    "talent.status.ready": "签证材料就绪",
+    "talent.status.b1": "歌德 B1 证书",
+    "talent.status.b2": "歌德 B2 证书",
+    "talent.spec.lang": "语言水平：",
+    "talent.spec.avail": "可到岗时间：",
+    "talent.cta": "申请该简历",
+    "talent.c1.sector": "医疗与护理",
+    "talent.c1.role": "合格护士 / 护理助理",
+    "talent.c1.edu_label": "学历：",
+    "talent.c2.sector": "电气工程与机电一体化",
+    "talent.c2.role": "机电一体化 / 电工学徒",
+    "talent.c2.edu_label": "背景：",
+    "talent.c3.sector": "IT 与软件开发",
+    "talent.c3.role": "初级软件开发人员",
+    "talent.c3.edu_label": "技能：",
+    "talent.c4.sector": "餐饮与酒店管理",
+    "talent.c4.role": "厨师 / 酒店专业学徒",
+    "talent.c4.edu_label": "经验：",
+    "b2b.form.title": "B2B 合作与招聘需求提交",
+    "b2b.form.subtitle": "正在为您的德国机构寻找学徒或技术人员？填写表格，我们的德国办公室将立即与您联系。",
+    "b2b.form.company": "公司名称 / 机构 *",
+    "b2b.form.contact_person": "联系人及职位 *",
+    "b2b.form.email": "商务电子邮件 *",
+    "b2b.form.phone": "电话号码 (DE / EU) *",
+    "b2b.form.sector": "行业领域 *",
+    "b2b.form.count": "需要的人才数量 *",
+    "b2b.form.message": "具体要求 / 期望开始日期",
+    "b2b.form.submit_btn": "🤝 提交合作申请（直达德国办公室）",
+    "b2b.form.privacy": "您的信息严格保密。保证在24小时内给予回复。"
   }
 };
 
@@ -666,6 +916,91 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.remove('active');
         document.body.style.overflow = 'auto';
       });
+    });
+  }
+
+  // ── Talent Pool Filter ────────────────────────────────────
+  const filterBtns = document.querySelectorAll('.talent-filter-btn');
+  const talentCards = document.querySelectorAll('.talent-card');
+
+  if (filterBtns.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const sector = btn.dataset.sector;
+        talentCards.forEach(card => {
+          if (sector === 'all' || card.dataset.sector === sector) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // ── Candidate Profile Request Pre-fill ────────────────────
+  document.querySelectorAll('.talent-cta').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const candidateCode = btn.dataset.candidate;
+      const messageField = document.getElementById('b2b-message');
+      if (messageField && candidateCode) {
+        messageField.value = `Interesse an Kandidaten-Profil #${candidateCode}. Bitte senden Sie uns detaillierte Unterlagen zu.`;
+        messageField.focus();
+      }
+    });
+  });
+
+  // ── B2B Employer Partner Form Handling ───────────────────
+  const b2bForm = document.getElementById('b2b-partner-form');
+  if (b2bForm) {
+    b2bForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const company = (document.getElementById('b2b-company')?.value || '').trim();
+      const contactPerson = (document.getElementById('b2b-contact-person')?.value || '').trim();
+      const email = (document.getElementById('b2b-email')?.value || '').trim();
+      const phone = (document.getElementById('b2b-phone')?.value || '').trim();
+      const sector = document.getElementById('b2b-sector')?.value || '';
+      const count = document.getElementById('b2b-count')?.value || '';
+      const message = (document.getElementById('b2b-message')?.value || '').trim();
+
+      if (!company || !contactPerson || !email || !phone) {
+        alert("Bitte füllen Sie alle Pflichtfelder aus. / Veuillez remplir tous les champs obligatoires.");
+        return;
+      }
+
+      // Format message for German Hotline WhatsApp (+49 176 719 978 30)
+      const b2bWaText = encodeURIComponent(
+        `🤝 *NEUE B2B-PARTNERANFRAGE / REKRUTIERUNG*\n\n` +
+        `🏢 *Firma/Institution:* ${company}\n` +
+        `👤 *Ansprechpartner:* ${contactPerson}\n` +
+        `📧 *E-Mail:* ${email}\n` +
+        `📞 *Tel:* ${phone}\n` +
+        `💼 *Branche:* ${sector}\n` +
+        `📊 *Bedarf:* ${count}\n` +
+        (message ? `\n📝 *Anmerkungen/Profil:* ${message}` : '')
+      );
+
+      const b2bSubmitBtn = document.getElementById('b2b-submit-btn');
+      if (b2bSubmitBtn) {
+        b2bSubmitBtn.disabled = true;
+        b2bSubmitBtn.textContent = 'Wird weitergeleitet... / Envoi...';
+      }
+
+      // Redirect directly to German WhatsApp hotline
+      window.location.href = `https://wa.me/4917671997830?text=${b2bWaText}`;
+
+      const b2bSuccess = document.getElementById('b2b-form-success');
+      if (b2bSuccess) {
+        b2bSuccess.textContent = 'Vielen Dank! Ihre Anfrage wird an unser deutsches Partnerbüro übermittelt. / Demande transmise avec succès !';
+        b2bSuccess.style.display = 'block';
+      }
+
+      b2bForm.reset();
+      if (b2bSubmitBtn) b2bSubmitBtn.disabled = false;
     });
   }
 });
