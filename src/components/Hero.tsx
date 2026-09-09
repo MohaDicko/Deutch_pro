@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Hero() {
   return (
     <section id="accueil" className="relative pt-20 pb-32 bg-gray-50 overflow-hidden">
@@ -37,8 +39,14 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="relative z-10">
-          <img src="/hero-image.png" alt="Étudiants" className="rounded-2xl shadow-2xl w-full object-cover" />
+        <div className="relative z-10 w-full h-[500px]">
+          <Image 
+            src="/hero-image.png" 
+            alt="Étudiants" 
+            fill
+            className="rounded-2xl shadow-2xl object-cover" 
+            priority
+          />
         </div>
       </div>
     </section>
