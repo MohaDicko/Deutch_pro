@@ -8,7 +8,7 @@ export default function Footer({ dict }: { dict: any }) {
                     &copy; {new Date().getFullYear()} Deutsch Pro Bamako. {dict.footer ? dict.footer.rights : 'Tous droits réservés.'}
                   </p>
                   <p className="text-gray-500 text-xs">
-                    Designed by <a href="https://sahelmultiservices.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors font-semibold">SAHEL-MULTISERVICES : sahelmultiservices.com</a>
+                    Designed by <a href="https://sahelmultiservices.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors font-semibold">SAHEL-MULTISERVICES</a>
                   </p>
                 </div>
                 <div className="flex gap-4 text-sm text-gray-400">
