@@ -3,9 +3,14 @@ export default function Footer({ dict }: { dict: any }) {
     <footer className="bg-gray-900 text-gray-300 py-12">
             <div className="container mx-auto px-4">
               <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p className="text-gray-400 text-sm">
-                  &copy; {new Date().getFullYear()} Deutsch Pro Bamako. {dict.footer ? dict.footer.rights : 'Tous droits réservés.'}
-                </p>
+                <div className="flex flex-col gap-2">
+                  <p className="text-gray-400 text-sm">
+                    &copy; {new Date().getFullYear()} Deutsch Pro Bamako. {dict.footer ? dict.footer.rights : 'Tous droits réservés.'}
+                  </p>
+                  <p className="text-gray-500 text-xs">
+                    Designed by <a href="https://sahelmultiservices.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors font-semibold">SAHEL-MULTISERVICES : sahelmultiservices.com</a>
+                  </p>
+                </div>
                 <div className="flex gap-4 text-sm text-gray-400">
                   <a href="#" className="hover:text-white transition-colors">{dict.footer ? dict.footer.legal : 'Mentions Légales'}</a>
                   <a href="#" className="hover:text-white transition-colors">{dict.footer ? dict.footer.privacy : 'Confidentialité'}</a>
