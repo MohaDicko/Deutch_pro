@@ -17,7 +17,6 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const switchLang = lang === 'fr' ? 'de' : 'fr';
   const navItems = [
     { key: 'accueil', label: dict.nav.accueil },
     { key: 'services', label: dict.nav.services },
@@ -71,13 +70,22 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
-                  className="absolute right-0 mt-2 w-24 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden"
+                  className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden"
                 >
+                  <Link href={`/de`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'de' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
+                    🇩🇪 DE
+                  </Link>
                   <Link href={`/fr`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'fr' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
                     🇫🇷 FR
                   </Link>
-                  <Link href={`/de`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'de' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
-                    🇩🇪 DE
+                  <Link href={`/en`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'en' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
+                    🇬🇧 EN
+                  </Link>
+                  <Link href={`/es`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'es' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
+                    🇪🇸 ES
+                  </Link>
+                  <Link href={`/zh`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'zh' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
+                    🇨🇳 ZH
                   </Link>
                 </motion.div>
               )}
@@ -97,10 +105,31 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
 
         {/* Mobile Menu Toggle */}
         <div className="md:hidden flex items-center gap-4">
-          <Link href={`/${switchLang}`} className="text-gray-600 font-medium flex items-center gap-1">
-            <Globe size={18} />
-            <span className="uppercase">{switchLang}</span>
-          </Link>
+          <div className="relative">
+            <button 
+              onClick={() => setLangMenuOpen(!langMenuOpen)}
+              className="text-gray-600 font-medium flex items-center gap-1"
+            >
+              <Globe size={18} />
+              <span className="uppercase">{lang}</span>
+            </button>
+            <AnimatePresence>
+              {langMenuOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50"
+                >
+                  <Link href={`/de`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'de' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇩🇪 DE</Link>
+                  <Link href={`/fr`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'fr' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇫🇷 FR</Link>
+                  <Link href={`/en`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'en' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇬🇧 EN</Link>
+                  <Link href={`/es`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'es' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇪🇸 ES</Link>
+                  <Link href={`/zh`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'zh' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇨🇳 ZH</Link>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <button 
             className="text-gray-900 p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

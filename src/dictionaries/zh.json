@@ -1,0 +1,151 @@
+{
+  "header": {
+    "nav": {
+      "accueil": "首页",
+      "services": "服务",
+      "niveaux": "级别",
+      "temoignages": "感言",
+      "b2b": "B2B"
+    },
+    "contactBtn": "联系我们",
+    "portalBtn": "学生门户"
+  },
+  "hero": {
+    "badge": "巴马科的德国卓越",
+    "title1": "开启通往 ",
+    "title2": "德国",
+    "subtitle": "与认证教师一起学习德语。准备歌德考试，构建您的学术或职业未来。",
+    "ctaStart": "立即开始",
+    "ctaB2B": "💼 企业合作",
+    "stats": {
+      "students": "培训学生",
+      "levels": "涵盖级别",
+      "success": "成功率"
+    },
+    "certBadge": {
+      "title": "认证",
+      "subtitle": "Goethe-Zertifikat"
+    }
+  },
+  "services": {
+    "badge": "我们的课程",
+    "title": "卓越教学",
+    "subtitle": "为您的成功量身定制的项目，无论您是学生还是专业人士。",
+    "cards": {
+      "coursIntensifs": {
+        "title": "强化课程",
+        "desc": "全沉浸式快速进步。非常适合留学。"
+      },
+      "preparation": {
+        "title": "歌德备考",
+        "desc": "针对官方认证的专门训练。"
+      },
+      "pro": {
+        "title": "职业德语",
+        "desc": "技术和专业词汇（医生、工程师...）"
+      },
+      "integration": {
+        "title": "融入德国",
+        "desc": "跨文化准备并在您抵达德国的头几个月提供支持。"
+      }
+    }
+  },
+  "niveaux": {
+    "badge": "您的进度",
+    "title": "从零基础到专家",
+    "subtitle": "遵循欧洲共同语言参考标准（CEFR）的结构化路径。",
+    "A1": {
+      "title": "A1 - 初级",
+      "desc": "理解并使用熟悉的日常用语。"
+    },
+    "A2": {
+      "title": "A2 - 基础",
+      "desc": "理解孤立和频繁的短语（个人信息、购物、直接环境）。"
+    },
+    "B1": {
+      "title": "B1 - 中级",
+      "desc": "理解熟悉主题（工作、学校、休闲）讨论的要点。"
+    },
+    "B2": {
+      "title": "B2 - 高级",
+      "desc": "理解复杂文章中具体或抽象主题的主要内容。"
+    }
+  },
+  "b2b": {
+    "badge": "企业",
+    "title": "培训您的团队",
+    "subtitle": "为希望与德国合作的企业量身定制的解决方案。",
+    "features": {
+      "surMesure": "适应您所在行业的定制项目",
+      "horaires": "灵活的时间（公司内或在线）",
+      "culture": "商业跨文化培训"
+    },
+    "form": {
+      "company": "公司名称 *",
+      "contact": "联系人 *",
+      "email": "企业邮箱 *",
+      "phone": "电话 *",
+      "sector": "行业 *",
+      "candidates": "候选人数 *",
+      "message": "留言或需求概要",
+      "submit": "发送合作请求",
+      "loading": "发送中...",
+      "success": "您的请求已发送。我们的德国办公室将在24小时内联系您。",
+      "error": "发送过程中出错。",
+      "privacy": "您的数据将得到100%保密处理。"
+    },
+    "sectors": {
+      "health": "🩺 医疗保健",
+      "craft": "🛠️ 工艺技术",
+      "it": "💻 计算机 (IT)",
+      "gastro": "🏨 酒店餐饮",
+      "other": "🏢 其他行业"
+    },
+    "counts": {
+      "1-2": "1 至 2 名",
+      "3-5": "3 至 5 名",
+      "6-10": "6 至 10 名",
+      "10+": "10名以上"
+    },
+    "cta": "获取报价"
+  },
+  "contact": {
+    "badge": "联系",
+    "title": "准备好开始了吗？",
+    "subtitle": "联系我们评估您的水平或报名下一期课程。",
+    "form": {
+      "name": "全名 *",
+      "email": "电子邮件 *",
+      "phone": "电话",
+      "level": "期望级别",
+      "message": "您的留言 *",
+      "submit": "发送留言",
+      "loading": "发送中...",
+      "success": "您的留言已成功发送。我们将尽快与您联系！",
+      "error": "发生错误。请重试。"
+    },
+    "levels": {
+      "A1": "A1 级别 (初级)",
+      "A2": "A2 级别 (基础)",
+      "B1": "B1 级别 (中级)",
+      "B2": "B2 级别 (高级)"
+    },
+    "info": {
+      "address": "ACI 2000, 巴马科, 马里",
+      "email": "contact@deutchpro.ml",
+      "phone": "+223 70 00 00 00",
+      "opening": "周一至周六: 8:00-18:00"
+    }
+  },
+  "testimonials": {
+    "title": "学生感言",
+    "quote": "\"感谢 Deutsch Pro Bamako，我在创纪录的时间内达到了B1水平。老师们非常优秀，很有教学方法。\"",
+    "author": "- Amadou T."
+  },
+  "footer": {
+    "rights": "版权所有。",
+    "legal": "法律声明",
+    "privacy": "隐私政策",
+    "admin": "管理"
+  }
+}
