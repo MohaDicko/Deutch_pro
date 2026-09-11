@@ -2,10 +2,12 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Globe } from 'lucide-react';
+import Link from 'next/link';
 
-export default function Header() {
+export default function Header({ dict, lang }: { dict: any, lang: string }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [langMenuOpen, setLangMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,14 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const switchLang = lang === 'fr' ? 'de' : 'fr';
+  const navItems = [
+    { key: 'accueil', label: dict.nav.accueil },
+    { key: 'services', label: dict.nav.services },
+    { key: 'niveaux', label: dict.nav.niveaux },
+    { key: 'temoignages', label: dict.nav.temoignages }
+  ];
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
@@ -34,19 +44,46 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {['Accueil', 'Services', 'Niveaux', 'Témoignages'].map((item, i) => (
+          {navItems.map((item, i) => (
             <motion.a 
-              key={item}
+              key={item.key}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * i }}
-              href={`#${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`} 
+              href={`#${item.key}`} 
               className="text-gray-600 hover:text-red-600 font-medium transition-colors text-sm uppercase tracking-wide"
             >
-              {item}
+              {item.label}
             </motion.a>
           ))}
           
+          <div className="relative">
+            <button 
+              onClick={() => setLangMenuOpen(!langMenuOpen)}
+              className="flex items-center gap-1 text-gray-600 hover:text-red-600 font-medium"
+            >
+              <Globe size={18} />
+              <span className="uppercase">{lang}</span>
+            </button>
+            <AnimatePresence>
+              {langMenuOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute right-0 mt-2 w-24 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden"
+                >
+                  <Link href={`/fr`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'fr' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
+                    🇫🇷 FR
+                  </Link>
+                  <Link href={`/de`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'de' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
+                    🇩🇪 DE
+                  </Link>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           <motion.a 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -54,17 +91,23 @@ export default function Header() {
             href="#contact" 
             className="px-6 py-2.5 bg-gray-900 text-white rounded-full font-medium hover:bg-red-600 transition-all duration-300 hover:shadow-lg hover:shadow-red-200 hover:-translate-y-0.5"
           >
-            Nous Contacter
+            {dict.contactBtn}
           </motion.a>
         </nav>
 
         {/* Mobile Menu Toggle */}
-        <button 
-          className="md:hidden text-gray-900 p-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-4">
+          <Link href={`/${switchLang}`} className="text-gray-600 font-medium flex items-center gap-1">
+            <Globe size={18} />
+            <span className="uppercase">{switchLang}</span>
+          </Link>
+          <button 
+            className="text-gray-900 p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}
@@ -77,14 +120,14 @@ export default function Header() {
             className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
           >
             <div className="flex flex-col px-6 py-4 space-y-4">
-              {['Accueil', 'Services', 'Niveaux', 'Témoignages'].map((item) => (
+              {navItems.map((item) => (
                 <a 
-                  key={item}
-                  href={`#${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`} 
+                  key={item.key}
+                  href={`#${item.key}`} 
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-gray-600 hover:text-red-600 font-medium text-lg"
                 >
-                  {item}
+                  {item.label}
                 </a>
               ))}
               <a 
@@ -92,7 +135,7 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-3 bg-red-600 text-white text-center rounded-lg font-medium mt-4"
               >
-                Nous Contacter
+                {dict.contactBtn}
               </a>
             </div>
           </motion.div>

@@ -1,0 +1,151 @@
+{
+  "header": {
+    "nav": {
+      "accueil": "Accueil",
+      "services": "Services",
+      "niveaux": "Niveaux",
+      "temoignages": "Témoignages",
+      "b2b": "B2B"
+    },
+    "contactBtn": "Nous Contacter",
+    "portalBtn": "Portail Étudiant"
+  },
+  "hero": {
+    "badge": "L'Excellence Allemande à Bamako",
+    "title1": "Ouvrez les portes de l'",
+    "title2": "Allemagne",
+    "subtitle": "Apprenez l'allemand avec des professeurs certifiés. Préparez vos examens Goethe et construisez votre avenir académique ou professionnel.",
+    "ctaStart": "Commencer maintenant",
+    "ctaB2B": "💼 Pour les entreprises",
+    "stats": {
+      "students": "Étudiants formés",
+      "levels": "Niveaux couverts",
+      "success": "Taux de réussite"
+    },
+    "certBadge": {
+      "title": "Certifications",
+      "subtitle": "Goethe-Zertifikat"
+    }
+  },
+  "services": {
+    "badge": "Notre Offre",
+    "title": "Une pédagogie d'excellence",
+    "subtitle": "Des programmes conçus pour votre réussite, que vous soyez étudiant ou professionnel.",
+    "cards": {
+      "coursIntensifs": {
+        "title": "Cours Intensifs",
+        "desc": "Progression rapide avec immersion totale. Idéal pour les études."
+      },
+      "preparation": {
+        "title": "Préparation Goethe",
+        "desc": "Entraînement spécifique pour les certifications officielles."
+      },
+      "pro": {
+        "title": "Allemand Pro",
+        "desc": "Vocabulaire technique et professionnel (Médecins, Ingénieurs...)"
+      },
+      "integration": {
+        "title": "Intégration",
+        "desc": "Préparation interculturelle et accompagnement lors de vos premiers mois en Allemagne pour une intégration réussie."
+      }
+    }
+  },
+  "niveaux": {
+    "badge": "Votre Progression",
+    "title": "Du débutant à l'expert",
+    "subtitle": "Un parcours structuré selon le Cadre Européen Commun de Référence (CECRL).",
+    "A1": {
+      "title": "A1 - Débutant",
+      "desc": "Comprendre et utiliser des expressions familières et quotidiennes."
+    },
+    "A2": {
+      "title": "A2 - Élémentaire",
+      "desc": "Comprendre des phrases isolées et fréquentes (informations personnelles, achats, environnement proche)."
+    },
+    "B1": {
+      "title": "B1 - Intermédiaire",
+      "desc": "Comprendre les points essentiels d'une discussion sur des sujets familiers (travail, école, loisirs)."
+    },
+    "B2": {
+      "title": "B2 - Avancé",
+      "desc": "Comprendre le contenu essentiel de sujets concrets ou abstraits dans un texte complexe."
+    }
+  },
+  "b2b": {
+    "badge": "Entreprises",
+    "title": "Formez vos équipes",
+    "subtitle": "Des solutions sur mesure pour les entreprises souhaitant collaborer avec l'Allemagne.",
+    "features": {
+      "surMesure": "Programmes sur mesure adaptées à votre secteur",
+      "horaires": "Horaires flexibles (en entreprise ou en ligne)",
+      "culture": "Formation interculturelle pour les affaires"
+    },
+    "form": {
+      "company": "Nom de l'Entreprise *",
+      "contact": "Personne de contact *",
+      "email": "Email Professionnel *",
+      "phone": "Téléphone *",
+      "sector": "Secteur / Industrie *",
+      "candidates": "Nombre de candidats *",
+      "message": "Message ou Profils recherchés",
+      "submit": "Envoyer la demande de Partenariat",
+      "loading": "Envoi...",
+      "success": "Votre demande a été envoyée. Notre bureau allemand vous contactera sous 24h.",
+      "error": "Une erreur est survenue lors de l'envoi.",
+      "privacy": "Vos données seront traitées de manière 100% confidentielle."
+    },
+    "sectors": {
+      "health": "🩺 Santé & Soins",
+      "craft": "🛠️ Artisanat & Technique",
+      "it": "💻 Informatique (IT)",
+      "gastro": "🏨 Hôtellerie & Restauration",
+      "other": "🏢 Autre secteur"
+    },
+    "counts": {
+      "1-2": "1 à 2 candidats",
+      "3-5": "3 à 5 candidats",
+      "6-10": "6 à 10 candidats",
+      "10+": "Plus de 10 candidats"
+    },
+    "cta": "Demander un devis"
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "Prêt à commencer ?",
+    "subtitle": "Contactez-nous pour évaluer votre niveau ou vous inscrire à notre prochaine session.",
+    "form": {
+      "name": "Nom complet *",
+      "email": "Email *",
+      "phone": "Téléphone",
+      "level": "Niveau souhaité",
+      "message": "Votre Message *",
+      "submit": "Envoyer le message",
+      "loading": "Envoi en cours...",
+      "success": "Votre message a été envoyé avec succès. Nous vous contacterons très vite !",
+      "error": "Une erreur est survenue. Veuillez réessayer."
+    },
+    "levels": {
+      "A1": "Niveau A1 (Débutant)",
+      "A2": "Niveau A2 (Élémentaire)",
+      "B1": "Niveau B1 (Intermédiaire)",
+      "B2": "Niveau B2 (Avancé)"
+    },
+    "info": {
+      "address": "ACI 2000, Bamako, Mali",
+      "email": "contact@deutchpro.ml",
+      "phone": "+223 70 00 00 00",
+      "opening": "Lun-Sam: 8h-18h"
+    }
+  },
+  "testimonials": {
+    "title": "Ce Que Disent Nos Étudiants",
+    "quote": "\"Grâce à Deutsch Pro Bamako, j'ai pu valider mon niveau B1 en un temps record. Les professeurs sont excellents et très pédagogues.\"",
+    "author": "- Amadou T."
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "legal": "Mentions Légales",
+    "privacy": "Confidentialité",
+    "admin": "Admin"
+  }
+}

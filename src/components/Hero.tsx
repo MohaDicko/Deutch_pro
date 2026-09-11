@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star, Users, BookOpen } from 'lucide-react';
 
-export default function Hero() {
+export default function Hero({ dict }: { dict: any }) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,24 +36,24 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
               </span>
-              L'Excellence Allemande à Bamako
+              {dict.badge}
             </motion.div>
             
             <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-outfit font-extrabold text-gray-900 mb-6 leading-[1.1] tracking-tight">
-              Ouvrez les portes de l'<span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Allemagne</span>
+              {dict.title1}<span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">{dict.title2}</span>
             </motion.h1>
             
             <motion.p variants={itemVariants} className="text-xl text-gray-600 mb-10 leading-relaxed max-w-lg">
-              Apprenez l'allemand avec des professeurs certifiés. Préparez vos examens Goethe et construisez votre avenir académique ou professionnel.
+              {dict.subtitle}
             </motion.p>
             
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mb-14">
               <a href="#contact" className="group flex items-center justify-center gap-2 px-8 py-4 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-all shadow-lg shadow-red-200/50 hover:shadow-xl hover:shadow-red-200 hover:-translate-y-0.5">
-                Commencer maintenant
+                {dict.ctaStart}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
               <a href="#entreprises" className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 border border-gray-200 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-300 transition-all hover:shadow-md">
-                💼 Pour les entreprises
+                {dict.ctaB2B}
               </a>
             </motion.div>
 
@@ -63,21 +63,21 @@ export default function Hero() {
                   <Users className="text-red-500" size={20} />
                   <span className="text-2xl">500+</span>
                 </div>
-                <div className="text-sm text-gray-500 font-medium">Étudiants formés</div>
+                <div className="text-sm text-gray-500 font-medium">{dict.stats.students}</div>
               </div>
               <div>
                 <div className="flex items-center gap-2 text-gray-900 font-bold mb-1">
                   <BookOpen className="text-red-500" size={20} />
                   <span className="text-2xl">A1-B2</span>
                 </div>
-                <div className="text-sm text-gray-500 font-medium">Niveaux couverts</div>
+                <div className="text-sm text-gray-500 font-medium">{dict.stats.levels}</div>
               </div>
               <div>
                 <div className="flex items-center gap-2 text-gray-900 font-bold mb-1">
                   <Star className="text-yellow-500" size={20} />
                   <span className="text-2xl">98%</span>
                 </div>
-                <div className="text-sm text-gray-500 font-medium">Taux de réussite</div>
+                <div className="text-sm text-gray-500 font-medium">{dict.stats.success}</div>
               </div>
             </motion.div>
           </motion.div>
@@ -111,8 +111,8 @@ export default function Hero() {
                 <Star size={24} fill="currentColor" />
               </div>
               <div>
-                <p className="text-sm text-gray-500 font-medium">Certifications</p>
-                <p className="font-bold text-gray-900">Goethe-Zertifikat</p>
+                <p className="text-sm text-gray-500 font-medium">{dict.certBadge.title}</p>
+                <p className="font-bold text-gray-900">{dict.certBadge.subtitle}</p>
               </div>
             </motion.div>
           </motion.div>

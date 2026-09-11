@@ -33,7 +33,9 @@ const services = [
   }
 ];
 
-export default function Services() {
+export default function Services({ dict }: { dict: any }) {
+  const serviceKeys = ['coursIntensifs', 'preparation', 'pro', 'integration'];
+  
   return (
     <section id="services" className="py-32 bg-white relative">
       <div className="container mx-auto px-6">
@@ -44,7 +46,7 @@ export default function Services() {
             viewport={{ once: true }}
             className="text-red-600 font-bold uppercase tracking-wider text-sm mb-4 block"
           >
-            Nos Domaines d'Expertise
+            {dict.badge}
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -53,7 +55,7 @@ export default function Services() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-outfit font-extrabold text-gray-900 mb-6"
           >
-            Nous vous accompagnons de A à Z
+            {dict.title}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -62,13 +64,14 @@ export default function Services() {
             transition={{ delay: 0.2 }}
             className="text-lg text-gray-600"
           >
-            Plus qu'une école de langue, nous sommes votre partenaire de confiance pour concrétiser votre projet de vie en Allemagne.
+            {dict.subtitle}
           </motion.p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
+            const key = serviceKeys[index];
             return (
               <motion.div 
                 key={service.title}
@@ -76,17 +79,20 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gray-200/50 hover:-translate-y-2 transition-all duration-300"
+                className="group p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gray-200/50 hover:-translate-y-2 transition-all duration-500 relative overflow-hidden"
               >
-                <div className={`w-16 h-16 rounded-2xl mb-8 flex items-center justify-center ${service.bg} group-hover:scale-110 transition-transform duration-300`}>
-                  <div className={`bg-gradient-to-br ${service.color} text-transparent bg-clip-text`}>
-                    <Icon size={32} className="stroke-[url(#gradient)] text-red-600" />
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`}></div>
+                <div className="relative z-10">
+                  <div className={`w-16 h-16 rounded-2xl mb-8 flex items-center justify-center ${service.bg} group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                    <div className={`bg-gradient-to-br ${service.color} text-transparent bg-clip-text`}>
+                      <Icon size={32} className="stroke-[url(#gradient)] text-red-600 group-hover:text-red-700 transition-colors" />
+                    </div>
                   </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 font-outfit">{dict.cards[key].title}</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {dict.cards[key].desc}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4 font-outfit">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
               </motion.div>
             );
           })}
