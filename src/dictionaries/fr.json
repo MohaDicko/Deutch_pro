@@ -139,8 +139,23 @@
   },
   "testimonials": {
     "title": "Ce Que Disent Nos Étudiants",
-    "quote": "\"Grâce à Deutsch Pro Bamako, j'ai pu valider mon niveau B1 en un temps record. Les professeurs sont excellents et très pédagogues.\"",
-    "author": "- Amadou T."
+    "list": [
+      {
+        "quote": "Je viens de commencer mon apprentissage et je suis déjà impressionné par la qualité des cours. L'équipe est très accueillante et m'encourage au quotidien.",
+        "author": "Backary Sacko",
+        "role": "Apprenant Débutant (A1)"
+      },
+      {
+        "quote": "Grâce à Deutsch Pro Bamako, j'ai pu valider mon niveau B1 rapidement. Les professeurs sont excellents et très pédagogues, ce qui facilite vraiment l'apprentissage.",
+        "author": "Guindo",
+        "role": "Apprenant Niveau B1"
+      },
+      {
+        "quote": "Le centre m'a accompagné du début à la fin. J'ai reçu mon visa et je suis maintenant en Allemagne pour ma formation. Une équipe vraiment exceptionnelle !",
+        "author": "Ousmane TOURE",
+        "role": "Actuellement en Allemagne"
+      }
+    ]
   },
   "footer": {
     "rights": "Tous droits réservés.",

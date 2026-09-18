@@ -139,8 +139,23 @@
   },
   "testimonials": {
     "title": "Was unsere Schüler sagen",
-    "quote": "\"Dank Deutsch Pro Bamako konnte ich mein B1-Niveau in Rekordzeit validieren.\"",
-    "author": "- Amadou T."
+    "list": [
+      {
+        "quote": "Ich habe gerade erst mit dem Lernen begonnen und bin schon jetzt von der Qualität der Kurse beeindruckt. Das Team ist sehr freundlich und ermutigt mich jeden Tag.",
+        "author": "Backary Sacko",
+        "role": "Anfänger (Niveau A1)"
+      },
+      {
+        "quote": "Dank Deutsch Pro Bamako konnte ich mein B1-Niveau schnell validieren. Die Lehrer sind ausgezeichnet und sehr pädagogisch, was das Lernen wirklich erleichtert.",
+        "author": "Guindo",
+        "role": "Schüler Niveau B1"
+      },
+      {
+        "quote": "Das Zentrum hat mich von Anfang bis Ende begleitet. Ich habe mein Visum erhalten und bin jetzt in Deutschland für meine Ausbildung. Ein wirklich außergewöhnliches Team!",
+        "author": "Ousmane TOURE",
+        "role": "Derzeit in Deutschland"
+      }
+    ]
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",

@@ -91,7 +91,7 @@ export default function Hero({ dict }: { dict: any }) {
             <div className="absolute inset-0 bg-gradient-to-tr from-red-600 to-transparent opacity-10 rounded-[2.5rem] transform rotate-3 scale-105"></div>
             <div className="relative w-full h-[600px] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
               <Image 
-                src="/hero-image.png" 
+                src="/images/formation/cours-en-salle.jpeg" 
                 alt="Étudiants apprenant l'allemand" 
                 fill
                 className="object-cover" 

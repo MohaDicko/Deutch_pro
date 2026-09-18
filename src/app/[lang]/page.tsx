@@ -9,6 +9,7 @@ import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import Gallery from '@/components/Gallery';
 
 export default async function Home({
   params,
@@ -24,6 +25,7 @@ export default async function Home({
       <Header dict={dict.header} lang={locale} />
       <Hero dict={dict.hero} />
       <Services dict={dict.services} />
+      <Gallery />
       <B2B dict={dict.b2b} />
       <Niveaux dict={dict.niveaux} />
       <Testimonials dict={dict} />
