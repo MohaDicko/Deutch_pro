@@ -54,7 +54,12 @@ const statusLabels: Record<string, string> = {
   renforcement: 'Renforcement',
 };
 
-export default async function LearnersPage() {
+export default async function LearnersPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ created?: string }>;
+}) {
+  const params = searchParams ? await searchParams : {};
   let students: any[] = [];
 
   try {
@@ -110,6 +115,12 @@ export default async function LearnersPage() {
       </nav>
 
       <main className="mx-auto max-w-7xl px-6 py-10">
+        {params.created === '1' && (
+          <div className="mb-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-300">
+            L’apprenant a été enregistré avec succès.
+          </div>
+        )}
+
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-emerald-400">Académie</p>

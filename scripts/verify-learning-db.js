@@ -14,6 +14,27 @@ async function main() {
     throw new Error(`Niveaux invalides. Attendu: ${expected.join(', ')}. Reçu: ${actual.join(', ')}`);
   }
 
+  const level = await prisma.learning_levels.findUnique({ where: { code: 'A1' } });
+  if (!level) {
+    throw new Error('Le niveau A1 est introuvable.');
+  }
+
+  try {
+    await prisma.$transaction(async (tx) => {
+      const teacher = await tx.teachers.create({ data: { full_name: '__integration_teacher__', hourly_rate: 10000, status: 'vacataire' } });
+      const student = await tx.students.create({ data: { full_name: '__integration_student__', level_id: level.id, status: 'inscrit' } });
+      const course = await tx.courses.create({ data: { title: '__integration_course__', level_id: level.id, teacher_id: teacher.id, course_type: 'groupe' } });
+      await tx.assessments.create({ data: { student_id: student.id, course_id: course.id, level_id: level.id, total_score: 80, status: 'valide' } });
+      await tx.student_attendances.create({ data: { student_id: student.id, course_id: course.id, attended_on: new Date('2026-09-18T10:00:00Z'), status: 'present' } });
+      await tx.payrolls.create({ data: { teacher_id: teacher.id, month: 'Integration', hours_worked: 10, gross_amount: 100000, net_amount: 100000 } });
+      throw new Error('__ROLLBACK_INTEGRATION__');
+    });
+  } catch (error) {
+    if (error.message !== '__ROLLBACK_INTEGRATION__') {
+      throw error;
+    }
+  }
+
   const [students, teachers, courses, assessments, attendances, payrolls] = await Promise.all([
     prisma.students.count(),
     prisma.teachers.count(),

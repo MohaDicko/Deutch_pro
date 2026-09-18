@@ -226,7 +226,10 @@ export default async function AdminDashboard({
             })}
           </div>
 
-          <div className="mt-5 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <form method="get" action="/admin" className="mt-5 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <input type="hidden" name="q" value={query} />
+            <input type="hidden" name="status" value={selectedStatus} />
+            <input type="hidden" name="tab" value={selectedTab} />
             <label htmlFor="date-filter" className="text-xs font-medium uppercase tracking-[0.2em] text-gray-400">
               Filtrer par date
             </label>
@@ -242,7 +245,8 @@ export default async function AdminDashboard({
                 </option>
               ))}
             </select>
-          </div>
+              <button type="submit" className="rounded-xl bg-red-500 px-3 py-2 text-xs font-semibold text-white hover:bg-red-400">Appliquer</button>
+            </form>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

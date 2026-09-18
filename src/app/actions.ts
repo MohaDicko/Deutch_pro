@@ -2,6 +2,7 @@
 
 import { PrismaClient } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
 const prisma = new PrismaClient();
@@ -67,6 +68,14 @@ const courseSchema = z.object({
 });
 
 const payrollStatusSchema = z.enum(['pending', 'ready', 'paid']);
+
+const payrollSchema = z.object({
+  teacher_id: z.string().uuid(),
+  month: z.string().min(1).max(40),
+  hours_worked: z.coerce.number().min(0).max(1000),
+  bonus: z.coerce.number().min(0).max(100000000),
+  deductions: z.coerce.number().min(0).max(100000000),
+});
 
 export async function saveContact(formData: FormData) {
   try {
@@ -198,6 +207,7 @@ export async function createStudent(formData: FormData): Promise<void> {
   });
 
   revalidatePath('/admin/apprenants');
+  redirect('/admin/apprenants?created=1');
 }
 
 export async function createTeacher(formData: FormData): Promise<void> {
@@ -311,4 +321,42 @@ export async function updatePayrollStatus(formData: FormData): Promise<void> {
 
   await prisma.payrolls.update({ where: { id }, data: { status } });
   revalidatePath('/admin/paie');
+}
+
+export async function createPayroll(formData: FormData): Promise<void> {
+  const data = payrollSchema.parse({
+    teacher_id: formData.get('teacher_id'),
+    month: formData.get('month'),
+    hours_worked: formData.get('hours_worked'),
+    bonus: formData.get('bonus'),
+    deductions: formData.get('deductions'),
+  });
+
+  const teacher = await prisma.teachers.findUnique({
+    where: { id: data.teacher_id },
+    select: { hourly_rate: true },
+  });
+
+  if (!teacher?.hourly_rate) {
+    throw new Error('Le professeur doit avoir un tarif horaire.');
+  }
+
+  const gross = data.hours_worked * Number(teacher.hourly_rate);
+  const net = gross + data.bonus - data.deductions;
+
+  await prisma.payrolls.create({
+    data: {
+      teacher_id: data.teacher_id,
+      month: data.month,
+      hours_worked: data.hours_worked,
+      gross_amount: gross,
+      bonus: data.bonus,
+      deductions: data.deductions,
+      net_amount: net,
+      status: 'pending',
+    },
+  });
+
+  revalidatePath('/admin/paie');
+  redirect('/admin/paie?created=1');
 }

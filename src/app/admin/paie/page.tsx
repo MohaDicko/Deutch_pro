@@ -12,7 +12,8 @@ const fallbackPayrolls = [
 
 const formatMoney = (value: number) => `${value.toLocaleString('fr-FR')} FCFA`;
 
-export default async function PayrollPage() {
+export default async function PayrollPage({ searchParams }: { searchParams?: Promise<{ created?: string }> } = {}) {
+  const params = searchParams ? await searchParams : {};
   let payrolls = fallbackPayrolls;
 
   try {
@@ -56,9 +57,10 @@ export default async function PayrollPage() {
       </nav>
 
       <main className="mx-auto max-w-7xl px-6 py-10">
+        {params.created === '1' && <div className="mb-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-300">La fiche de paie a été créée avec succès.</div>}
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div><p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-emerald-400">Ressources humaines</p><h2 className="text-3xl font-black text-white">Paie du mois</h2></div>
-          <button className="rounded-full bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-400">Préparer la paie</button>
+          <a href="/admin/paie/nouveau" className="rounded-full bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-400">Préparer la paie</a>
         </div>
 
         <div className="mb-10 grid gap-5 md:grid-cols-4">
