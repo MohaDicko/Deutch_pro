@@ -4,60 +4,62 @@ import { BookOpen, Users, Briefcase, GraduationCap } from 'lucide-react';
 
 const services = [
   {
-    title: "Cours d'Allemand",
-    description: "Apprentissage intensif et régulier (A1, A2, B1, B2). Méthode immersive et professeurs qualifiés pour une progression rapide.",
+    title: "Cours de langue de A1 à B2",
+    description: 'Progression structurée avec un accompagnement pédagogique régulier, du matériel audio-visuel et des mises en situation concrètes.',
     icon: BookOpen,
-    color: "from-red-500 to-red-600",
-    bg: "bg-red-50"
+    color: 'from-red-500 to-red-600',
+    bg: 'bg-red-50'
   },
   {
-    title: "Accompagnement Visa",
-    description: "Assistance complète pour vos démarches administratives, de la constitution du dossier jusqu'à l'obtention du visa.",
+    title: 'Préparation aux examens',
+    description: 'Entraînement ciblé au Goethe, aux épreuves orales et écrites, avec correction personnalisée et simulations réalistes.',
     icon: Briefcase,
-    color: "from-blue-500 to-blue-600",
-    bg: "bg-blue-50"
+    color: 'from-blue-500 to-blue-600',
+    bg: 'bg-blue-50'
   },
   {
-    title: "Orientation Ausbildung",
-    description: "Conseils et placement pour les formations professionnelles (Ausbildung) en Allemagne. Aide à la recherche d'entreprise.",
+    title: 'Allemand professionnel',
+    description: 'Vocabulaire utile au travail, aux entretiens, aux échanges professionnels et à la communication sur le terrain.',
     icon: GraduationCap,
-    color: "from-green-500 to-green-600",
-    bg: "bg-green-50"
+    color: 'from-green-500 to-green-600',
+    bg: 'bg-green-50'
   },
   {
-    title: "Intégration",
-    description: "Préparation interculturelle et accompagnement lors de vos premiers mois en Allemagne pour une intégration réussie.",
+    title: 'Visa et intégration',
+    description: 'Accompagnement dans la préparation du projet, la démarche administrative et l’intégration sur le plan culturel et professionnel.',
     icon: Users,
-    color: "from-purple-500 to-purple-600",
-    bg: "bg-purple-50"
+    color: 'from-purple-500 to-purple-600',
+    bg: 'bg-purple-50'
   }
 ];
 
 export default function Services({ dict }: { dict: any }) {
   const serviceKeys = ['coursIntensifs', 'preparation', 'pro', 'integration'];
-  
+
   return (
-    <section id="services" className="py-32 bg-white relative">
-      <div className="container mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <motion.span 
+    <section id="services" className="relative py-32 bg-white">
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-red-50/80 to-transparent" />
+
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="mx-auto mb-20 max-w-2xl text-center">
+          <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-red-600 font-bold uppercase tracking-wider text-sm mb-4 block"
+            className="mb-4 block text-sm font-bold uppercase tracking-[0.2em] text-red-600"
           >
             {dict.badge}
           </motion.span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-outfit font-extrabold text-gray-900 mb-6"
+            className="mb-6 text-4xl font-black tracking-[-0.05em] text-gray-900 md:text-5xl"
           >
             {dict.title}
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -68,30 +70,26 @@ export default function Services({ dict }: { dict: any }) {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           {services.map((service, index) => {
             const Icon = service.icon;
             const key = serviceKeys[index];
             return (
-              <motion.div 
+              <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gray-200/50 hover:-translate-y-2 transition-all duration-500 relative overflow-hidden"
+                className="group relative overflow-hidden rounded-[2rem] border border-gray-200 bg-white p-8 shadow-[0_20px_40px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 transition-opacity duration-500 group-hover:opacity-[0.05]`} />
                 <div className="relative z-10">
-                  <div className={`w-16 h-16 rounded-2xl mb-8 flex items-center justify-center ${service.bg} group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                    <div className={`bg-gradient-to-br ${service.color} text-transparent bg-clip-text`}>
-                      <Icon size={32} className="stroke-[url(#gradient)] text-red-600 group-hover:text-red-700 transition-colors" />
-                    </div>
+                  <div className={`mb-8 flex h-16 w-16 items-center justify-center rounded-2xl ${service.bg} shadow-inner`}>
+                    <Icon size={30} className="text-red-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 font-outfit">{dict.cards[key].title}</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {dict.cards[key].desc}
-                  </p>
+                  <h3 className="mb-4 text-xl font-bold text-gray-900">{dict.cards[key].title}</h3>
+                  <p className="leading-relaxed text-gray-600">{dict.cards[key].desc}</p>
                 </div>
               </motion.div>
             );

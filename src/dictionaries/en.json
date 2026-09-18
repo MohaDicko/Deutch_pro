@@ -12,9 +12,9 @@
   },
   "hero": {
     "badge": "German Excellence in Bamako",
-    "title1": "Open the doors to ",
-    "title2": "Germany",
-    "subtitle": "Learn German with certified teachers. Prepare for your Goethe exams and build your academic or professional future.",
+    "title1": "German courses from ",
+    "title2": "A1 to B2",
+    "subtitle": "Courses from A1 to B2 using audio-visual materials, interactive exercises, and role-play situations to learn German practically and effectively.",
     "ctaStart": "Start Now",
     "ctaB2B": "💼 For Businesses",
     "stats": {
@@ -29,20 +29,20 @@
   },
   "services": {
     "badge": "Our Offer",
-    "title": "Pedagogy of Excellence",
-    "subtitle": "Programs designed for your success, whether you are a student or professional.",
+    "title": "German courses from A1 to B2",
+    "subtitle": "Courses from A1 to B2 using audio-visual materials and role-play situations for practical, effective progress.",
     "cards": {
       "coursIntensifs": {
         "title": "Intensive Courses",
-        "desc": "Fast progress with total immersion. Ideal for studies."
+        "desc": "Fast progress from A1 to B2 with active learning, structured support, and full immersion."
       },
       "preparation": {
         "title": "Goethe Preparation",
-        "desc": "Specific training for official certifications."
+        "desc": "Targeted preparation for official certifications with audiovisual resources and exam simulations."
       },
       "pro": {
         "title": "Pro German",
-        "desc": "Technical and professional vocabulary (Doctors, Engineers...)"
+        "desc": "Technical and professional vocabulary (doctors, engineers, administration, trade) learned through realistic situations."
       },
       "integration": {
         "title": "Integration",
@@ -141,6 +141,17 @@
     "title": "What Our Students Say",
     "quote": "\"Thanks to Deutsch Pro Bamako, I was able to validate my B1 level in record time. The teachers are excellent and very pedagogical.\"",
     "author": "- Amadou T."
+  },
+  "partners": {
+    "badge": "Partners",
+    "title": "Our partners in Germany",
+    "subtitle": "Trusted and committed organizations that support our students and projects.",
+    "list": [
+      { "name": "Deutschhaus GmbH", "type": "Training center", "city": "Berlin" },
+      { "name": "Bayerische Berufsschule", "type": "Vocational school", "city": "Munich" },
+      { "name": "Werkstadt GmbH", "type": "Welcome company", "city": "Hamburg" },
+      { "name": "Germany Connect", "type": "Integration advisory", "city": "Frankfurt" }
+    ]
   },
   "footer": {
     "rights": "All rights reserved.",

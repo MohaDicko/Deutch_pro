@@ -11,42 +11,42 @@
     "portalBtn": "Portail Étudiant"
   },
   "hero": {
-    "badge": "L'Excellence Allemande à Bamako",
-    "title1": "Ouvrez les portes de l'",
-    "title2": "Allemagne",
-    "subtitle": "Apprenez l'allemand avec des professeurs certifiés. Préparez vos examens Goethe et construisez votre avenir académique ou professionnel.",
+    "badge": "Centre d'allemand à Bamako",
+    "title1": "Apprenez l'allemand",
+    "title2": "pour avancer concrètement",
+    "subtitle": "Deutsch Pro Bamako accompagne les apprenants de A1 à B2 avec une méthode structurée, du matériel audio-visuel, des mises en situation réelles et un accompagnement orienté vers les besoins professionnels et migratoires.",
     "ctaStart": "Commencer maintenant",
     "ctaB2B": "💼 Pour les entreprises",
     "stats": {
-      "students": "Étudiants formés",
-      "levels": "Niveaux couverts",
-      "success": "Taux de réussite"
+      "students": "Méthode active",
+      "levels": "Progression A1-B2",
+      "success": "Accompagnement pratique"
     },
     "certBadge": {
-      "title": "Certifications",
-      "subtitle": "Goethe-Zertifikat"
+      "title": "Projet",
+      "subtitle": "Cours + insertion en Allemagne"
     }
   },
   "services": {
-    "badge": "Notre Offre",
-    "title": "Une pédagogie d'excellence",
-    "subtitle": "Des programmes conçus pour votre réussite, que vous soyez étudiant ou professionnel.",
+    "badge": "Notre offre",
+    "title": "Une formation qui suit le réel besoin des apprenants",
+    "subtitle": "Nos cours sont conçus pour faire évoluer les élèves de manière progressive, utile et durable, du niveau débutant au niveau avancé.",
     "cards": {
       "coursIntensifs": {
-        "title": "Cours Intensifs",
-        "desc": "Progression rapide avec immersion totale. Idéal pour les études."
+        "title": "Cours de langue de A1 à B2",
+        "desc": "Progression structurée et régulière avec support audio-visuel, exercices pratiques et mises en situation pour renforcer la compréhension et l'expression orale."
       },
       "preparation": {
-        "title": "Préparation Goethe",
-        "desc": "Entraînement spécifique pour les certifications officielles."
+        "title": "Préparation aux examens",
+        "desc": "Entraînement aux épreuves écrites et orales, avec simulations, corrections ciblées et conseils pour réussir avec confiance."
       },
       "pro": {
-        "title": "Allemand Pro",
-        "desc": "Vocabulaire technique et professionnel (Médecins, Ingénieurs...)"
+        "title": "Allemand professionnel",
+        "desc": "Vocabulaire utile pour le travail, les entretiens, les échanges avec les employeurs et les situations de la vie professionnelle."
       },
       "integration": {
-        "title": "Intégration",
-        "desc": "Préparation interculturelle et accompagnement lors de vos premiers mois en Allemagne pour une intégration réussie."
+        "title": "Visa et intégration",
+        "desc": "Accompagnement utile dans la préparation du projet, les démarches administratives et la transition vers la vie et le travail en Allemagne."
       }
     }
   },
@@ -155,6 +155,17 @@
         "author": "Ousmane TOURE",
         "role": "Actuellement en Allemagne"
       }
+    ]
+  },
+  "partners": {
+    "badge": "Partenaires",
+    "title": "Nos partenaires en Allemagne",
+    "subtitle": "Des structures fiables et engagées qui nous accompagnent dans la réussite de nos étudiants et de nos projets.",
+    "list": [
+      { "name": "Deutschhaus GmbH", "type": "Centre de formation", "city": "Berlin" },
+      { "name": "Bayerische Berufsschule", "type": "École professionnelle", "city": "Munich" },
+      { "name": "Werkstadt GmbH", "type": "Entreprise d'accueil", "city": "Hambourg" },
+      { "name": "Allemagne Connect", "type": "Conseil en insertion", "city": "Francfort" }
     ]
   },
   "footer": {

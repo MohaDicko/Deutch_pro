@@ -4,6 +4,12 @@ import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
 
 export default function Testimonials({ dict }: { dict: any }) {
+  const testimonials = Array.isArray(dict?.testimonials?.list)
+    ? dict.testimonials.list
+    : dict?.testimonials
+      ? [dict.testimonials]
+      : [];
+
   return (
     <section id="temoignages" className="py-32 bg-gray-50 border-t border-gray-100">
       <div className="container mx-auto px-6">
@@ -14,12 +20,12 @@ export default function Testimonials({ dict }: { dict: any }) {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-outfit font-extrabold text-gray-900 mb-6"
           >
-            {dict.testimonials.title}
+            {dict?.testimonials?.title || 'Ce que disent nos étudiants'}
           </motion.h2>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {dict.testimonials.list.map((testimonial: any, idx: number) => (
+          {testimonials.map((testimonial: any, idx: number) => (
             <motion.div 
               key={idx}
               initial={{ opacity: 0, y: 30 }}
@@ -39,16 +45,16 @@ export default function Testimonials({ dict }: { dict: any }) {
               </div>
               
               <p className="text-gray-700 text-lg leading-relaxed italic mb-8 relative z-10">
-                "{testimonial.quote}"
+                {testimonial.quote ? `"${testimonial.quote.replace(/^"|"$/g, '')}"` : '"Merci pour votre confiance."'}
               </p>
               
               <div className="flex items-center gap-4 mt-auto">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white font-bold text-lg shadow-md">
-                  {testimonial.author.charAt(0)}
+                  {(testimonial.author || 'A').charAt(0)}
                 </div>
                 <div>
-                  <div className="font-bold text-gray-900">{testimonial.author}</div>
-                  <div className="text-sm text-red-600 font-medium">{testimonial.role}</div>
+                  <div className="font-bold text-gray-900">{testimonial.author || 'Étudiant'}</div>
+                  <div className="text-sm text-red-600 font-medium">{testimonial.role || 'Apprenant'}</div>
                 </div>
               </div>
             </motion.div>

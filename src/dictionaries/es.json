@@ -12,9 +12,9 @@
   },
   "hero": {
     "badge": "Excelencia Alemana en Bamako",
-    "title1": "Abra las puertas de ",
-    "title2": "Alemania",
-    "subtitle": "Aprenda alemán con profesores certificados. Prepárese para sus exámenes del Goethe y construya su futuro académico o profesional.",
+    "title1": "Cursos de alemán de ",
+    "title2": "A1 a B2",
+    "subtitle": "Cursos de A1 a B2 con materiales audiovisuales, ejercicios interactivos y simulaciones para aprender alemán de forma práctica y eficaz.",
     "ctaStart": "Empezar ahora",
     "ctaB2B": "💼 Para empresas",
     "stats": {
@@ -29,20 +29,20 @@
   },
   "services": {
     "badge": "Nuestra Oferta",
-    "title": "Pedagogía de Excelencia",
-    "subtitle": "Programas diseñados para su éxito, ya sea estudiante o profesional.",
+    "title": "Cursos de alemán de A1 a B2",
+    "subtitle": "Cursos de A1 a B2 con materiales audiovisuales y situaciones reales para un aprendizaje práctico y efectivo.",
     "cards": {
       "coursIntensifs": {
         "title": "Cursos Intensivos",
-        "desc": "Progreso rápido con inmersión total. Ideal para los estudios."
+        "desc": "Progreso rápido de A1 a B2 con aprendizaje activo, apoyo constante e inmersión total."
       },
       "preparation": {
         "title": "Preparación Goethe",
-        "desc": "Entrenamiento específico para certificaciones oficiales."
+        "desc": "Preparación específica para certificaciones oficiales con recursos audiovisuales y simulaciones de examen."
       },
       "pro": {
         "title": "Alemán Profesional",
-        "desc": "Vocabulario técnico y profesional (Médicos, Ingenieros...)"
+        "desc": "Vocabulario técnico y profesional (médicos, ingenieros, administración, comercio) aprendido en situaciones reales."
       },
       "integration": {
         "title": "Integración",
@@ -141,6 +141,17 @@
     "title": "Lo que dicen nuestros estudiantes",
     "quote": "\"Gracias a Deutsch Pro Bamako, pude validar mi nivel B1 en tiempo récord. Los profesores son excelentes y muy pedagógicos.\"",
     "author": "- Amadou T."
+  },
+  "partners": {
+    "badge": "Socios",
+    "title": "Nuestros socios en Alemania",
+    "subtitle": "Organizaciones confiables y comprometidas que acompañan a nuestros estudiantes y proyectos.",
+    "list": [
+      { "name": "Deutschhaus GmbH", "type": "Centro de formación", "city": "Berlín" },
+      { "name": "Bayerische Berufsschule", "type": "Escuela profesional", "city": "Múnich" },
+      { "name": "Werkstadt GmbH", "type": "Empresa de acogida", "city": "Hamburgo" },
+      { "name": "Alemania Connect", "type": "Consejería de inserción", "city": "Fráncfort" }
+    ]
   },
   "footer": {
     "rights": "Todos los derechos reservados.",

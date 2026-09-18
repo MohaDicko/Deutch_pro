@@ -12,9 +12,9 @@
   },
   "hero": {
     "badge": "Deutsche Exzellenz in Bamako",
-    "title1": "Öffnen Sie die Türen nach ",
-    "title2": "Deutschland",
-    "subtitle": "Lernen Sie Deutsch mit zertifizierten Lehrern. Bereiten Sie sich auf Ihre Goethe-Prüfungen vor und bauen Sie Ihre akademische oder berufliche Zukunft auf.",
+    "title1": "Deutschkurse von ",
+    "title2": "A1 bis B2",
+    "subtitle": "Kurse von A1 bis B2 mit Audiovisualmaterial, interaktiven Übungen und Rollenspielen für ein praktisches und effektives Lernen.",
     "ctaStart": "Jetzt beginnen",
     "ctaB2B": "💼 Für Unternehmen",
     "stats": {
@@ -29,20 +29,20 @@
   },
   "services": {
     "badge": "Unser Angebot",
-    "title": "Exzellente Pädagogik",
-    "subtitle": "Auf Ihren Erfolg zugeschnittene Programme, egal ob Sie Student oder Berufstätiger sind.",
+    "title": "Deutschkurse von A1 bis B2",
+    "subtitle": "Unsere Kurse umfassen A1 bis B2 mit Audiomaterial, visuellen Hilfsmitteln und praxisnahen Rollenspielen.",
     "cards": {
       "coursIntensifs": {
         "title": "Intensivkurse",
-        "desc": "Schneller Fortschritt durch totale Immersion. Ideal für das Studium."
+        "desc": "Schneller Fortschritt von A1 bis B2 durch aktive Lernmethoden, regelmäßige Begleitung und volle Immersion."
       },
       "preparation": {
         "title": "Goethe-Vorbereitung",
-        "desc": "Spezifisches Training für offizielle Zertifizierungen."
+        "desc": "Spezifische Vorbereitung auf offizielle Zertifizierungen mit Audiovisuellen Medien und Prüfungssimulationen."
       },
       "pro": {
         "title": "Fachsprache Deutsch",
-        "desc": "Technisches und berufliches Vokabular (Ärzte, Ingenieure...)"
+        "desc": "Technisches und berufliches Vokabular (Ärzte, Ingenieure, Verwaltung, Handel) mit realistischen Situationseinsätzen."
       },
       "integration": {
         "title": "Integration",
@@ -155,6 +155,17 @@
         "author": "Ousmane TOURE",
         "role": "Derzeit in Deutschland"
       }
+    ]
+  },
+  "partners": {
+    "badge": "Partner",
+    "title": "Unsere Partner in Deutschland",
+    "subtitle": "Verlässliche und engagierte Strukturen, die uns bei der Unterstützung unserer Studierenden und Projekte begleiten.",
+    "list": [
+      { "name": "Deutschhaus GmbH", "type": "Ausbildungszentrum", "city": "Berlin" },
+      { "name": "Bayerische Berufsschule", "type": "Berufsschule", "city": "München" },
+      { "name": "Werkstadt GmbH", "type": "Integrationsunternehmen", "city": "Hamburg" },
+      { "name": "Deutschland Connect", "type": "Integrationsberatung", "city": "Frankfurt" }
     ]
   },
   "footer": {

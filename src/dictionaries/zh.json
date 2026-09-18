@@ -12,9 +12,9 @@
   },
   "hero": {
     "badge": "巴马科的德国卓越",
-    "title1": "开启通往 ",
-    "title2": "德国",
-    "subtitle": "与认证教师一起学习德语。准备歌德考试，构建您的学术或职业未来。",
+    "title1": "德语课程从 ",
+    "title2": "A1 到 B2",
+    "subtitle": "从 A1 到 B2 的课程，结合视听材料、互动练习和情境模拟，帮助您高效且实用地学习德语。",
     "ctaStart": "立即开始",
     "ctaB2B": "💼 企业合作",
     "stats": {
@@ -29,20 +29,20 @@
   },
   "services": {
     "badge": "我们的课程",
-    "title": "卓越教学",
-    "subtitle": "为您的成功量身定制的项目，无论您是学生还是专业人士。",
+    "title": "A1 到 B2 德语课程",
+    "subtitle": "从 A1 到 B2 的课程，结合视听资料和情境模拟，让学习更加实用和高效。",
     "cards": {
       "coursIntensifs": {
         "title": "强化课程",
-        "desc": "全沉浸式快速进步。非常适合留学。"
+        "desc": "从 A1 到 B2 的快速进步，结合互动教学与持续支持。"
       },
       "preparation": {
         "title": "歌德备考",
-        "desc": "针对官方认证的专门训练。"
+        "desc": "结合视听资料与模拟考试，为官方认证做针对性训练。"
       },
       "pro": {
         "title": "职业德语",
-        "desc": "技术和专业词汇（医生、工程师...）"
+        "desc": "通过真实工作情境学习医学、工程、行政和贸易等专业词汇。"
       },
       "integration": {
         "title": "融入德国",
@@ -141,6 +141,17 @@
     "title": "学生感言",
     "quote": "\"感谢 Deutsch Pro Bamako，我在创纪录的时间内达到了B1水平。老师们非常优秀，很有教学方法。\"",
     "author": "- Amadou T."
+  },
+  "partners": {
+    "badge": "合作伙伴",
+    "title": "我们在德国的合作伙伴",
+    "subtitle": "可靠且专注的机构，支持我们的学生和项目发展。",
+    "list": [
+      { "name": "Deutschhaus GmbH", "type": "培训中心", "city": "柏林" },
+      { "name": "Bayerische Berufsschule", "type": "职业学校", "city": "慕尼黑" },
+      { "name": "Werkstadt GmbH", "type": "接待企业", "city": "汉堡" },
+      { "name": "Germany Connect", "type": "整合咨询", "city": "法兰克福" }
+    ]
   },
   "footer": {
     "rights": "版权所有。",

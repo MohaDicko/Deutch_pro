@@ -25,144 +25,138 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
   ];
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
-        <motion.div 
+    <header
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        isScrolled
+          ? 'border-b border-gray-200/80 bg-white/80 py-3 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl'
+          : 'bg-transparent py-5'
+      }`}
+    >
+      <div className="container mx-auto flex items-center justify-between px-6">
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-3"
         >
-          <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-800 rounded-xl flex items-center justify-center shadow-lg shadow-red-200">
-            <span className="text-white font-bold text-xl">D</span>
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-red-600 to-red-800 shadow-lg shadow-red-200/60">
+            <span className="text-lg font-black text-white">D</span>
           </div>
-          <span className={`font-outfit font-bold text-2xl tracking-tight ${isScrolled ? 'text-gray-900' : 'text-gray-900'}`}>
+          <span className="font-outfit text-2xl font-black tracking-tight text-gray-900">
             Deutsch Pro
           </span>
         </motion.div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item, i) => (
-            <motion.a 
+            <motion.a
               key={item.key}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * i }}
-              href={`#${item.key}`} 
-              className="text-gray-600 hover:text-red-600 font-medium transition-colors text-sm uppercase tracking-wide"
+              href={`#${item.key}`}
+              className="text-sm font-semibold uppercase tracking-[0.14em] text-gray-600 transition-colors hover:text-red-600"
             >
               {item.label}
             </motion.a>
           ))}
-          
+
           <div className="relative">
-            <button 
+            <button
               onClick={() => setLangMenuOpen(!langMenuOpen)}
-              className="flex items-center gap-1 text-gray-600 hover:text-red-600 font-medium"
+              className="flex items-center gap-2 rounded-full border border-gray-200 bg-white/80 px-3 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:border-red-200 hover:text-red-700"
             >
-              <Globe size={18} />
+              <Globe size={16} />
               <span className="uppercase">{lang}</span>
             </button>
             <AnimatePresence>
               {langMenuOpen && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
-                  className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden"
+                  className="absolute right-0 mt-2 w-32 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-xl"
                 >
-                  <Link href={`/de`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'de' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
-                    🇩🇪 DE
-                  </Link>
-                  <Link href={`/fr`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'fr' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
-                    🇫🇷 FR
-                  </Link>
-                  <Link href={`/en`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'en' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
-                    🇬🇧 EN
-                  </Link>
-                  <Link href={`/es`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'es' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
-                    🇪🇸 ES
-                  </Link>
-                  <Link href={`/zh`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'zh' ? 'font-bold text-red-600' : 'text-gray-700'}`}>
-                    🇨🇳 ZH
-                  </Link>
+                  <Link href="/de" className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'de' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇩🇪 DE</Link>
+                  <Link href="/fr" className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'fr' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇫🇷 FR</Link>
+                  <Link href="/en" className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'en' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇬🇧 EN</Link>
+                  <Link href="/es" className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'es' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇪🇸 ES</Link>
+                  <Link href="/zh" className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'zh' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇨🇳 ZH</Link>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
 
-          <motion.a 
+          <motion.a
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4 }}
-            href="#contact" 
-            className="px-6 py-2.5 bg-gray-900 text-white rounded-full font-medium hover:bg-red-600 transition-all duration-300 hover:shadow-lg hover:shadow-red-200 hover:-translate-y-0.5"
+            href="#contact"
+            className="rounded-full bg-gray-900 px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-600 hover:shadow-lg hover:shadow-red-200"
           >
             {dict.contactBtn}
           </motion.a>
         </nav>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="flex items-center gap-4 md:hidden">
           <div className="relative">
-            <button 
+            <button
               onClick={() => setLangMenuOpen(!langMenuOpen)}
-              className="text-gray-600 font-medium flex items-center gap-1"
+              className="flex items-center gap-2 rounded-full border border-gray-200 bg-white/80 px-2.5 py-2 text-sm font-medium text-gray-700"
             >
-              <Globe size={18} />
+              <Globe size={16} />
               <span className="uppercase">{lang}</span>
             </button>
             <AnimatePresence>
               {langMenuOpen && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
-                  className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50"
+                  className="absolute right-0 z-50 mt-2 w-32 overflow-hidden rounded-xl border border-gray-100 bg-white shadow-xl"
                 >
-                  <Link href={`/de`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'de' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇩🇪 DE</Link>
-                  <Link href={`/fr`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'fr' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇫🇷 FR</Link>
-                  <Link href={`/en`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'en' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇬🇧 EN</Link>
-                  <Link href={`/es`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'es' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇪🇸 ES</Link>
-                  <Link href={`/zh`} className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'zh' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇨🇳 ZH</Link>
+                  <Link href="/de" className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'de' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇩🇪 DE</Link>
+                  <Link href="/fr" className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'fr' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇫🇷 FR</Link>
+                  <Link href="/en" className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'en' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇬🇧 EN</Link>
+                  <Link href="/es" className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'es' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇪🇸 ES</Link>
+                  <Link href="/zh" className={`block px-4 py-2 text-sm hover:bg-gray-50 ${lang === 'zh' ? 'font-bold text-red-600' : 'text-gray-700'}`}>🇨🇳 ZH</Link>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
-          <button 
-            className="text-gray-900 p-2"
+
+          <button
+            className="rounded-full border border-gray-200 bg-white/80 p-2 text-gray-900 shadow-sm"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Nav */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
+            className="overflow-hidden border-t border-gray-100 bg-white/90 md:hidden backdrop-blur-sm"
           >
-            <div className="flex flex-col px-6 py-4 space-y-4">
+            <div className="container mx-auto flex flex-col space-y-4 px-6 py-4">
               {navItems.map((item) => (
-                <a 
+                <a
                   key={item.key}
-                  href={`#${item.key}`} 
+                  href={`#${item.key}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-gray-600 hover:text-red-600 font-medium text-lg"
+                  className="text-base font-medium text-gray-700 transition hover:text-red-600"
                 >
                   {item.label}
                 </a>
               ))}
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3 bg-red-600 text-white text-center rounded-lg font-medium mt-4"
+                className="mt-2 rounded-xl bg-red-600 px-4 py-3 text-center font-semibold text-white"
               >
                 {dict.contactBtn}
               </a>
@@ -173,3 +167,4 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
     </header>
   );
 }
+

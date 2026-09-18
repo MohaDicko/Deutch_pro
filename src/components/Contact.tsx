@@ -12,7 +12,7 @@ export default function Contact({ dict }: { dict: any }) {
     setStatus('loading');
     const formData = new FormData(e.currentTarget);
     const result = await saveContact(formData);
-    
+
     if (result?.error) {
       setStatus('error');
     } else {
@@ -22,66 +22,48 @@ export default function Contact({ dict }: { dict: any }) {
   }
 
   return (
-    <section id="contact" className="py-32 bg-gray-50 relative overflow-hidden">
-      {/* Decorative blobs */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-72 h-72 bg-red-200 rounded-full blur-3xl opacity-30"></div>
-      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-red-200 rounded-full blur-3xl opacity-30"></div>
+    <section id="contact" className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(239,68,68,0.08),transparent_30%),linear-gradient(180deg,#fffaf9_0%,#ffffff_100%)] py-32">
+      <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-red-200/40 blur-3xl" />
+      <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-blue-100/70 blur-3xl" />
 
-      <div className="container mx-auto px-6 max-w-5xl relative z-10">
-        <motion.div 
+      <div className="container relative z-10 mx-auto max-w-5xl px-6">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <span className="text-red-600 font-bold uppercase tracking-wider text-sm mb-4 block">{dict.badge}</span>
-          <h2 className="text-4xl md:text-5xl font-outfit font-extrabold text-gray-900 mb-6">{dict.title}</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">{dict.subtitle}</p>
+          <span className="mb-4 block text-sm font-bold uppercase tracking-[0.2em] text-red-600">{dict.badge}</span>
+          <h2 className="mb-6 text-4xl font-black tracking-[-0.05em] text-gray-900 md:text-5xl">{dict.title}</h2>
+          <p className="mx-auto max-w-2xl text-lg text-gray-600">{dict.subtitle}</p>
         </motion.div>
-        
-        <div className="bg-white rounded-[2rem] shadow-2xl p-8 md:p-12 border border-gray-100">
+
+        <div className="rounded-[2rem] border border-gray-200 bg-white p-8 shadow-[0_30px_80px_rgba(15,23,42,0.08)] md:p-12">
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Honeypot field for bot protection */}
             <div style={{ display: 'none' }} aria-hidden="true">
               <label htmlFor="bot_field">Ne pas remplir ce champ si vous êtes humain</label>
               <input type="text" id="bot_field" name="bot_field" tabIndex={-1} autoComplete="off" />
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <label className="block text-sm font-semibold text-gray-900 mb-2">{dict.form.name}</label>
-                <input type="text" name="name" required className="w-full px-5 py-4 bg-gray-50 text-gray-900 rounded-xl border border-gray-200 focus:bg-white focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all" placeholder="John Doe" />
+
+            <div className="grid gap-8 md:grid-cols-2">
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+                <label className="mb-2 block text-sm font-semibold text-gray-900">{dict.form.name}</label>
+                <input type="text" name="name" required className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 text-gray-900 outline-none transition focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10" placeholder="John Doe" />
               </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-              >
-                <label className="block text-sm font-semibold text-gray-900 mb-2">{dict.form.email}</label>
-                <input type="email" name="email" required className="w-full px-5 py-4 bg-gray-50 text-gray-900 rounded-xl border border-gray-200 focus:bg-white focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all" placeholder="john@example.com" />
+
+              <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+                <label className="mb-2 block text-sm font-semibold text-gray-900">{dict.form.email}</label>
+                <input type="email" name="email" required className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 text-gray-900 outline-none transition focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10" placeholder="john@example.com" />
               </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                <label className="block text-sm font-semibold text-gray-900 mb-2">{dict.form.phone}</label>
-                <input type="tel" name="phone" className="w-full px-5 py-4 bg-gray-50 text-gray-900 rounded-xl border border-gray-200 focus:bg-white focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all" placeholder="+223 XX XX XX XX" />
+
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
+                <label className="mb-2 block text-sm font-semibold text-gray-900">{dict.form.phone}</label>
+                <input type="tel" name="phone" className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 text-gray-900 outline-none transition focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10" placeholder="+223 XX XX XX XX" />
               </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-              >
-                <label className="block text-sm font-semibold text-gray-900 mb-2">{dict.form.level}</label>
-                <select name="language" className="w-full px-5 py-4 bg-gray-50 text-gray-900 rounded-xl border border-gray-200 focus:bg-white focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all appearance-none cursor-pointer">
+
+              <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
+                <label className="mb-2 block text-sm font-semibold text-gray-900">{dict.form.level}</label>
+                <select name="language" className="w-full cursor-pointer appearance-none rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 text-gray-900 outline-none transition focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10">
                   <option value="A1">{dict.levels.A1}</option>
                   <option value="A2">{dict.levels.A2}</option>
                   <option value="B1">{dict.levels.B1}</option>
@@ -89,40 +71,29 @@ export default function Contact({ dict }: { dict: any }) {
                 </select>
               </motion.div>
             </div>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <label className="block text-sm font-semibold text-gray-900 mb-2">{dict.form.message}</label>
-              <textarea name="message" required rows={5} className="w-full px-5 py-4 bg-gray-50 text-gray-900 rounded-xl border border-gray-200 focus:bg-white focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all resize-none" placeholder="..."></textarea>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
+              <label className="mb-2 block text-sm font-semibold text-gray-900">{dict.form.message}</label>
+              <textarea name="message" required rows={5} className="w-full resize-none rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 text-gray-900 outline-none transition focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10" placeholder="..." />
             </motion.div>
-            
+
             {status === 'success' && (
-              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl flex items-center gap-3">
+              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-3 rounded-2xl border border-green-200 bg-green-50 p-4 text-green-700">
                 <CheckCircle className="text-green-500" />
                 {dict.form.success}
               </motion.div>
             )}
             {status === 'error' && (
-              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-center gap-3">
+              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="flex items-center gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-red-700">
                 <AlertCircle className="text-red-500" />
                 {dict.form.error}
               </motion.div>
             )}
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="pt-4"
-            >
-              <button type="submit" disabled={status === 'loading'} className="group w-full md:w-auto px-10 py-4 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition-all shadow-lg shadow-red-200 disabled:opacity-70 flex justify-center items-center gap-2 text-lg mx-auto hover:-translate-y-0.5">
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }} className="pt-2">
+              <button type="submit" disabled={status === 'loading'} className="group mx-auto flex w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-10 py-4 text-lg font-bold text-white shadow-lg shadow-red-200 transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-700 disabled:opacity-70 md:w-auto">
                 {status === 'loading' ? dict.form.loading : dict.form.submit}
-                {!status && <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+                {!status && <Send size={18} className="transition-transform duration-300 group-hover:translate-x-1" />}
               </button>
             </motion.div>
           </form>
@@ -131,3 +102,4 @@ export default function Contact({ dict }: { dict: any }) {
     </section>
   );
 }
+
