@@ -9,7 +9,7 @@
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "postinstall": "prisma generate && (prisma skills sync || exit 0)"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.8.13",
