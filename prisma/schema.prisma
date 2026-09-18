@@ -452,6 +452,8 @@ model users {
   job_offers                  job_offers[]
   profiles                    profiles?
   user_roles                  user_roles?
+  students                   students[]
+  teachers                   teachers[]
 
   @@index([instance_id])
   @@index([is_anonymous])
@@ -670,4 +672,221 @@ enum one_time_token_type {
   phone_change_token
 
   @@schema("auth")
+}
+
+enum learning_level_code {
+  A1
+  A2
+  B1
+  B2
+
+  @@schema("public")
+}
+
+enum student_status {
+  inscrit
+  actif
+  suspendu
+  termine
+  abandon
+
+  @@schema("public")
+}
+
+enum teacher_status {
+  permanent
+  vacataire
+  independant
+  intermittent
+
+  @@schema("public")
+}
+
+enum course_type {
+  individuel
+  groupe
+  intensif
+  preparation_examen
+  conversation
+
+  @@schema("public")
+}
+
+enum attendance_status {
+  present
+  absent
+  retard
+  excuse
+
+  @@schema("public")
+}
+
+enum assessment_status {
+  en_cours
+  valide
+  refuse
+  renforcement
+
+  @@schema("public")
+}
+
+model learning_levels {
+  id          String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  code        learning_level_code @unique
+  label       String
+  description String?
+  sort_order  Int
+  created_at  DateTime           @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+
+  students    students[]
+  courses     courses[]
+  assessments assessments[]
+
+  @@index([sort_order], map: "idx_learning_levels_sort_order")
+  @@schema("public")
+}
+
+model students {
+  id          String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id     String?        @db.Uuid
+  level_id    String?        @db.Uuid
+  full_name   String
+  email       String?
+  phone       String?
+  status      student_status @default(inscrit)
+  objective   String?
+  notes       String?
+  created_at  DateTime       @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+
+  user        users?         @relation(fields: [user_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  level       learning_levels? @relation(fields: [level_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  enrollments course_enrollments[]
+  attendances student_attendances[]
+  assessments assessments[]
+
+  @@index([level_id], map: "idx_students_level_id")
+  @@index([status], map: "idx_students_status")
+  @@schema("public")
+}
+
+model teachers {
+  id               String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id          String?       @db.Uuid
+  full_name        String
+  email            String?
+  phone            String?
+  specialization   String?
+  hourly_rate      Decimal?      @db.Decimal(10,2)
+  status           teacher_status @default(vacataire)
+  created_at       DateTime      @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+
+  user             users?        @relation(fields: [user_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  courses          courses[]
+  payrolls         payrolls[]
+
+  @@index([status], map: "idx_teachers_status")
+  @@schema("public")
+}
+
+model courses {
+  id          String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title       String
+  course_type course_type @default(groupe)
+  level_id    String?     @db.Uuid
+  teacher_id  String?     @db.Uuid
+  schedule    String?
+  room        String?
+  start_date  DateTime?
+  end_date    DateTime?
+  created_at  DateTime    @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+
+  level       learning_levels? @relation(fields: [level_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  teacher     teachers? @relation(fields: [teacher_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  enrollments course_enrollments[]
+  attendances student_attendances[]
+  assessments assessments[]
+
+  @@index([level_id], map: "idx_courses_level_id")
+  @@index([teacher_id], map: "idx_courses_teacher_id")
+  @@schema("public")
+}
+
+model course_enrollments {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  student_id String   @db.Uuid
+  course_id  String   @db.Uuid
+  started_at DateTime @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  ended_at   DateTime?
+
+  student    students @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  course     courses  @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([student_id, course_id], map: "course_enrollments_student_course_unique")
+  @@schema("public")
+}
+
+model student_attendances {
+  id         String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  student_id String            @db.Uuid
+  course_id  String            @db.Uuid
+  attended_on DateTime
+  status     attendance_status @default(present)
+  note       String?
+
+  student    students          @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  course     courses           @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([student_id, course_id, attended_on], map: "student_attendance_unique")
+  @@schema("public")
+}
+
+model assessments {
+  id             String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  student_id     String            @db.Uuid
+  course_id      String?           @db.Uuid
+  level_id       String?           @db.Uuid
+  assessed_on    DateTime          @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  total_score    Decimal?          @db.Decimal(5,2)
+  status         assessment_status @default(en_cours)
+  comment        String?
+
+  student        students          @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  course         courses?          @relation(fields: [course_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  level          learning_levels?  @relation(fields: [level_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  criteria       assessment_criteria[]
+
+  @@index([student_id], map: "idx_assessments_student_id")
+  @@schema("public")
+}
+
+model assessment_criteria {
+  id            String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  assessment_id String      @db.Uuid
+  label         String
+  score         Decimal     @db.Decimal(5,2)
+  max_score     Decimal     @db.Decimal(5,2)
+  note          String?
+
+  assessment    assessments @relation(fields: [assessment_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([assessment_id], map: "idx_assessment_criteria_assessment_id")
+  @@schema("public")
+}
+
+model payrolls {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  teacher_id    String   @db.Uuid
+  month         String
+  hours_worked  Decimal  @db.Decimal(10,2)
+  gross_amount  Decimal  @db.Decimal(10,2)
+  bonus         Decimal  @db.Decimal(10,2) @default(0)
+  deductions    Decimal  @db.Decimal(10,2) @default(0)
+  net_amount    Decimal  @db.Decimal(10,2)
+  status        String   @default("pending")
+  created_at    DateTime @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+
+  teacher       teachers @relation(fields: [teacher_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([teacher_id], map: "idx_payrolls_teacher_id")
+  @@schema("public")
 }

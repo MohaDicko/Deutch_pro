@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
+    "test:integration": "node scripts/verify-learning-db.js",
     "test:watch": "vitest",
+    "db:setup": "node scripts/setup-learning-db.js && npm run db:seed",
+    "db:seed": "node scripts/seed-learning.js",
     "postinstall": "prisma generate"
   },
   "dependencies": {

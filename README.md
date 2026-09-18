@@ -1,4 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Deutsch Pro Bamako
+
+Application vitrine multilingue et portail de gestion pédagogique pour le centre : apprenants, professeurs, cours, évaluations, présences et paie.
+
+### Démarrage local
+
+```bash
+npm install
+npx prisma generate
+npm run db:setup
+npm run dev
+```
+
+La commande `npm run db:seed` initialise ou met à jour les niveaux A1, A2, B1 et B2 sans créer de doublons.
+
+### Validation
+
+```bash
+npm test
+npm run test:integration
+npm run build
+```
+
+Les variables `DATABASE_URL`, `DIRECT_URL`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `ADMIN_USERNAME` et `ADMIN_PASSWORD` doivent être définies dans l’environnement local ou de production.
 
 ## Getting Started
 

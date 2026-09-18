@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { match as matchLocale } from '@formatjs/intl-localematcher';
-import Negotiator from 'negotiator';
 import { i18n } from './i18n-config';
 
 export const config = {
@@ -8,7 +6,7 @@ export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'],
 };
 
-function getLocale(request: NextRequest): string {
+function getLocale(): string {
   return i18n.defaultLocale;
 }
 
@@ -47,7 +45,7 @@ export function proxy(req: NextRequest) {
 
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
-    const locale = getLocale(req);
+    const locale = getLocale();
 
     // e.g. incoming request is /services
     // The new URL is now /de/services
