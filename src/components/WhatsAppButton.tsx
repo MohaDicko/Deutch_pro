@@ -37,7 +37,7 @@ export default function WhatsAppButton({ phoneNumber = "+22379875654" }: { phone
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0, y: 50 }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          className="fixed bottom-6 right-6 z-50 flex items-end justify-end flex-col gap-4"
+          className="fixed bottom-24 right-6 z-50 flex items-end justify-end flex-col gap-4"
         >
           <AnimatePresence>
             {showTooltip && (
