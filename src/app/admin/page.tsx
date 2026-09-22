@@ -284,15 +284,10 @@ export default async function AdminDashboard({
           </div>
         </div>
 
-        <div className="mb-12 grid gap-4 md:grid-cols-6">
+        <div className="mb-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <a href="/admin/apprenants" className="rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-5 transition hover:border-emerald-500/40 hover:bg-emerald-500/10">
             <p className="mb-2 text-xs uppercase tracking-[0.2em] text-emerald-300">Apprenants</p>
             <h3 className="text-xl font-bold text-white">Suivi académique</h3>
-          </a>
-
-          <a href="/admin/professeurs" className="rounded-3xl border border-amber-500/20 bg-amber-500/5 p-5 transition hover:border-amber-500/40 hover:bg-amber-500/10">
-            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-amber-300">Professeurs</p>
-            <h3 className="text-xl font-bold text-white">Ressources humaines</h3>
           </a>
 
           <a href="/admin/planning" className="rounded-3xl border border-cyan-500/20 bg-cyan-500/5 p-5 transition hover:border-cyan-500/40 hover:bg-cyan-500/10">
@@ -303,11 +298,6 @@ export default async function AdminDashboard({
           <a href="/admin/evaluations" className="rounded-3xl border border-violet-500/20 bg-violet-500/5 p-5 transition hover:border-violet-500/40 hover:bg-violet-500/10">
             <p className="mb-2 text-xs uppercase tracking-[0.2em] text-violet-300">Évaluations</p>
             <h3 className="text-xl font-bold text-white">Résultats</h3>
-          </a>
-
-          <a href="/admin/paie" className="rounded-3xl border border-teal-500/20 bg-teal-500/5 p-5 transition hover:border-teal-500/40 hover:bg-teal-500/10">
-            <p className="mb-2 text-xs uppercase tracking-[0.2em] text-teal-300">Paie</p>
-            <h3 className="text-xl font-bold text-white">Salaires</h3>
           </a>
 
           <a href="/admin/presences" className="rounded-3xl border border-rose-500/20 bg-rose-500/5 p-5 transition hover:border-rose-500/40 hover:bg-rose-500/10">

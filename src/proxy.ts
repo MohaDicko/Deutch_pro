@@ -12,6 +12,10 @@ function getLocale(): string {
 
 export function proxy(req: NextRequest) {
   const url = req.nextUrl;
+
+  if (url.pathname.startsWith('/admin/professeurs') || url.pathname.startsWith('/admin/paie')) {
+    return NextResponse.redirect(new URL('/admin', req.url));
+  }
   
   // Basic Auth for Admin routes
   if (url.pathname.startsWith('/admin')) {
