@@ -13,6 +13,14 @@ npm run dev
 
 La commande `npm run db:seed` initialise ou met à jour les niveaux A1, A2, B1 et B2 sans créer de doublons.
 
+Pour remplir la base avec des données de test non sensibles :
+
+```bash
+npm run db:seed:demo
+```
+
+Les données de démonstration sont préfixées par `Demo` et utilisent des adresses `@deutschpro.test`.
+
 ### Validation
 
 ```bash

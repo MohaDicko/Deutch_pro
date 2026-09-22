@@ -17,13 +17,22 @@ export function proxy(req: NextRequest) {
   if (url.pathname.startsWith('/admin')) {
     const basicAuth = req.headers.get('authorization');
     if (basicAuth) {
-      const authValue = basicAuth.split(' ')[1];
-      const [user, pwd] = atob(authValue).split(':');
+      const [scheme, authValue] = basicAuth.split(' ');
+      let user = '';
+      let pwd = '';
+
+      if (scheme?.toLowerCase() === 'basic' && authValue) {
+        try {
+          [user, pwd] = atob(authValue).split(':');
+        } catch {
+          // Treat malformed credentials as unauthorized.
+        }
+      }
 
       const validUser = process.env.ADMIN_USERNAME;
       const validPass = process.env.ADMIN_PASSWORD;
 
-      if (user === validUser && pwd === validPass) {
+      if (validUser && validPass && user === validUser && pwd === validPass) {
         return NextResponse.next();
       }
     }

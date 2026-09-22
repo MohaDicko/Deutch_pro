@@ -132,20 +132,35 @@
     },
     "info": {
       "address": "ACI 2000, Bamako, Mali",
-      "email": "contact@deutchpro.ml",
+      "email": "deutschprobamako@outlook.com",
       "phone": "+223 70 00 00 00",
       "opening": "Mon-Sat: 8am-6pm"
     }
   },
   "testimonials": {
     "title": "What Our Students Say",
-    "quote": "\"Thanks to Deutsch Pro Bamako, I was able to validate my B1 level in record time. The teachers are excellent and very pedagogical.\"",
-    "author": "- Amadou T."
+    "list": [
+      {
+        "quote": "I started my German journey at Deutsch Pro Bamako, and today I work as a nurse in Germany. The courses gave me a solid foundation and helped me progress to the level needed for my project. I especially appreciated the support, the availability of the teachers, and the advice I received throughout the process. I am very grateful to the entire Deutsch Pro Bamako team for contributing to my success.",
+        "author": "Fatou Traoré",
+        "role": "Nurse in Germany"
+      },
+      {
+        "quote": "I am currently taking the B2 level courses at Deutsch Pro Bamako and preparing for my exam. Since I started at the center, I have improved a lot, especially in speaking and understanding German. The teachers listen to us and really encourage us to express ourselves in German. I feel much more confident today for my exam and for the next steps of my project in Germany.",
+        "author": "Abdramane Sissoko",
+        "role": "B2 student"
+      },
+      {
+        "quote": "I have only been taking classes at Deutsch Pro Bamako for a month, but I am very satisfied with my experience. At first, German seemed quite difficult, but thanks to the teachers' explanations and the exercises in class, I am already beginning to understand and build my first sentences. The atmosphere is pleasant and the classes are motivating. I still have a lot to learn, but I am happy to have chosen this center to begin my journey.",
+        "author": "Alassane Traoré",
+        "role": "Beginner student"
+      }
+    ]
   },
   "partners": {
     "badge": "Partners",
     "title": "Our partners in Germany",
-    "subtitle": "Trusted and committed organizations that support our students and projects.",
+    "subtitle": "Trusted and committed organizations that support our students and projects in Germany.",
     "list": [
       { "name": "Deutschhaus GmbH", "type": "Training center", "city": "Berlin" },
       { "name": "Bayerische Berufsschule", "type": "Vocational school", "city": "Munich" },

@@ -32,7 +32,7 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-6">
+      <div className="container mx-auto flex items-center justify-between gap-3 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -41,7 +41,7 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-red-600 to-red-800 shadow-lg shadow-red-200/60">
             <span className="text-lg font-black text-white">D</span>
           </div>
-          <span className="font-outfit text-2xl font-black tracking-tight text-gray-900">
+          <span className="hidden font-outfit text-2xl font-black tracking-tight text-gray-900 sm:inline">
             Deutsch Pro
           </span>
         </motion.div>
@@ -97,7 +97,7 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
           </motion.a>
         </nav>
 
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex shrink-0 items-center gap-2 md:hidden">
           <div className="relative">
             <button
               onClick={() => setLangMenuOpen(!langMenuOpen)}
@@ -142,7 +142,7 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
             exit={{ opacity: 0, height: 0 }}
             className="overflow-hidden border-t border-gray-100 bg-white/90 md:hidden backdrop-blur-sm"
           >
-            <div className="container mx-auto flex flex-col space-y-4 px-6 py-4">
+            <div className="container mx-auto flex flex-col space-y-4 px-4 py-4 sm:px-6">
               {navItems.map((item) => (
                 <a
                   key={item.key}

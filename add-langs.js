@@ -69,7 +69,7 @@ const en = {
       "success": "Your message has been sent successfully. We will contact you soon!", "error": "An error occurred. Please try again."
     },
     "levels": { "A1": "Level A1 (Beginner)", "A2": "Level A2 (Elementary)", "B1": "Level B1 (Intermediate)", "B2": "Level B2 (Advanced)" },
-    "info": { "address": "ACI 2000, Bamako, Mali", "email": "contact@deutchpro.ml", "phone": "+223 70 00 00 00", "opening": "Mon-Sat: 8am-6pm" }
+    "info": { "address": "ACI 2000, Bamako, Mali", "email": "deutschprobamako@outlook.com", "phone": "+223 70 00 00 00", "opening": "Mon-Sat: 8am-6pm" }
   },
   "testimonials": {
     "title": "What Our Students Say",
@@ -150,7 +150,7 @@ const es = {
       "success": "Su mensaje ha sido enviado con éxito. ¡Le contactaremos muy pronto!", "error": "Ocurrió un error. Por favor, inténtelo de nuevo."
     },
     "levels": { "A1": "Nivel A1 (Principiante)", "A2": "Nivel A2 (Básico)", "B1": "Nivel B1 (Intermedio)", "B2": "Nivel B2 (Avanzado)" },
-    "info": { "address": "ACI 2000, Bamako, Mali", "email": "contact@deutchpro.ml", "phone": "+223 70 00 00 00", "opening": "Lun-Sáb: 8h-18h" }
+    "info": { "address": "ACI 2000, Bamako, Mali", "email": "deutschprobamako@outlook.com", "phone": "+223 70 00 00 00", "opening": "Lun-Sáb: 8h-18h" }
   },
   "testimonials": {
     "title": "Lo que dicen nuestros estudiantes",
@@ -231,7 +231,7 @@ const zh = {
       "success": "您的留言已成功发送。我们将尽快与您联系！", "error": "发生错误。请重试。"
     },
     "levels": { "A1": "A1 级别 (初级)", "A2": "A2 级别 (基础)", "B1": "B1 级别 (中级)", "B2": "B2 级别 (高级)" },
-    "info": { "address": "ACI 2000, 巴马科, 马里", "email": "contact@deutchpro.ml", "phone": "+223 70 00 00 00", "opening": "周一至周六: 8:00-18:00" }
+    "info": { "address": "ACI 2000, 巴马科, 马里", "email": "deutschprobamako@outlook.com", "phone": "+223 70 00 00 00", "opening": "周一至周六: 8:00-18:00" }
   },
   "testimonials": {
     "title": "学生感言",

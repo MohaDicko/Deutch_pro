@@ -30,7 +30,7 @@ export default async function Home({
       <Testimonials dict={dict} />
       <Partners dict={dict.partners} />
       <Contact dict={dict.contact} />
-      <WhatsAppButton phoneNumber="+22370000000" />
+      <WhatsAppButton phoneNumber="+22379875654" />
       <Footer dict={dict} />
     </main>
   );

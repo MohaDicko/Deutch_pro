@@ -132,20 +132,35 @@
     },
     "info": {
       "address": "ACI 2000, 巴马科, 马里",
-      "email": "contact@deutchpro.ml",
+      "email": "deutschprobamako@outlook.com",
       "phone": "+223 70 00 00 00",
       "opening": "周一至周六: 8:00-18:00"
     }
   },
   "testimonials": {
     "title": "学生感言",
-    "quote": "\"感谢 Deutsch Pro Bamako，我在创纪录的时间内达到了B1水平。老师们非常优秀，很有教学方法。\"",
-    "author": "- Amadou T."
+    "list": [
+      {
+        "quote": "我在 Deutsch Pro Bamako 开始了我的德语学习之旅，如今我已在德国成为一名护士。课程为我打下了坚实基础，并帮助我提升到了适合我项目的水平。我特别感谢教师的陪伴、支持和全程提供的建议。对于 Deutsch Pro Bamako 团队对我成功的帮助，我非常感激。",
+        "author": "Fatou Traoré",
+        "role": "德国护士"
+      },
+      {
+        "quote": "我目前在 Deutsch Pro Bamako 学习 B2 级别，并正在为考试做准备。自从来到中心上课以来，我进步很大，尤其是在口语和对德语理解方面。老师们很倾听我们，并真正鼓励我们用德语表达自己。今天，我对考试和未来在德国的项目更有信心了。",
+        "author": "Abdramane Sissoko",
+        "role": "B2 级学生"
+      },
+      {
+        "quote": "我在 Deutsch Pro Bamako 只上了一个月课，但我对这次体验非常满意。起初，德语对我来说还挺难的，但在老师的讲解和课堂练习帮助下，我已经开始理解并构造自己的第一句句子。氛围很愉快，课程也很有动力。我还有很多要学，但我很高兴选择这个中心来开始我的学习旅程。",
+        "author": "Alassane Traoré",
+        "role": "初学者学生"
+      }
+    ]
   },
   "partners": {
     "badge": "合作伙伴",
     "title": "我们在德国的合作伙伴",
-    "subtitle": "可靠且专注的机构，支持我们的学生和项目发展。",
+    "subtitle": "可靠且专注的机构，支持我们的学生和项目在德国的发展。",
     "list": [
       { "name": "Deutschhaus GmbH", "type": "培训中心", "city": "柏林" },
       { "name": "Bayerische Berufsschule", "type": "职业学校", "city": "慕尼黑" },

@@ -132,7 +132,7 @@
     },
     "info": {
       "address": "Bamako, Mali",
-      "email": "contact@deutchpro.ml",
+      "email": "deutschprobamako@outlook.com",
       "phone": "+223 70 00 00 00",
       "opening": "Mo-Sa"
     }
@@ -141,26 +141,26 @@
     "title": "Was unsere Schüler sagen",
     "list": [
       {
-        "quote": "Ich habe gerade erst mit dem Lernen begonnen und bin schon jetzt von der Qualität der Kurse beeindruckt. Das Team ist sehr freundlich und ermutigt mich jeden Tag.",
-        "author": "Backary Sacko",
-        "role": "Anfänger (Niveau A1)"
+        "quote": "Ich habe meine Deutschreise bei Deutsch Pro Bamako begonnen und arbeite heute als Krankenschwester in Deutschland. Die Kurse haben mir eine solide Grundlage gegeben und mir geholfen, das für mein Projekt erforderliche Niveau zu erreichen. Besonders geschätzt habe ich die Begleitung, die Verfügbarkeit der Lehrer und die Ratschläge während des gesamten Weges. Ich bin sehr dankbar für das gesamte Team von Deutsch Pro Bamako, das zu meinem Erfolg beigetragen hat.",
+        "author": "Fatou Traoré",
+        "role": "Krankenschwester in Deutschland"
       },
       {
-        "quote": "Dank Deutsch Pro Bamako konnte ich mein B1-Niveau schnell validieren. Die Lehrer sind ausgezeichnet und sehr pädagogisch, was das Lernen wirklich erleichtert.",
-        "author": "Guindo",
-        "role": "Schüler Niveau B1"
+        "quote": "Ich besuche derzeit die B2-Kurse bei Deutsch Pro Bamako und bereite mich auf meine Prüfung vor. Seit ich das Zentrum besuche, habe ich mich viel verbessert, vor allem im Sprechen und im Verständnis des Deutschen. Die Lehrer hören uns zu und ermutigen uns wirklich, uns auf Deutsch zu äußern. Ich fühle mich heute viel sicherer für meine Prüfung und für den nächsten Schritt meines Projekts in Deutschland.",
+        "author": "Abdramane Sissoko",
+        "role": "Student auf B2-Niveau"
       },
       {
-        "quote": "Das Zentrum hat mich von Anfang bis Ende begleitet. Ich habe mein Visum erhalten und bin jetzt in Deutschland für meine Ausbildung. Ein wirklich außergewöhnliches Team!",
-        "author": "Ousmane TOURE",
-        "role": "Derzeit in Deutschland"
+        "quote": "Ich besuche Deutsch Pro Bamako erst seit einem Monat und bin sehr zufrieden mit meiner Erfahrung. Am Anfang schien mir Deutsch ziemlich schwierig, aber dank der Erklärungen der Lehrer und der Übungen im Unterricht beginne ich bereits, zu verstehen und meine ersten Sätze zu bilden. Die Atmosphäre ist angenehm und die Kurse motivieren. Ich habe noch viel zu lernen, aber ich bin froh, dieses Zentrum für den Beginn meiner Reise gewählt zu haben.",
+        "author": "Alassane Traoré",
+        "role": "Anfängerstudent"
       }
     ]
   },
   "partners": {
     "badge": "Partner",
     "title": "Unsere Partner in Deutschland",
-    "subtitle": "Verlässliche und engagierte Strukturen, die uns bei der Unterstützung unserer Studierenden und Projekte begleiten.",
+    "subtitle": "Verlässliche und engagierte Strukturen, die unsere Studierenden und Projekte in Deutschland begleiten.",
     "list": [
       { "name": "Deutschhaus GmbH", "type": "Ausbildungszentrum", "city": "Berlin" },
       { "name": "Bayerische Berufsschule", "type": "Berufsschule", "city": "München" },

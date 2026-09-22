@@ -78,7 +78,7 @@ export default function Hero({ dict }: { dict: any }) {
 
             <motion.div
               variants={itemVariants}
-              className="grid max-w-xl grid-cols-3 gap-4 rounded-[1.6rem] border border-gray-200 bg-white/70 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur-sm"
+              className="grid max-w-xl grid-cols-1 gap-3 rounded-[1.6rem] border border-gray-200 bg-white/70 p-3 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur-sm sm:grid-cols-3 sm:gap-4 sm:p-4"
             >
               <div className="rounded-2xl bg-red-50 p-4">
                 <div className="mb-2 flex items-center gap-2 text-red-600">

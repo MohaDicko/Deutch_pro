@@ -95,7 +95,7 @@ de.contact = {
     message: 'Ihre Nachricht *', submit: 'Senden', loading: 'Wird gesendet...', success: 'Gesendet.', error: 'Fehler.'
   },
   levels: { A1: 'A1', A2: 'A2', B1: 'B1', B2: 'B2' },
-  info: { address: 'Bamako, Mali', email: 'contact@deutchpro.ml', phone: '+223 70 00 00 00', opening: 'Mo-Sa' }
+  info: { address: 'Bamako, Mali', email: 'deutschprobamako@outlook.com', phone: '+223 70 00 00 00', opening: 'Mo-Sa' }
 };
 
 de.testimonials = {

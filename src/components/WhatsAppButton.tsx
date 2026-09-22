@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-export default function WhatsAppButton({ phoneNumber = "+22370000000" }: { phoneNumber?: string }) {
+export default function WhatsAppButton({ phoneNumber = "+22379875654" }: { phoneNumber?: string }) {
   const [isVisible, setIsVisible] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 

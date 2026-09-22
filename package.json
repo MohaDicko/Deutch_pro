@@ -12,6 +12,7 @@
     "test:watch": "vitest",
     "db:setup": "node scripts/setup-learning-db.js && npm run db:seed",
     "db:seed": "node scripts/seed-learning.js",
+    "db:seed:demo": "node scripts/seed-demo-learning.js",
     "postinstall": "prisma generate"
   },
   "dependencies": {

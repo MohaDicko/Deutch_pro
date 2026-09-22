@@ -132,7 +132,7 @@
     },
     "info": {
       "address": "ACI 2000, Bamako, Mali",
-      "email": "contact@deutchpro.ml",
+      "email": "deutschprobamako@outlook.com",
       "phone": "+223 70 00 00 00",
       "opening": "Lun-Sam: 8h-18h"
     }
@@ -141,26 +141,26 @@
     "title": "Ce Que Disent Nos Étudiants",
     "list": [
       {
-        "quote": "Je viens de commencer mon apprentissage et je suis déjà impressionné par la qualité des cours. L'équipe est très accueillante et m'encourage au quotidien.",
-        "author": "Backary Sacko",
-        "role": "Apprenant Débutant (A1)"
+        "quote": "J’ai commencé mon parcours en allemand à Deutsch Pro Bamako, et aujourd’hui je travaille comme infirmière en Allemagne. Les cours m’ont permis d’acquérir de bonnes bases et de progresser jusqu’au niveau nécessaire pour réaliser mon projet. J’ai particulièrement apprécié l’accompagnement, la disponibilité des enseignants et les conseils reçus tout au long de mon parcours. Je suis très reconnaissante envers toute l’équipe de Deutsch Pro Bamako pour sa contribution à ma réussite.",
+        "author": "Fatou Traoré",
+        "role": "Infirmière en Allemagne"
       },
       {
-        "quote": "Grâce à Deutsch Pro Bamako, j'ai pu valider mon niveau B1 rapidement. Les professeurs sont excellents et très pédagogues, ce qui facilite vraiment l'apprentissage.",
-        "author": "Guindo",
-        "role": "Apprenant Niveau B1"
+        "quote": "Je suis actuellement les cours de niveau B2 à Deutsch Pro Bamako et je me prépare à passer mon examen. Depuis que j’ai commencé les cours au centre, j’ai beaucoup progressé, surtout à l’oral et dans ma compréhension de l’allemand. Les enseignants sont à l’écoute et nous poussent vraiment à nous exprimer en allemand. Je me sens aujourd’hui beaucoup plus confiant pour mon examen et pour la suite de mon projet en Allemagne.",
+        "author": "Abdramane Sissoko",
+        "role": "Étudiant niveau B2"
       },
       {
-        "quote": "Le centre m'a accompagné du début à la fin. J'ai reçu mon visa et je suis maintenant en Allemagne pour ma formation. Une équipe vraiment exceptionnelle !",
-        "author": "Ousmane TOURE",
-        "role": "Actuellement en Allemagne"
+        "quote": "Cela fait seulement un mois que j’ai commencé les cours à Deutsch Pro Bamako et je suis très satisfait de mon expérience. Au début, l’allemand me paraissait assez difficile, mais grâce aux explications des enseignants et aux exercices en classe, je commence déjà à comprendre et à construire mes premières phrases. L’ambiance est agréable et les cours sont motivants. J’ai encore beaucoup à apprendre, mais je suis content d’avoir choisi ce centre pour commencer mon parcours.",
+        "author": "Alassane Traoré",
+        "role": "Étudiant débutant"
       }
     ]
   },
   "partners": {
     "badge": "Partenaires",
     "title": "Nos partenaires en Allemagne",
-    "subtitle": "Des structures fiables et engagées qui nous accompagnent dans la réussite de nos étudiants et de nos projets.",
+    "subtitle": "Des structures fiables et engagées qui nous accompagnent dans la réussite de nos étudiants et de nos projets en Allemagne.",
     "list": [
       { "name": "Deutschhaus GmbH", "type": "Centre de formation", "city": "Berlin" },
       { "name": "Bayerische Berufsschule", "type": "École professionnelle", "city": "Munich" },

@@ -160,11 +160,11 @@ export default async function AdminDashboard({
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-700 rounded-2xl flex items-center justify-center shadow-lg shadow-red-500/20">
-              <span className="font-bold text-white text-xl">D</span>
+              <span className="font-bold text-white text-xl">T</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white tracking-tight">Admin Portal</h1>
-              <p className="text-xs text-gray-400 font-medium tracking-wider uppercase">Deutsch Pro Bamako</p>
+              <h1 className="text-xl font-bold text-white tracking-tight">Espace Directeur</h1>
+              <p className="text-xs text-gray-400 font-medium tracking-wider uppercase">Traoré • Deutsch Pro Bamako</p>
             </div>
           </div>
           <div className="flex items-center gap-3">

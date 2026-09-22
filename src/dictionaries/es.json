@@ -132,20 +132,35 @@
     },
     "info": {
       "address": "ACI 2000, Bamako, Mali",
-      "email": "contact@deutchpro.ml",
+      "email": "deutschprobamako@outlook.com",
       "phone": "+223 70 00 00 00",
       "opening": "Lun-Sáb: 8h-18h"
     }
   },
   "testimonials": {
     "title": "Lo que dicen nuestros estudiantes",
-    "quote": "\"Gracias a Deutsch Pro Bamako, pude validar mi nivel B1 en tiempo récord. Los profesores son excelentes y muy pedagógicos.\"",
-    "author": "- Amadou T."
+    "list": [
+      {
+        "quote": "Empecé mi camino en alemán en Deutsch Pro Bamako y hoy trabajo como enfermera en Alemania. Los cursos me dieron una base sólida y me ayudaron a progresar hasta el nivel necesario para mi proyecto. Especialmente valoré el acompañamiento, la disponibilidad de los docentes y los consejos recibidos durante todo el proceso. Estoy muy agradecida con todo el equipo de Deutsch Pro Bamako por contribuir a mi éxito.",
+        "author": "Fatou Traoré",
+        "role": "Enfermera en Alemania"
+      },
+      {
+        "quote": "Actualmente estoy siguiendo los cursos de nivel B2 en Deutsch Pro Bamako y me estoy preparando para mi examen. Desde que comencé en el centro, he mejorado mucho, especialmente en la expresión oral y la comprensión del alemán. Los docentes nos escuchan y realmente nos animan a expresarnos en alemán. Hoy me siento mucho más seguro para mi examen y para el siguiente paso de mi proyecto en Alemania.",
+        "author": "Abdramane Sissoko",
+        "role": "Estudiante de nivel B2"
+      },
+      {
+        "quote": "Hace solo un mes que empecé los cursos en Deutsch Pro Bamako y estoy muy satisfecho con mi experiencia. Al principio, el alemán me parecía bastante difícil, pero gracias a las explicaciones de los docentes y a los ejercicios en clase, ya comienzo a entender y a construir mis primeras frases. El ambiente es agradable y las clases son motivadoras. Todavía tengo mucho por aprender, pero estoy contento de haber elegido este centro para empezar mi recorrido.",
+        "author": "Alassane Traoré",
+        "role": "Estudiante principiante"
+      }
+    ]
   },
   "partners": {
     "badge": "Socios",
     "title": "Nuestros socios en Alemania",
-    "subtitle": "Organizaciones confiables y comprometidas que acompañan a nuestros estudiantes y proyectos.",
+    "subtitle": "Organizaciones confiables y comprometidas que acompañan a nuestros estudiantes y proyectos en Alemania.",
     "list": [
       { "name": "Deutschhaus GmbH", "type": "Centro de formación", "city": "Berlín" },
       { "name": "Bayerische Berufsschule", "type": "Escuela profesional", "city": "Múnich" },

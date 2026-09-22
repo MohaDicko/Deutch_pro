@@ -2,10 +2,40 @@
 
 import { PrismaClient } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
+import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
 const prisma = new PrismaClient();
+
+async function requireAdmin() {
+  const authorization = (await headers()).get('authorization');
+  const [scheme, encodedCredentials] = authorization?.split(' ') ?? [];
+
+  if (scheme?.toLowerCase() !== 'basic' || !encodedCredentials) {
+    throw new Error('Unauthorized');
+  }
+
+  let credentials: string;
+  try {
+    credentials = Buffer.from(encodedCredentials, 'base64').toString('utf8');
+  } catch {
+    throw new Error('Unauthorized');
+  }
+
+  const separator = credentials.indexOf(':');
+  const user = separator >= 0 ? credentials.slice(0, separator) : '';
+  const password = separator >= 0 ? credentials.slice(separator + 1) : '';
+
+  if (
+    !process.env.ADMIN_USERNAME ||
+    !process.env.ADMIN_PASSWORD ||
+    user !== process.env.ADMIN_USERNAME ||
+    password !== process.env.ADMIN_PASSWORD
+  ) {
+    throw new Error('Unauthorized');
+  }
+}
 
 const statusSchema = z.enum(['nouveau', 'en cours', 'traité']);
 
@@ -155,6 +185,7 @@ export async function saveB2bRequest(formData: FormData) {
 }
 
 export async function updateContactStatus(formData: FormData): Promise<void> {
+  await requireAdmin();
   const id = String(formData.get('id') ?? '');
   const status = statusSchema.parse(formData.get('status'));
 
@@ -171,6 +202,7 @@ export async function updateContactStatus(formData: FormData): Promise<void> {
 }
 
 export async function updateB2bStatus(formData: FormData): Promise<void> {
+  await requireAdmin();
   const id = String(formData.get('id') ?? '');
   const status = statusSchema.parse(formData.get('status'));
 
@@ -187,6 +219,7 @@ export async function updateB2bStatus(formData: FormData): Promise<void> {
 }
 
 export async function createStudent(formData: FormData): Promise<void> {
+  await requireAdmin();
   const data = studentSchema.parse({
     full_name: formData.get('full_name'),
     email: formData.get('email'),
@@ -211,6 +244,7 @@ export async function createStudent(formData: FormData): Promise<void> {
 }
 
 export async function createTeacher(formData: FormData): Promise<void> {
+  await requireAdmin();
   const data = teacherSchema.parse({
     full_name: formData.get('full_name'),
     email: formData.get('email'),
@@ -235,6 +269,7 @@ export async function createTeacher(formData: FormData): Promise<void> {
 }
 
 export async function createAssessment(formData: FormData): Promise<void> {
+  await requireAdmin();
   const data = assessmentSchema.parse({
     student_id: formData.get('student_id'),
     total_score: formData.get('total_score'),
@@ -256,6 +291,7 @@ export async function createAssessment(formData: FormData): Promise<void> {
 }
 
 export async function createAttendance(formData: FormData): Promise<void> {
+  await requireAdmin();
   const data = attendanceSchema.parse({
     student_id: formData.get('student_id'),
     course_id: formData.get('course_id'),
@@ -287,6 +323,7 @@ export async function createAttendance(formData: FormData): Promise<void> {
 }
 
 export async function createCourse(formData: FormData): Promise<void> {
+  await requireAdmin();
   const data = courseSchema.parse({
     title: formData.get('title'),
     course_type: formData.get('course_type'),
@@ -312,6 +349,7 @@ export async function createCourse(formData: FormData): Promise<void> {
 }
 
 export async function updatePayrollStatus(formData: FormData): Promise<void> {
+  await requireAdmin();
   const id = String(formData.get('id') ?? '');
   const status = payrollStatusSchema.parse(formData.get('status'));
 
@@ -324,6 +362,7 @@ export async function updatePayrollStatus(formData: FormData): Promise<void> {
 }
 
 export async function createPayroll(formData: FormData): Promise<void> {
+  await requireAdmin();
   const data = payrollSchema.parse({
     teacher_id: formData.get('teacher_id'),
     month: formData.get('month'),

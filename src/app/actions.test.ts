@@ -16,8 +16,16 @@ const { prismaMock, revalidatePathMock, redirectMock } = vi.hoisted(() => ({
 vi.mock('@prisma/client', () => ({ PrismaClient: vi.fn(() => prismaMock) }));
 vi.mock('next/cache', () => ({ revalidatePath: revalidatePathMock }));
 vi.mock('next/navigation', () => ({ redirect: redirectMock }));
+vi.mock('next/headers', () => ({
+  headers: vi.fn(async () => new Headers({
+    authorization: `Basic ${Buffer.from('traore:Traore@2025').toString('base64')}`,
+  })),
+}));
 
 import { createAssessment, createAttendance, createStudent, updatePayrollStatus } from './actions';
+
+process.env.ADMIN_USERNAME = 'traore';
+process.env.ADMIN_PASSWORD = 'Traore@2025';
 
 const formData = (values: Record<string, string>) => {
   const data = new FormData();
