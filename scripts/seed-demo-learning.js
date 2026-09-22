@@ -2,25 +2,6 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-const demoTeachers = [
-  {
-    full_name: 'Demo Anne Koné',
-    email: 'demo.anne@deutschpro.test',
-    phone: '+223 70 00 00 01',
-    specialization: 'Deutsch B1-B2, préparation examen',
-    hourly_rate: 12000,
-    status: 'permanent',
-  },
-  {
-    full_name: 'Demo Mamadou Sangaré',
-    email: 'demo.mamadou@deutschpro.test',
-    phone: '+223 70 00 00 02',
-    specialization: 'Deutsch A1-A2, conversation',
-    hourly_rate: 10000,
-    status: 'vacataire',
-  },
-];
-
 const demoStudents = [
   {
     full_name: 'Demo Awa Diallo',
@@ -44,11 +25,6 @@ const demoStudents = [
     level: 'A1',
   },
 ];
-
-async function findOrCreateTeacher(data) {
-  const existing = await prisma.teachers.findFirst({ where: { email: data.email } });
-  return existing ?? prisma.teachers.create({ data });
-}
 
 async function findOrCreateStudent(data, levelId) {
   const existing = await prisma.students.findFirst({ where: { email: data.email } });
@@ -79,11 +55,6 @@ async function main() {
     throw new Error('Les niveaux A1, A2 et B1 doivent être initialisés avec npm run db:seed.');
   }
 
-  const teachers = [];
-  for (const teacher of demoTeachers) {
-    teachers.push(await findOrCreateTeacher(teacher));
-  }
-
   const students = [];
   for (const student of demoStudents) {
     students.push(await findOrCreateStudent(student, levelByCode.get(student.level).id));
@@ -94,7 +65,6 @@ async function main() {
       title: 'DEMO A1 - Débutants',
       course_type: 'groupe',
       level_id: levelByCode.get('A1').id,
-      teacher_id: teachers[1].id,
       schedule: 'Lundi 18h - 20h',
       room: 'Salle Demo 01',
     }),
@@ -102,7 +72,6 @@ async function main() {
       title: 'DEMO A2 - Conversation',
       course_type: 'conversation',
       level_id: levelByCode.get('A2').id,
-      teacher_id: teachers[1].id,
       schedule: 'Mardi 18h - 20h',
       room: 'Salle Demo 02',
     }),
@@ -110,7 +79,6 @@ async function main() {
       title: 'DEMO B1 - Intensif',
       course_type: 'intensif',
       level_id: levelByCode.get('B1').id,
-      teacher_id: teachers[0].id,
       schedule: 'Jeudi 18h - 20h',
       room: 'Salle Demo 03',
     }),
@@ -148,28 +116,8 @@ async function main() {
     });
   }
 
-  for (const [index, teacher] of teachers.entries()) {
-    const existingPayroll = await prisma.payrolls.findFirst({ where: { teacher_id: teacher.id, month: 'DEMO Septembre 2026' } });
-    if (!existingPayroll) {
-      const hours = index === 0 ? 48 : 36;
-      const gross = hours * Number(teacher.hourly_rate);
-      await prisma.payrolls.create({
-        data: {
-          teacher_id: teacher.id,
-          month: 'DEMO Septembre 2026',
-          hours_worked: hours,
-          gross_amount: gross,
-          bonus: index === 0 ? 25000 : 0,
-          deductions: 0,
-          net_amount: gross + (index === 0 ? 25000 : 0),
-          status: index === 0 ? 'ready' : 'pending',
-        },
-      });
-    }
-  }
-
   console.log('Données de démonstration créées ou déjà présentes.');
-  console.log(JSON.stringify({ teachers: teachers.length, students: students.length, courses: courses.length }));
+  console.log(JSON.stringify({ students: students.length, courses: courses.length, assessments: students.length, attendances: students.length }));
 }
 
 main()
