@@ -44,7 +44,7 @@ describe('B2B Component', () => {
 
   it('affiche les textes principaux', () => {
     render(<B2B dict={mockDict} />);
-    expect(screen.getByText(/Entreprises/i)).toBeInTheDocument();
+    expect(screen.getByText(/Formez vos équipes/i)).toBeInTheDocument();
   });
 
   it('affiche les champs du formulaire de contact B2B', () => {

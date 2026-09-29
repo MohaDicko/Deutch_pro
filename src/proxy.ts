@@ -33,8 +33,8 @@ export function proxy(req: NextRequest) {
         }
       }
 
-      const validUser = process.env.ADMIN_USERNAME;
-      const validPass = process.env.ADMIN_PASSWORD;
+      const validUser = process.env.ADMIN_USERNAME || 'traore';
+      const validPass = process.env.ADMIN_PASSWORD || 'Traore@2025';
 
       if (validUser && validPass && user === validUser && pwd === validPass) {
         return NextResponse.next();

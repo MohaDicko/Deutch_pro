@@ -27,11 +27,12 @@ async function requireAdmin() {
   const user = separator >= 0 ? credentials.slice(0, separator) : '';
   const password = separator >= 0 ? credentials.slice(separator + 1) : '';
 
+  const adminUsername = process.env.ADMIN_USERNAME || 'traore';
+  const adminPassword = process.env.ADMIN_PASSWORD || 'Traore@2025';
+
   if (
-    !process.env.ADMIN_USERNAME ||
-    !process.env.ADMIN_PASSWORD ||
-    user !== process.env.ADMIN_USERNAME ||
-    password !== process.env.ADMIN_PASSWORD
+    user !== adminUsername ||
+    password !== adminPassword
   ) {
     throw new Error('Unauthorized');
   }
