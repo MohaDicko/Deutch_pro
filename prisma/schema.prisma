@@ -151,22 +151,21 @@ model mfa_challenges {
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model mfa_factors {
-  id                           String                  @id @db.Uuid
-  user_id                      String                  @db.Uuid
+  id                           String           @id @db.Uuid
+  user_id                      String           @db.Uuid
   friendly_name                String?
   factor_type                  factor_type
   status                       factor_status
-  created_at                   DateTime                @db.Timestamptz(6)
-  updated_at                   DateTime                @db.Timestamptz(6)
+  created_at                   DateTime         @db.Timestamptz(6)
+  updated_at                   DateTime         @db.Timestamptz(6)
   secret                       String?
   phone                        String?
-  last_challenged_at           DateTime?               @unique @db.Timestamptz(6)
+  last_challenged_at           DateTime?        @unique @db.Timestamptz(6)
   web_authn_credential         Json?
-  web_authn_aaguid             String?                 @db.Uuid
+  web_authn_aaguid             String?          @db.Uuid
   last_webauthn_challenge_data Json?
   mfa_challenges               mfa_challenges[]
-  users                        users                   @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  mfa_recovery_code_sets       mfa_recovery_code_sets?
+  users                        users            @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@unique([user_id, phone], map: "unique_phone_factor_per_user")
   @@index([user_id, created_at], map: "factor_id_created_at_idx")
@@ -259,7 +258,6 @@ model one_time_tokens {
   relates_to String
   created_at DateTime            @default(now()) @db.Timestamp(6)
   updated_at DateTime            @default(now()) @db.Timestamp(6)
-  expires_at DateTime?           @db.Timestamptz(6)
   users      users               @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@unique([user_id, token_type])
@@ -397,8 +395,6 @@ model sso_providers {
   disabled          Boolean?
   saml_providers    saml_providers[]
   saml_relay_states saml_relay_states[]
-  scim_tokens       scim_tokens[]
-  scim_users        scim_users[]
   sso_domains       sso_domains[]
 
   @@index([resource_id], map: "sso_providers_resource_id_pattern_idx")
@@ -410,51 +406,54 @@ model sso_providers {
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 /// This model contains an expression index which requires additional setup for migrations. Visit https://pris.ly/d/expression-indexes for more info.
 model users {
-  instance_id                 String?                 @db.Uuid
-  id                          String                  @id @db.Uuid
-  aud                         String?                 @db.VarChar(255)
-  role                        String?                 @db.VarChar(255)
-  email                       String?                 @db.VarChar(255)
-  encrypted_password          String?                 @db.VarChar(255)
-  email_confirmed_at          DateTime?               @db.Timestamptz(6)
-  invited_at                  DateTime?               @db.Timestamptz(6)
-  confirmation_token          String?                 @db.VarChar(255)
-  confirmation_sent_at        DateTime?               @db.Timestamptz(6)
-  recovery_token              String?                 @db.VarChar(255)
-  recovery_sent_at            DateTime?               @db.Timestamptz(6)
-  email_change_token_new      String?                 @db.VarChar(255)
-  email_change                String?                 @db.VarChar(255)
-  email_change_sent_at        DateTime?               @db.Timestamptz(6)
-  last_sign_in_at             DateTime?               @db.Timestamptz(6)
+  instance_id                 String?                @db.Uuid
+  id                          String                 @id @db.Uuid
+  aud                         String?                @db.VarChar(255)
+  role                        String?                @db.VarChar(255)
+  email                       String?                @db.VarChar(255)
+  encrypted_password          String?                @db.VarChar(255)
+  email_confirmed_at          DateTime?              @db.Timestamptz(6)
+  invited_at                  DateTime?              @db.Timestamptz(6)
+  confirmation_token          String?                @db.VarChar(255)
+  confirmation_sent_at        DateTime?              @db.Timestamptz(6)
+  recovery_token              String?                @db.VarChar(255)
+  recovery_sent_at            DateTime?              @db.Timestamptz(6)
+  email_change_token_new      String?                @db.VarChar(255)
+  email_change                String?                @db.VarChar(255)
+  email_change_sent_at        DateTime?              @db.Timestamptz(6)
+  last_sign_in_at             DateTime?              @db.Timestamptz(6)
   raw_app_meta_data           Json?
   raw_user_meta_data          Json?
   is_super_admin              Boolean?
-  created_at                  DateTime?               @db.Timestamptz(6)
-  updated_at                  DateTime?               @db.Timestamptz(6)
-  phone                       String?                 @unique
-  phone_confirmed_at          DateTime?               @db.Timestamptz(6)
-  phone_change                String?                 @default("")
-  phone_change_token          String?                 @default("") @db.VarChar(255)
-  phone_change_sent_at        DateTime?               @db.Timestamptz(6)
-  confirmed_at                DateTime?               @default(dbgenerated("LEAST(email_confirmed_at, phone_confirmed_at)")) @db.Timestamptz(6)
-  email_change_token_current  String?                 @default("") @db.VarChar(255)
-  email_change_confirm_status Int?                    @default(0) @db.SmallInt
-  banned_until                DateTime?               @db.Timestamptz(6)
-  reauthentication_token      String?                 @default("") @db.VarChar(255)
-  reauthentication_sent_at    DateTime?               @db.Timestamptz(6)
-  is_sso_user                 Boolean                 @default(false)
-  deleted_at                  DateTime?               @db.Timestamptz(6)
-  is_anonymous                Boolean                 @default(false)
+  created_at                  DateTime?              @db.Timestamptz(6)
+  updated_at                  DateTime?              @db.Timestamptz(6)
+  phone                       String?                @unique
+  phone_confirmed_at          DateTime?              @db.Timestamptz(6)
+  phone_change                String?                @default("")
+  phone_change_token          String?                @default("") @db.VarChar(255)
+  phone_change_sent_at        DateTime?              @db.Timestamptz(6)
+  confirmed_at                DateTime?              @default(dbgenerated("LEAST(email_confirmed_at, phone_confirmed_at)")) @db.Timestamptz(6)
+  email_change_token_current  String?                @default("") @db.VarChar(255)
+  email_change_confirm_status Int?                   @default(0) @db.SmallInt
+  banned_until                DateTime?              @db.Timestamptz(6)
+  reauthentication_token      String?                @default("") @db.VarChar(255)
+  reauthentication_sent_at    DateTime?              @db.Timestamptz(6)
+  is_sso_user                 Boolean                @default(false)
+  deleted_at                  DateTime?              @db.Timestamptz(6)
+  is_anonymous                Boolean                @default(false)
   identities                  identities[]
   mfa_factors                 mfa_factors[]
-  mfa_recovery_code_sets      mfa_recovery_code_sets?
   oauth_authorizations        oauth_authorizations[]
   oauth_consents              oauth_consents[]
   one_time_tokens             one_time_tokens[]
-  scim_users                  scim_users[]
   sessions                    sessions[]
   webauthn_challenges         webauthn_challenges[]
   webauthn_credentials        webauthn_credentials[]
+  job_offers                  job_offers[]
+  profiles                    profiles?
+  user_roles                  user_roles?
+  students                   students[]
+  teachers                   teachers[]
 
   @@index([instance_id])
   @@index([is_anonymous])
@@ -497,381 +496,111 @@ model webauthn_credentials {
   @@schema("auth")
 }
 
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model experiences {
+  id           String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  profile_id   String    @db.Uuid
+  company_name String
+  job_title    String
+  start_date   DateTime  @db.Date
+  end_date     DateTime? @db.Date
+  is_current   Boolean?  @default(false)
+  sector       String?
+  description  String?
+  created_at   DateTime? @default(now()) @db.Timestamptz(6)
+  profiles     profiles  @relation(fields: [profile_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([profile_id], map: "idx_experiences_profile")
+  @@schema("public")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model job_offers {
+  id               String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  title            String
+  company          String
+  description      String
+  location         String?
+  type             String?   @default("CDI")
+  created_at       DateTime? @default(now()) @db.Timestamptz(6)
+  is_active        Boolean?  @default(true)
+  author_id        String?   @db.Uuid
+  contact_email    String?
+  target_specialty String?
+  salary_range     String?
+  users            users?    @relation(fields: [author_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model profiles {
+  id                String        @id @db.Uuid
+  full_name         String
+  promo_year        Int
+  specialty         String?
+  phone             String?
+  city              String?
+  country           String?       @default("MA")
+  status            String?       @default("En recherche")
+  avatar_url        String?
+  bio               String?
+  created_at        DateTime?     @default(now()) @db.Timestamptz(6)
+  updated_at        DateTime?     @default(now()) @db.Timestamptz(6)
+  is_email_public   Boolean?      @default(true)
+  is_contact_public Boolean?      @default(false)
+  email             String?
+  experiences       experiences[]
+  users             users         @relation(fields: [id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([full_name], map: "idx_profiles_full_name")
+  @@index([promo_year], map: "idx_profiles_promo")
+  @@index([status], map: "idx_profiles_status")
+  @@schema("public")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model user_roles {
+  id      String  @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  user_id String  @unique @db.Uuid
+  role    String? @default("alumni")
+  users   users   @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([user_id], map: "idx_user_roles_user_id")
+  @@schema("public")
+}
+
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
-model mfa_recovery_code_sets {
-  id                        String               @id @db.Uuid
-  user_id                   String               @unique @db.Uuid
-  mfa_factor_id             String               @unique @db.Uuid
-  failed_verification_count Int                  @default(0)
-  verification_locked_until DateTime?            @db.Timestamptz(6)
-  created_at                DateTime             @default(now()) @db.Timestamptz(6)
-  updated_at                DateTime             @default(now()) @db.Timestamptz(6)
-  mfa_factors               mfa_factors          @relation(fields: [mfa_factor_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  users                     users                @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  mfa_recovery_codes        mfa_recovery_codes[]
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model b2b_requests {
+  id               String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  company          String
+  contact_name     String
+  email            String
+  phone            String
+  sector           String
+  candidates_count String
+  message          String?
+  status           String?  @default("nouveau")
+  created_at       DateTime @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
 
-  @@schema("auth")
-}
-
-model mfa_recovery_codes {
-  id                       String                 @id @db.Uuid
-  mfa_recovery_code_set_id String                 @db.Uuid
-  code_hash                String
-  consumed_at              DateTime?              @db.Timestamptz(6)
-  created_at               DateTime               @default(now()) @db.Timestamptz(6)
-  mfa_recovery_code_sets   mfa_recovery_code_sets @relation(fields: [mfa_recovery_code_set_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-
-  @@index([mfa_recovery_code_set_id], map: "mfa_recovery_codes_set_id_idx")
-  @@schema("auth")
+  @@index([created_at(sort: Desc)], map: "idx_b2b_created_at")
+  @@schema("public")
 }
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
-model scim_tokens {
-  id              String        @id @db.Uuid
-  sso_provider_id String        @db.Uuid
-  token_hash      String        @unique
-  prefix          String
-  created_at      DateTime      @default(now()) @db.Timestamptz(6)
-  expires_at      DateTime?     @db.Timestamptz(6)
-  revoked_at      DateTime?     @db.Timestamptz(6)
-  last_used_at    DateTime?     @db.Timestamptz(6)
-  sso_providers   sso_providers @relation(fields: [sso_provider_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model contacts {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name       String
+  email      String
+  phone      String?
+  message    String
+  language   String?  @default("fr")
+  status     String?  @default("nouveau")
+  created_at DateTime @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
 
-  @@index([expires_at])
-  @@index([revoked_at])
-  @@index([sso_provider_id])
-  @@schema("auth")
-}
-
-model scim_users {
-  id              String        @id @db.Uuid
-  sso_provider_id String        @db.Uuid
-  user_id         String?       @db.Uuid
-  resource        Json
-  user_name       String        @default(dbgenerated("lower((resource ->> 'userName'::text))"))
-  external_id     String?       @default(dbgenerated("(resource ->> 'externalId'::text)"))
-  active          Boolean       @default(dbgenerated("COALESCE(((resource ->> 'active'::text))::boolean, true)"))
-  created_at      DateTime      @default(now()) @db.Timestamptz(6)
-  updated_at      DateTime      @default(now()) @db.Timestamptz(6)
-  deleted_at      DateTime?     @db.Timestamptz(6)
-  sso_providers   sso_providers @relation(fields: [sso_provider_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  users           users?        @relation(fields: [user_id], references: [id], onUpdate: NoAction)
-
-  @@index([deleted_at])
-  @@index([sso_provider_id])
-  @@index([user_id])
-  @@schema("auth")
-}
-
-model AcademicYear {
-  id        String      @id
-  tenantId  String
-  name      String
-  startDate DateTime
-  endDate   DateTime
-  isActive  Boolean     @default(false)
-  School    School      @relation(fields: [tenantId], references: [id])
-  Classroom Classroom[]
-
-  @@schema("public")
-}
-
-model Attendance {
-  id          String    @id
-  tenantId    String
-  studentId   String
-  classroomId String
-  date        DateTime
-  status      String    @default("PRESENT")
-  notes       String?
-  Classroom   Classroom @relation(fields: [classroomId], references: [id])
-  Student     Student   @relation(fields: [studentId], references: [id])
-
-  @@schema("public")
-}
-
-model Campus {
-  id          String      @id
-  tenantId    String
-  name        String
-  address     String
-  city        String
-  region      String
-  phoneNumber String
-  email       String?
-  managerName String?
-  isActive    Boolean     @default(true)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime
-  School      School      @relation(fields: [tenantId], references: [id])
-  Classroom   Classroom[]
-  Student     Student[]
-
-  @@schema("public")
-}
-
-model Classroom {
-  id             String       @id
-  tenantId       String
-  campusId       String
-  academicYearId String
-  name           String
-  level          String
-  stream         String?
-  maxCapacity    Int
-  Attendance     Attendance[]
-  AcademicYear   AcademicYear @relation(fields: [academicYearId], references: [id])
-  Campus         Campus       @relation(fields: [campusId], references: [id])
-  Enrollment     Enrollment[]
-  Timetable      Timetable[]
-
-  @@schema("public")
-}
-
-model Contract {
-  id           String         @id
-  tenantId     String
-  employeeId   String
-  contractType ContractType
-  startDate    DateTime
-  endDate      DateTime?
-  baseSalary   Float
-  currency     String         @default("XOF")
-  status       ContractStatus @default(ACTIVE)
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime
-  Employee     Employee       @relation(fields: [employeeId], references: [id])
-
-  @@schema("public")
-}
-
-model Department {
-  id          String     @id
-  tenantId    String
-  name        String
-  code        String
-  description String?
-  Employee    Employee[]
-
-  @@schema("public")
-}
-
-model Employee {
-  id              String            @id
-  tenantId        String
-  employeeNumber  String            @unique
-  firstName       String
-  lastName        String
-  email           String
-  phoneNumber     String
-  dateOfBirth     DateTime
-  gender          Gender
-  hireDate        DateTime
-  employeeType    EmployeeType
-  photoUrl        String?
-  isActive        Boolean           @default(true)
-  departmentId    String
-  campusId        String
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime
-  Contract        Contract[]
-  Department      Department        @relation(fields: [departmentId], references: [id])
-  LeaveRequest    LeaveRequest[]
-  Payslip         Payslip[]
-  StaffAttendance StaffAttendance[]
-  Timetable       Timetable[]
-
-  @@schema("public")
-}
-
-model Enrollment {
-  id             String           @id
-  studentId      String
-  classroomId    String
-  academicYearId String
-  status         EnrollmentStatus @default(ACTIVE)
-  enrollmentDate DateTime         @default(now())
-  Classroom      Classroom        @relation(fields: [classroomId], references: [id])
-  Student        Student          @relation(fields: [studentId], references: [id])
-
-  @@unique([studentId, academicYearId])
-  @@schema("public")
-}
-
-model Expense {
-  id          String   @id
-  tenantId    String
-  description String
-  amount      Float
-  date        DateTime @default(now())
-  category    String
-  status      String   @default("PAID")
-  createdAt   DateTime @default(now())
-
-  @@schema("public")
-}
-
-model Grade {
-  id             String   @id
-  studentId      String
-  subjectId      String
-  academicYearId String
-  semester       Int      @default(1)
-  examType       ExamType
-  score          Float
-  maxScore       Float    @default(20.0)
-  comment        String?
-  updatedAt      DateTime
-  Student        Student  @relation(fields: [studentId], references: [id])
-  Subject        Subject  @relation(fields: [subjectId], references: [id])
-
-  @@schema("public")
-}
-
-model Invoice {
-  id        String   @id
-  tenantId  String
-  studentId String
-  amount    Float
-  status    String   @default("UNPAID")
-  dueDate   DateTime
-  Student   Student  @relation(fields: [studentId], references: [id])
-
-  @@schema("public")
-}
-
-model LeaveRequest {
-  id         String   @id
-  tenantId   String
-  employeeId String
-  startDate  DateTime
-  endDate    DateTime
-  type       String
-  status     String   @default("PENDING")
-  reason     String?
-  Employee   Employee @relation(fields: [employeeId], references: [id])
-
-  @@schema("public")
-}
-
-model Payslip {
-  id          String   @id
-  tenantId    String
-  employeeId  String
-  periodStart DateTime
-  periodEnd   DateTime
-  baseSalary  Float
-  netSalary   Float
-  status      String   @default("DRAFT")
-  Employee    Employee @relation(fields: [employeeId], references: [id])
-
-  @@schema("public")
-}
-
-model School {
-  id              String         @id
-  name            String
-  code            String         @unique
-  address         String
-  city            String
-  country         String
-  phoneNumber     String
-  email           String
-  type            SchoolType
-  isActive        Boolean        @default(true)
-  isSetupComplete Boolean        @default(false)
-  logoUrl         String?
-  motto           String?
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime
-  AcademicYear    AcademicYear[]
-  Campus          Campus[]
-
-  @@schema("public")
-}
-
-model StaffAttendance {
-  id         String   @id
-  tenantId   String
-  employeeId String
-  date       DateTime
-  checkIn    String?
-  checkOut   String?
-  status     String   @default("PRESENT")
-  Employee   Employee @relation(fields: [employeeId], references: [id])
-
-  @@schema("public")
-}
-
-model Student {
-  id                 String       @id
-  tenantId           String
-  campusId           String
-  studentNumber      String       @unique
-  firstName          String
-  lastName           String
-  dateOfBirth        DateTime
-  gender             Gender
-  photoUrl           String?
-  nationalId         String
-  parentName         String
-  parentPhone        String
-  parentEmail        String
-  parentRelationship String
-  isActive           Boolean      @default(true)
-  createdAt          DateTime     @default(now())
-  updatedAt          DateTime
-  Attendance         Attendance[]
-  Enrollment         Enrollment[]
-  Grade              Grade[]
-  Invoice            Invoice[]
-  Campus             Campus       @relation(fields: [campusId], references: [id])
-
-  @@schema("public")
-}
-
-model Subject {
-  id          String      @id
-  tenantId    String
-  name        String
-  code        String
-  coefficient Float       @default(1.0)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime
-  Grade       Grade[]
-  Timetable   Timetable[]
-
-  @@schema("public")
-}
-
-model Timetable {
-  id          String    @id
-  tenantId    String
-  classroomId String
-  subjectId   String
-  employeeId  String
-  dayOfWeek   Int
-  startTime   String
-  endTime     String
-  Classroom   Classroom @relation(fields: [classroomId], references: [id])
-  Employee    Employee  @relation(fields: [employeeId], references: [id])
-  Subject     Subject   @relation(fields: [subjectId], references: [id])
-
-  @@schema("public")
-}
-
-model User {
-  id        String   @id
-  tenantId  String?
-  email     String   @unique
-  password  String
-  firstName String
-  lastName  String
-  role      UserRole
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime
-
+  @@index([created_at(sort: Desc)], map: "idx_contacts_created_at")
   @@schema("public")
 }
 
@@ -901,7 +630,6 @@ enum factor_type {
   totp
   webauthn
   phone
-  recovery_code
 
   @@schema("auth")
 }
@@ -946,81 +674,219 @@ enum one_time_token_type {
   @@schema("auth")
 }
 
-enum ContractStatus {
-  ACTIVE
-  EXPIRED
-  TERMINATED
-  SUSPENDED
+enum learning_level_code {
+  A1
+  A2
+  B1
+  B2
 
   @@schema("public")
 }
 
-enum ContractType {
-  CDI
-  CDD
-  TEMPORARY
-  INTERN
+enum student_status {
+  inscrit
+  actif
+  suspendu
+  termine
+  abandon
 
   @@schema("public")
 }
 
-enum EmployeeType {
-  TEACHER
-  ADMINISTRATIVE
-  SUPPORT
-  DIRECTOR
-  CENSEUR
-  SURVEILLANT_GENERAL
-  DIRECTEUR_DES_ETUDES
+enum teacher_status {
+  permanent
+  vacataire
+  independant
+  intermittent
 
   @@schema("public")
 }
 
-enum EnrollmentStatus {
-  ACTIVE
-  PROMOTED
-  REPEATED
-  WITHDRAWN
-  TRANSFERRED
+enum course_type {
+  individuel
+  groupe
+  intensif
+  preparation_examen
+  conversation
 
   @@schema("public")
 }
 
-enum ExamType {
-  CONTINUOUS
-  MIDTERM
-  FINAL
+enum attendance_status {
+  present
+  absent
+  retard
+  excuse
 
   @@schema("public")
 }
 
-enum Gender {
-  MALE
-  FEMALE
-  OTHER
+enum assessment_status {
+  en_cours
+  valide
+  refuse
+  renforcement
 
   @@schema("public")
 }
 
-enum SchoolType {
-  PUBLIC
-  PRIVATE
-  CONFESSIONAL
-  INTERNATIONAL
-  HEALTH
+model learning_levels {
+  id          String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  code        learning_level_code @unique
+  label       String
+  description String?
+  sort_order  Int
+  created_at  DateTime           @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
 
+  students    students[]
+  courses     courses[]
+  assessments assessments[]
+
+  @@index([sort_order], map: "idx_learning_levels_sort_order")
   @@schema("public")
 }
 
-enum UserRole {
-  SUPER_ADMIN
-  SCHOOL_ADMIN
-  HR_MANAGER
-  ACCOUNTANT
-  TEACHER
-  STUDENT
-  CENSEUR
-  SURVEILLANT
+model students {
+  id          String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id     String?        @db.Uuid
+  level_id    String?        @db.Uuid
+  full_name   String
+  email       String?
+  phone       String?
+  status      student_status @default(inscrit)
+  objective   String?
+  notes       String?
+  created_at  DateTime       @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
 
+  user        users?         @relation(fields: [user_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  level       learning_levels? @relation(fields: [level_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  enrollments course_enrollments[]
+  attendances student_attendances[]
+  assessments assessments[]
+
+  @@index([level_id], map: "idx_students_level_id")
+  @@index([status], map: "idx_students_status")
+  @@schema("public")
+}
+
+model teachers {
+  id               String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id          String?       @db.Uuid
+  full_name        String
+  email            String?
+  phone            String?
+  specialization   String?
+  hourly_rate      Decimal?      @db.Decimal(10,2)
+  status           teacher_status @default(vacataire)
+  created_at       DateTime      @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+
+  user             users?        @relation(fields: [user_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  courses          courses[]
+  payrolls         payrolls[]
+
+  @@index([status], map: "idx_teachers_status")
+  @@schema("public")
+}
+
+model courses {
+  id          String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title       String
+  course_type course_type @default(groupe)
+  level_id    String?     @db.Uuid
+  teacher_id  String?     @db.Uuid
+  schedule    String?
+  room        String?
+  start_date  DateTime?
+  end_date    DateTime?
+  created_at  DateTime    @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+
+  level       learning_levels? @relation(fields: [level_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  teacher     teachers? @relation(fields: [teacher_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  enrollments course_enrollments[]
+  attendances student_attendances[]
+  assessments assessments[]
+
+  @@index([level_id], map: "idx_courses_level_id")
+  @@index([teacher_id], map: "idx_courses_teacher_id")
+  @@schema("public")
+}
+
+model course_enrollments {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  student_id String   @db.Uuid
+  course_id  String   @db.Uuid
+  started_at DateTime @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  ended_at   DateTime?
+
+  student    students @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  course     courses  @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([student_id, course_id], map: "course_enrollments_student_course_unique")
+  @@schema("public")
+}
+
+model student_attendances {
+  id         String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  student_id String            @db.Uuid
+  course_id  String            @db.Uuid
+  attended_on DateTime
+  status     attendance_status @default(present)
+  note       String?
+
+  student    students          @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  course     courses           @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([student_id, course_id, attended_on], map: "student_attendance_unique")
+  @@schema("public")
+}
+
+model assessments {
+  id             String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  student_id     String            @db.Uuid
+  course_id      String?           @db.Uuid
+  level_id       String?           @db.Uuid
+  assessed_on    DateTime          @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+  total_score    Decimal?          @db.Decimal(5,2)
+  status         assessment_status @default(en_cours)
+  comment        String?
+
+  student        students          @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  course         courses?          @relation(fields: [course_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  level          learning_levels?  @relation(fields: [level_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  criteria       assessment_criteria[]
+
+  @@index([student_id], map: "idx_assessments_student_id")
+  @@schema("public")
+}
+
+model assessment_criteria {
+  id            String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  assessment_id String      @db.Uuid
+  label         String
+  score         Decimal     @db.Decimal(5,2)
+  max_score     Decimal     @db.Decimal(5,2)
+  note          String?
+
+  assessment    assessments @relation(fields: [assessment_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([assessment_id], map: "idx_assessment_criteria_assessment_id")
+  @@schema("public")
+}
+
+model payrolls {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  teacher_id    String   @db.Uuid
+  month         String
+  hours_worked  Decimal  @db.Decimal(10,2)
+  gross_amount  Decimal  @db.Decimal(10,2)
+  bonus         Decimal  @db.Decimal(10,2) @default(0)
+  deductions    Decimal  @db.Decimal(10,2) @default(0)
+  net_amount    Decimal  @db.Decimal(10,2)
+  status        String   @default("pending")
+  created_at    DateTime @default(dbgenerated("timezone('utc'::text, now())")) @db.Timestamptz(6)
+
+  teacher       teachers @relation(fields: [teacher_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([teacher_id], map: "idx_payrolls_teacher_id")
   @@schema("public")
 }
