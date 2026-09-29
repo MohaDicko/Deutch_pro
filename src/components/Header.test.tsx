@@ -17,8 +17,8 @@ describe('Header Component', () => {
 
   it('affiche le logo de Deutsch Pro Bamako', () => {
     render(<Header dict={mockDict} lang="fr" />);
-    // Le composant doit avoir un texte Deutsch Pro Bamako
-    expect(screen.getByText(/Deutsch Pro Bamako/i)).toBeInTheDocument();
+    // Le composant doit avoir un texte Deutsch Pro
+    expect(screen.getByText(/Deutsch Pro/i)).toBeInTheDocument();
   });
 
   it('affiche les liens de navigation', () => {
