@@ -3,6 +3,8 @@ import { ArrowLeft, Award, BookOpenText, GraduationCap, TrendingUp } from 'lucid
 
 const prisma = new PrismaClient();
 
+export const dynamic = 'force-dynamic';
+
 const fallbackStudents = [
   {
     id: 's1',
@@ -90,7 +92,7 @@ export default async function LearnersPage({
     : 0;
 
   return (
-    <div className="min-h-screen bg-[#0f1115] text-gray-100">
+    <div className="admin-shell min-h-screen bg-[#0f1115] text-gray-100">
       <nav className="sticky top-0 z-50 border-b border-gray-800 bg-[#161920]/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
           <div className="flex items-center gap-3">

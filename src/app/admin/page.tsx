@@ -155,16 +155,16 @@ export default async function AdminDashboard({
   ];
 
   return (
-    <div className="min-h-screen bg-[#0f1115] text-gray-100 font-sans selection:bg-red-500/30">
+    <div className="admin-shell min-h-screen bg-[#0f1115] text-gray-100 font-sans selection:bg-red-500/30">
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#161920]/80 border-b border-gray-800 shadow-2xl">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-700 rounded-2xl flex items-center justify-center shadow-lg shadow-red-500/20">
+            <div className="w-12 h-12 bg-[#e8f0f7] rounded-2xl flex items-center justify-center shadow-lg shadow-blue-900/10">
               <span className="font-bold text-white text-xl">T</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white tracking-tight">Espace Directeur</h1>
-              <p className="text-xs text-gray-400 font-medium tracking-wider uppercase">Traoré • Deutsch Pro Bamako</p>
+              <h1 className="text-xl font-bold text-white tracking-tight">Centre de pilotage</h1>
+              <p className="text-xs text-gray-400 font-medium tracking-wider uppercase">Deutsch Pro Bamako · Relations Allemagne</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -173,10 +173,10 @@ export default async function AdminDashboard({
               download="deutsch-pro-demandes.csv"
               className="flex items-center gap-2 px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 rounded-full text-sm font-medium transition-all hover:bg-emerald-500/20"
             >
-              Exporter CSV
+              <span aria-hidden="true">↓</span> Exporter CSV
             </a>
             <a href="/" className="flex items-center gap-2 px-5 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-full text-sm font-medium transition-all shadow-md">
-              <ArrowLeft size={16} /> Retour au site
+              <ArrowLeft size={16} /> Retour au site public
             </a>
           </div>
         </div>
@@ -184,6 +184,11 @@ export default async function AdminDashboard({
 
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-10 bg-[#161920] border border-gray-800 rounded-3xl p-5 shadow-xl">
+          <div className="mb-5 border-b border-gray-800 pb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">Suivi des relations</p>
+            <h2 className="mt-1 text-2xl font-bold text-white">Demandes entrantes</h2>
+            <p className="mt-1 text-sm text-gray-400">Coordonner les contacts, entreprises et parcours de formation avec traçabilité.</p>
+          </div>
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <form method="get" action="/admin" className="flex w-full max-w-xl items-center gap-3 rounded-2xl border border-gray-700 bg-[#0f1115] px-4 py-3">
               <Search size={18} className="text-gray-500" />
@@ -352,7 +357,7 @@ export default async function AdminDashboard({
                     <div key={contact.id} className="bg-[#161920] border border-gray-800 p-6 rounded-3xl hover:border-gray-700 transition-colors shadow-lg">
                       <div className="flex justify-between items-start mb-4">
                         <div className="flex gap-4">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center font-bold text-white shadow-sm">
+                          <div className="w-10 h-10 rounded-full bg-[#e8f0f7] flex items-center justify-center font-bold text-[#0b233f] shadow-sm">
                             {contact.name.charAt(0).toUpperCase()}
                           </div>
                           <div>
@@ -428,7 +433,7 @@ export default async function AdminDashboard({
                     <div key={req.id} className="bg-[#161920] border border-gray-800 p-6 rounded-3xl hover:border-gray-700 transition-colors shadow-lg">
                       <div className="flex justify-between items-start mb-6">
                         <div className="flex gap-4">
-                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center font-bold text-white shadow-sm">
+                          <div className="w-12 h-12 rounded-2xl bg-[#e8f0f7] flex items-center justify-center font-bold text-[#0b233f] shadow-sm">
                             <Building2 size={24} />
                           </div>
                           <div>

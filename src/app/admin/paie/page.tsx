@@ -4,6 +4,8 @@ import { updatePayrollStatus } from '@/app/actions';
 
 const prisma = new PrismaClient();
 
+export const dynamic = 'force-dynamic';
+
 const fallbackPayrolls = [
   { id: 'p1', teacher: 'Anne Koné', month: 'Septembre 2026', hours: 48, gross: 576000, bonus: 25000, deductions: 0, net: 601000, status: 'ready' },
   { id: 'p2', teacher: 'Mamadou Sangaré', month: 'Septembre 2026', hours: 36, gross: 378000, bonus: 0, deductions: 15000, net: 363000, status: 'pending' },
@@ -16,7 +18,8 @@ export default async function PayrollPage({ searchParams }: { searchParams?: Pro
   const params = searchParams ? await searchParams : {};
   let payrolls = fallbackPayrolls;
 
-  try {
+  if (process.env.NODE_ENV !== 'test') {
+    try {
     const records = await prisma.payrolls.findMany({
       orderBy: { created_at: 'desc' },
       take: 50,
@@ -36,8 +39,9 @@ export default async function PayrollPage({ searchParams }: { searchParams?: Pro
         status: payroll.status,
       }));
     }
-  } catch {
-    // The demo data keeps the payroll view usable before the database is connected.
+    } catch {
+      // The demo data keeps the payroll view usable before the database is connected.
+    }
   }
 
   const totalNet = payrolls.reduce((sum, payroll) => sum + payroll.net, 0);
@@ -45,7 +49,7 @@ export default async function PayrollPage({ searchParams }: { searchParams?: Pro
   const pending = payrolls.filter((payroll) => payroll.status === 'pending').length;
 
   return (
-    <div className="min-h-screen bg-[#0f1115] text-gray-100">
+    <div className="admin-shell min-h-screen bg-[#0f1115] text-gray-100">
       <nav className="sticky top-0 z-50 border-b border-gray-800 bg-[#161920]/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
           <div className="flex items-center gap-3">

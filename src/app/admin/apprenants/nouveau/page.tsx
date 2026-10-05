@@ -4,6 +4,8 @@ import { createStudent } from '@/app/actions';
 
 const prisma = new PrismaClient();
 
+export const dynamic = 'force-dynamic';
+
 const fallbackLevels = [
   { id: '', code: 'A1', label: 'A1 - Débutant' },
   { id: '', code: 'A2', label: 'A2 - Élémentaire' },
@@ -24,7 +26,7 @@ export default async function NewStudentPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0f1115] text-gray-100">
+    <div className="admin-shell min-h-screen bg-[#0f1115] text-gray-100">
       <nav className="border-b border-gray-800 bg-[#161920]">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-5">
           <div className="flex items-center gap-3">

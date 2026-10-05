@@ -3,6 +3,8 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+export const dynamic = 'force-dynamic';
+
 const fallbackAssessments = [
   { id: 'a1', student: 'Awa Diallo', level: 'B1', course: 'B1 - Intensif', score: 82, status: 'valide', date: '12 sept. 2026', comment: 'Bonne progression à l’oral.' },
   { id: 'a2', student: 'Moussa Traoré', level: 'B1', course: 'B1 - Oral', score: 74, status: 'en_cours', date: '10 sept. 2026', comment: 'Renforcer la compréhension orale.' },
@@ -19,7 +21,8 @@ const statusLabels: Record<string, string> = {
 export default async function AssessmentsPage() {
   let assessments = fallbackAssessments;
 
-  try {
+  if (process.env.NODE_ENV !== 'test') {
+    try {
     const records = await prisma.assessments.findMany({
       orderBy: { assessed_on: 'desc' },
       take: 50,
@@ -38,8 +41,9 @@ export default async function AssessmentsPage() {
         comment: assessment.comment ?? 'Aucun commentaire.',
       }));
     }
-  } catch {
-    // The demo data keeps the operational view available before database setup.
+    } catch {
+      // The demo data keeps the operational view available before database setup.
+    }
   }
 
   const average = Math.round(assessments.reduce((sum, assessment) => sum + assessment.score, 0) / assessments.length);
@@ -47,7 +51,7 @@ export default async function AssessmentsPage() {
   const followUp = assessments.filter((assessment) => assessment.status === 'renforcement').length;
 
   return (
-    <div className="min-h-screen bg-[#0f1115] text-gray-100">
+    <div className="admin-shell min-h-screen bg-[#0f1115] text-gray-100">
       <nav className="sticky top-0 z-50 border-b border-gray-800 bg-[#161920]/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
           <div className="flex items-center gap-3">

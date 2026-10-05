@@ -4,6 +4,8 @@ import { createAttendance } from '@/app/actions';
 
 const prisma = new PrismaClient();
 
+export const dynamic = 'force-dynamic';
+
 const statusLabels: Record<string, string> = {
   present: 'Présent',
   absent: 'Absent',
@@ -16,7 +18,8 @@ export default async function AttendancePage() {
   let courses: { id: string; title: string }[] = [];
   let records: { id: string; student: string; course: string; status: string; date: Date }[] = [];
 
-  try {
+  if (process.env.NODE_ENV !== 'test') {
+    try {
     const [studentRecords, courseRecords, attendanceRecords] = await Promise.all([
       prisma.students.findMany({ where: { status: { in: ['inscrit', 'actif'] } }, orderBy: { full_name: 'asc' }, select: { id: true, full_name: true } }),
       prisma.courses.findMany({ orderBy: { title: 'asc' }, select: { id: true, title: true } }),
@@ -25,15 +28,16 @@ export default async function AttendancePage() {
     students = studentRecords;
     courses = courseRecords;
     records = attendanceRecords.map((record) => ({ id: record.id, student: record.student.full_name, course: record.course.title, status: record.status, date: record.attended_on }));
-  } catch {
-    // The page remains available while the database is being configured.
+    } catch {
+      // The page remains available while the database is being configured.
+    }
   }
 
   const presentCount = records.filter((record) => record.status === 'present').length;
   const attendanceRate = records.length ? Math.round((presentCount / records.length) * 100) : 0;
 
   return (
-    <div className="min-h-screen bg-[#0f1115] text-gray-100">
+    <div className="admin-shell min-h-screen bg-[#0f1115] text-gray-100">
       <nav className="sticky top-0 z-50 border-b border-gray-800 bg-[#161920]/80 backdrop-blur-xl"><div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5"><div className="flex items-center gap-3"><div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500 to-red-600"><CalendarCheck2 className="h-5 w-5 text-white" /></div><div><h1 className="text-lg font-bold text-white">Suivi des présences</h1><p className="text-[10px] uppercase tracking-[0.2em] text-gray-400">Assiduité des apprenants</p></div></div><a href="/admin" className="inline-flex items-center gap-2 rounded-full border border-gray-700 bg-[#0f1115] px-4 py-2 text-sm text-gray-200 hover:border-gray-600"><ArrowLeft size={16} /> Retour admin</a></div></nav>
       <main className="mx-auto max-w-7xl px-6 py-10"><div className="mb-8"><p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-rose-400">Pédagogie</p><h2 className="text-3xl font-black text-white">Présences et assiduité</h2></div>
         <div className="mb-10 grid gap-5 md:grid-cols-3"><Metric icon={<CalendarCheck2 size={16} />} label="Taux de présence" value={`${attendanceRate}%`} /><Metric icon={<CheckCircle2 size={16} />} label="Présences enregistrées" value={presentCount} /><Metric icon={<GraduationCap size={16} />} label="Apprenants disponibles" value={students.length} /></div>

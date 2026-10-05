@@ -18,7 +18,7 @@ export default async function NewCoursePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0f1115] text-gray-100">
+    <div className="admin-shell min-h-screen bg-[#0f1115] text-gray-100">
       <nav className="border-b border-gray-800 bg-[#161920]"><div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-5"><div className="flex items-center gap-3"><div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600"><CalendarDays className="h-5 w-5 text-white" /></div><div><h1 className="text-lg font-bold text-white">Nouveau créneau</h1><p className="text-[10px] uppercase tracking-[0.2em] text-gray-400">Planification pédagogique</p></div></div><a href="/admin/planning" className="inline-flex items-center gap-2 rounded-full border border-gray-700 px-4 py-2 text-sm text-gray-200"><ArrowLeft size={16} /> Retour</a></div></nav>
       <main className="mx-auto max-w-4xl px-6 py-10"><div className="mb-8"><p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-cyan-400">Organisation</p><h2 className="text-3xl font-black text-white">Créer un cours</h2></div>
         <form action={createCourse} className="rounded-3xl border border-gray-800 bg-[#161920] p-6 md:p-8"><div className="grid gap-6 md:grid-cols-2">

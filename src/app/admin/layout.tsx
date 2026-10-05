@@ -1,4 +1,10 @@
 import '../globals.css';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
 export const metadata = {
   title: 'Admin Portal - Deutsch Pro',
@@ -12,7 +18,7 @@ export default function AdminLayout({
 }) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body className={inter.variable}>{children}</body>
     </html>
   );
 }
