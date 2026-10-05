@@ -30,7 +30,7 @@ export default function Gallery({ dict }: { dict?: any }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-outfit font-extrabold text-gray-900 mb-6"
+            className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6"
           >
             {dict?.title || 'Notre Centre de Formation'}
           </motion.h2>
@@ -67,7 +67,7 @@ export default function Gallery({ dict }: { dict?: any }) {
               
               {/* Optional caption on hover */}
               <div className="absolute bottom-0 left-0 w-full p-6 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                <span className="text-white font-bold text-lg font-outfit drop-shadow-md">
+                <span className="text-white font-bold text-lg font-display drop-shadow-md">
                   {image.alt}
                 </span>
               </div>

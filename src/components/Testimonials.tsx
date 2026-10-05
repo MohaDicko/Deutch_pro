@@ -18,7 +18,7 @@ export default function Testimonials({ dict }: { dict: any }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-outfit font-extrabold text-gray-900 mb-6"
+            className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6"
           >
             {dict?.testimonials?.title || 'Ce que disent nos étudiants'}
           </motion.h2>

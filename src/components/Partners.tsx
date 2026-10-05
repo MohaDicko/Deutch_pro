@@ -59,7 +59,7 @@ export default function Partners({ dict }: { dict?: any }) {
           <span className="text-red-600 font-bold uppercase tracking-wider text-sm mb-4 block">
             {dict?.badge || 'Partenaires & Équipe'}
           </span>
-          <h2 className="text-4xl md:text-5xl font-outfit font-extrabold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
             {dict?.title || 'Notre équipe en Allemagne'}
           </h2>
           <p className="text-lg text-gray-600">
@@ -86,7 +86,7 @@ export default function Partners({ dict }: { dict?: any }) {
                 )}
               </div>
 
-              <h3 className="text-xl font-bold text-gray-900 font-outfit mb-1">
+              <h3 className="text-xl font-bold text-gray-900 font-display mb-1">
                 {partner.name}
               </h3>
 

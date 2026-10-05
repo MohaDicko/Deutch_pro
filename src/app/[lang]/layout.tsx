@@ -1,16 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
 import { i18n, type Locale } from "@/i18n-config";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-});
 import "../globals.css";
 
 export async function generateMetadata({
@@ -46,7 +35,7 @@ export default async function RootLayout({
   const locale = lang as Locale;
   
   return (
-    <html lang={locale} className={`scroll-smooth ${inter.variable} ${outfit.variable}`}>
+    <html lang={locale} className="scroll-smooth">
       <body className={`font-sans antialiased text-gray-900 bg-white`}>
         {children}
       </body>

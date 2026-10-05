@@ -41,7 +41,7 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-red-600 to-red-800 shadow-lg shadow-red-200/60">
             <span className="text-lg font-black text-white">D</span>
           </div>
-          <span className="hidden font-outfit text-2xl font-black tracking-tight text-gray-900 sm:inline">
+          <span className="hidden font-display text-2xl font-bold tracking-tight text-gray-900 sm:inline">
             Deutsch Pro
           </span>
         </motion.div>
