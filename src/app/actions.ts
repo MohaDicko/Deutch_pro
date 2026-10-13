@@ -6,6 +6,8 @@ import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
+import { checkRateLimit } from '@/lib/rate-limit';
+
 const prisma = new PrismaClient();
 
 async function requireAdmin() {
@@ -27,10 +29,12 @@ async function requireAdmin() {
   const user = separator >= 0 ? credentials.slice(0, separator) : '';
   const password = separator >= 0 ? credentials.slice(separator + 1) : '';
 
-  const adminUsername = process.env.ADMIN_USERNAME || 'traore';
-  const adminPassword = process.env.ADMIN_PASSWORD || 'Traore@2025';
+  const adminUsername = process.env.ADMIN_USERNAME;
+  const adminPassword = process.env.ADMIN_PASSWORD;
 
   if (
+    !adminUsername ||
+    !adminPassword ||
     user !== adminUsername ||
     password !== adminPassword
   ) {
@@ -45,7 +49,7 @@ const contactSchema = z.object({
   email: z.string().email().max(100),
   phone: z.string().max(30).optional().nullable(),
   message: z.string().min(1).max(2000),
-});
+}).strict();
 
 const b2bSchema = z.object({
   company: z.string().min(1).max(150),
@@ -55,7 +59,7 @@ const b2bSchema = z.object({
   sector: z.string().max(100),
   candidates_count: z.string().max(50),
   message: z.string().max(2000).optional().nullable(),
-});
+}).strict();
 
 const studentSchema = z.object({
   full_name: z.string().min(2).max(120),
@@ -63,7 +67,7 @@ const studentSchema = z.object({
   phone: z.string().max(30),
   objective: z.string().max(300),
   level_id: z.string().uuid().optional().or(z.literal('')),
-});
+}).strict();
 
 const teacherSchema = z.object({
   full_name: z.string().min(2).max(120),
@@ -72,14 +76,14 @@ const teacherSchema = z.object({
   specialization: z.string().max(200),
   hourly_rate: z.coerce.number().min(0).max(1000000),
   status: z.enum(['permanent', 'vacataire', 'independant', 'intermittent']),
-});
+}).strict();
 
 const assessmentSchema = z.object({
   student_id: z.string().uuid(),
   total_score: z.coerce.number().min(0).max(100),
   status: z.enum(['en_cours', 'valide', 'refuse', 'renforcement']),
   comment: z.string().max(2000),
-});
+}).strict();
 
 const attendanceSchema = z.object({
   student_id: z.string().uuid(),
@@ -87,7 +91,7 @@ const attendanceSchema = z.object({
   attended_on: z.coerce.date(),
   status: z.enum(['present', 'absent', 'retard', 'excuse']),
   note: z.string().max(500),
-});
+}).strict();
 
 const courseSchema = z.object({
   title: z.string().min(2).max(150),
@@ -96,7 +100,7 @@ const courseSchema = z.object({
   room: z.string().max(80),
   teacher_id: z.string().uuid().optional().or(z.literal('')),
   level_id: z.string().uuid().optional().or(z.literal('')),
-});
+}).strict();
 
 const payrollStatusSchema = z.enum(['pending', 'ready', 'paid']);
 
@@ -106,10 +110,17 @@ const payrollSchema = z.object({
   hours_worked: z.coerce.number().min(0).max(1000),
   bonus: z.coerce.number().min(0).max(100000000),
   deductions: z.coerce.number().min(0).max(100000000),
-});
+}).strict();
 
 export async function saveContact(formData: FormData) {
   try {
+    // Rate limit check: max 5 submissions per 10 minutes per IP
+    const clientIp = (await headers()).get('x-forwarded-for')?.split(',')[0].trim() || '127.0.0.1';
+    const rateCheck = checkRateLimit(`contact_submit:${clientIp}`, { limit: 5, windowMs: 600000 });
+    if (!rateCheck.success) {
+      return { error: 'Trop de requêtes. Veuillez patienter avant de renvoyer un message.' };
+    }
+
     // Honeypot check
     const botField = formData.get('bot_field');
     if (botField !== null && botField !== '') {
@@ -146,6 +157,13 @@ export async function saveContact(formData: FormData) {
 
 export async function saveB2bRequest(formData: FormData) {
   try {
+    // Rate limit check: max 5 submissions per 10 minutes per IP
+    const clientIp = (await headers()).get('x-forwarded-for')?.split(',')[0].trim() || '127.0.0.1';
+    const rateCheck = checkRateLimit(`b2b_submit:${clientIp}`, { limit: 5, windowMs: 600000 });
+    if (!rateCheck.success) {
+      return { error: 'Trop de requêtes. Veuillez patienter avant de renvoyer une demande.' };
+    }
+
     // Honeypot check
     const botField = formData.get('bot_field');
     if (botField !== null && botField !== '') {

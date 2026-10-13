@@ -10,6 +10,8 @@ function getLocale(): string {
   return i18n.defaultLocale;
 }
 
+import { checkRateLimit } from './lib/rate-limit';
+
 export function proxy(req: NextRequest) {
   const url = req.nextUrl;
 
@@ -17,8 +19,27 @@ export function proxy(req: NextRequest) {
     return NextResponse.redirect(new URL('/admin', req.url));
   }
   
-  // Basic Auth for Admin routes
+  // Basic Auth & Rate Limiting for Admin routes
   if (url.pathname.startsWith('/admin')) {
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() || '127.0.0.1';
+    const rateCheck = checkRateLimit(`admin_auth:${ip}`, { limit: 10, windowMs: 600000 }); // 10 attempts per 10 min
+
+    if (!rateCheck.success) {
+      return new NextResponse(
+        JSON.stringify({
+          error: 'Trop de tentatives de connexion. Veuillez réessayer plus tard.',
+          retryAfter: rateCheck.resetInSeconds,
+        }),
+        {
+          status: 429,
+          headers: {
+            'Content-Type': 'application/json',
+            'Retry-After': String(rateCheck.resetInSeconds),
+          },
+        }
+      );
+    }
+
     const basicAuth = req.headers.get('authorization');
     if (basicAuth) {
       const [scheme, authValue] = basicAuth.split(' ');
@@ -33,8 +54,8 @@ export function proxy(req: NextRequest) {
         }
       }
 
-      const validUser = process.env.ADMIN_USERNAME || 'traore';
-      const validPass = process.env.ADMIN_PASSWORD || 'Traore@2025';
+      const validUser = process.env.ADMIN_USERNAME;
+      const validPass = process.env.ADMIN_PASSWORD;
 
       if (validUser && validPass && user === validUser && pwd === validPass) {
         return NextResponse.next();
