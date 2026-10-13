@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Quote } from 'lucide-react';
+import { Quote, Star, CheckCircle, Sparkles } from 'lucide-react';
 
 export default function Testimonials({ dict }: { dict: any }) {
   const testimonials = Array.isArray(dict?.testimonials?.list)
@@ -11,50 +11,76 @@ export default function Testimonials({ dict }: { dict: any }) {
       : [];
 
   return (
-    <section id="temoignages" className="py-32 bg-gray-50 border-t border-gray-100">
-      <div className="container mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-20">
+    <section id="temoignages" className="relative py-28 sm:py-36 bg-white overflow-hidden">
+      {/* Ambient background blur */}
+      <div className="absolute top-1/2 right-0 h-96 w-96 rounded-full bg-amber-400/5 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-10 h-80 w-80 rounded-full bg-red-500/5 blur-3xl pointer-events-none" />
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200/80 bg-amber-50/70 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.22em] text-amber-800 font-display"
+          >
+            <Sparkles size={13} className="text-amber-500" />
+            <span>Retours d'Apprenants</span>
+          </motion.div>
+
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-display font-black tracking-[-0.035em] text-slate-950 mb-6"
           >
             {dict?.testimonials?.title || 'Ce que disent nos étudiants'}
           </motion.h2>
+
+          <p className="font-sans text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Des parcours concrets, de la découverte de la langue allemande jusqu’à l’obtention du visa et l'installation en Allemagne.
+          </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-7 max-w-7xl mx-auto">
           {testimonials.map((testimonial: any, idx: number) => (
             <motion.div 
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.2 }}
-              className="bg-white p-10 rounded-[2rem] shadow-lg border border-gray-100 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-900/5 transition-all duration-300 relative group"
+              transition={{ delay: idx * 0.15 }}
+              className="bg-white p-8 sm:p-10 rounded-[2.2rem] shadow-[0_15px_40px_-15px_rgba(15,23,42,0.06)] border border-slate-200/80 hover:-translate-y-2 hover:shadow-[0_25px_60px_-12px_rgba(15,23,42,0.12)] hover:border-slate-300 transition-all duration-400 relative group flex flex-col justify-between"
             >
-              <Quote className="absolute top-8 right-8 text-red-100 w-16 h-16 -z-10 group-hover:text-red-50 transition-colors" />
+              <Quote className="absolute top-8 right-8 text-slate-100 w-16 h-16 group-hover:text-red-50 transition-colors" />
               
-              <div className="flex gap-1 text-yellow-400 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+              <div>
+                {/* 5 Golden Stars */}
+                <div className="flex gap-1 text-amber-400 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={18} className="fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                
+                {/* Quote Text */}
+                <p className="font-sans text-slate-700 text-base sm:text-lg leading-relaxed italic mb-8 relative z-10">
+                  {testimonial.quote ? `“${testimonial.quote.replace(/^"|"$/g, '')}”` : '“Merci pour votre confiance.”'}
+                </p>
               </div>
               
-              <p className="text-gray-700 text-lg leading-relaxed italic mb-8 relative z-10">
-                {testimonial.quote ? `"${testimonial.quote.replace(/^"|"$/g, '')}"` : '"Merci pour votre confiance."'}
-              </p>
-              
-              <div className="flex items-center gap-4 mt-auto">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white font-bold text-lg shadow-md">
+              {/* Author Info */}
+              <div className="flex items-center gap-4 pt-6 border-t border-slate-100">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-600 to-rose-700 flex items-center justify-center text-white font-display font-extrabold text-lg shadow-md shadow-red-500/20">
                   {(testimonial.author || 'A').charAt(0)}
                 </div>
                 <div>
-                  <div className="font-bold text-gray-900">{testimonial.author || 'Étudiant'}</div>
-                  <div className="text-sm text-red-600 font-medium">{testimonial.role || 'Apprenant'}</div>
+                  <div className="font-display font-bold text-slate-900 text-base flex items-center gap-1.5">
+                    {testimonial.author || 'Étudiant'}
+                    <CheckCircle size={14} className="text-emerald-500" />
+                  </div>
+                  <div className="text-xs text-red-600 font-bold uppercase tracking-wider font-display">
+                    {testimonial.role || 'Apprenant'}
+                  </div>
                 </div>
               </div>
             </motion.div>

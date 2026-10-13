@@ -2,7 +2,9 @@ import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import OfficialTrustStrip from '@/components/OfficialTrustStrip';
 import Services from '@/components/Services';
+import CampusLife from '@/components/CampusLife';
 import B2B from '@/components/B2B';
 import Niveaux from '@/components/Niveaux';
 import Testimonials from '@/components/Testimonials';
@@ -24,7 +26,9 @@ export default async function Home({
     <main className="min-h-screen">
       <Header dict={dict.header} lang={locale} />
       <Hero dict={dict.hero} />
+      <OfficialTrustStrip lang={locale} />
       <Services dict={dict.services} />
+      <CampusLife lang={locale} />
       <B2B dict={dict.b2b} />
       <Niveaux dict={dict.niveaux} />
       <Testimonials dict={dict} />

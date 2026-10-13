@@ -1,35 +1,35 @@
 'use client';
 import { motion } from 'framer-motion';
-import { BookOpen, Users, Briefcase, GraduationCap } from 'lucide-react';
+import { BookOpen, Users, Briefcase, GraduationCap, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 
 const services = [
   {
-    title: "Cours de langue de A1 à B2",
-    description: 'Progression structurée avec un accompagnement pédagogique régulier, du matériel audio-visuel et des mises en situation concrètes.',
     icon: BookOpen,
-    color: 'from-red-500 to-red-600',
-    bg: 'bg-red-50'
+    color: 'from-red-500 to-rose-600',
+    shadowColor: 'shadow-red-500/20',
+    bg: 'bg-red-50',
+    tag: 'A1 → B2 Complet'
   },
   {
-    title: 'Préparation aux examens',
-    description: 'Entraînement ciblé au Goethe, aux épreuves orales et écrites, avec correction personnalisée et simulations réalistes.',
     icon: Briefcase,
-    color: 'from-blue-500 to-blue-600',
-    bg: 'bg-blue-50'
+    color: 'from-amber-500 to-amber-600',
+    shadowColor: 'shadow-amber-500/20',
+    bg: 'bg-amber-50',
+    tag: '100% Goethe'
   },
   {
-    title: 'Allemand professionnel',
-    description: 'Vocabulaire utile au travail, aux entretiens, aux échanges professionnels et à la communication sur le terrain.',
     icon: GraduationCap,
-    color: 'from-green-500 to-green-600',
-    bg: 'bg-green-50'
+    color: 'from-blue-600 to-indigo-600',
+    shadowColor: 'shadow-blue-500/20',
+    bg: 'bg-blue-50',
+    tag: 'Carrière & Emploi'
   },
   {
-    title: 'Visa et intégration',
-    description: 'Accompagnement dans la préparation du projet, la démarche administrative et l’intégration sur le plan culturel et professionnel.',
     icon: Users,
-    color: 'from-purple-500 to-purple-600',
-    bg: 'bg-purple-50'
+    color: 'from-emerald-500 to-teal-600',
+    shadowColor: 'shadow-emerald-500/20',
+    bg: 'bg-emerald-50',
+    tag: 'Visa & Insertion'
   }
 ];
 
@@ -37,59 +37,91 @@ export default function Services({ dict }: { dict: any }) {
   const serviceKeys = ['coursIntensifs', 'preparation', 'pro', 'integration'];
 
   return (
-    <section id="services" className="relative py-32 bg-white">
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-red-50/80 to-transparent" />
+    <section id="services" className="relative py-28 sm:py-36 bg-white overflow-hidden">
+      {/* Decorative background accents */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#fafbfe] to-transparent" />
+      <div className="absolute top-1/2 left-0 h-96 w-96 rounded-full bg-red-500/5 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-0 h-96 w-96 rounded-full bg-amber-400/5 blur-3xl pointer-events-none" />
 
-      <div className="container relative z-10 mx-auto px-6">
-        <div className="mx-auto mb-20 max-w-2xl text-center">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        {/* Section Header */}
+        <div className="mx-auto mb-20 max-w-3xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-4 block text-sm font-bold uppercase tracking-[0.2em] text-red-600"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50/70 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.22em] text-red-700 font-display"
           >
+            <span className="h-1.5 w-1.5 rounded-full bg-red-600" />
             {dict.badge}
-          </motion.span>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mb-6 text-4xl font-black tracking-[-0.05em] text-gray-900 md:text-5xl"
+            className="mb-6 font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-[-0.035em] text-slate-950"
           >
             {dict.title}
           </motion.h2>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-gray-600"
+            className="font-sans text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed"
           >
             {dict.subtitle}
           </motion.p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            const key = serviceKeys[index];
+        {/* Services Cards Grid */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {serviceKeys.map((key, index) => {
+            const meta = services[index];
+            const Icon = meta.icon;
+            const cardData = dict.cards[key];
+
             return (
               <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
+                key={key}
+                initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-[2rem] border border-gray-200 bg-white p-8 shadow-[0_20px_40px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white p-7 sm:p-8 shadow-[0_12px_40px_-15px_rgba(15,23,42,0.06)] transition-all duration-400 hover:-translate-y-2 hover:border-slate-300 hover:shadow-[0_24px_50px_-12px_rgba(15,23,42,0.12)]"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 transition-opacity duration-500 group-hover:opacity-[0.05]`} />
+                {/* Background Ambient Glow on Hover */}
+                <div className={`absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br ${meta.color} opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-15`} />
+
                 <div className="relative z-10">
-                  <div className={`mb-8 flex h-16 w-16 items-center justify-center rounded-2xl ${service.bg} shadow-inner`}>
-                    <Icon size={30} className="text-red-600" />
+                  {/* Top Bar with Icon and Tag */}
+                  <div className="mb-7 flex items-center justify-between">
+                    <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${meta.color} text-white shadow-lg ${meta.shadowColor} transition-transform duration-300 group-hover:scale-105`}>
+                      <Icon size={26} />
+                    </div>
+
+                    <span className="rounded-full border border-slate-200/80 bg-slate-50 px-3 py-1 text-[11px] font-bold text-slate-600 font-display">
+                      {meta.tag}
+                    </span>
                   </div>
-                  <h3 className="mb-4 text-xl font-bold text-gray-900">{dict.cards[key].title}</h3>
-                  <p className="leading-relaxed text-gray-600">{dict.cards[key].desc}</p>
+
+                  {/* Card Title & Desc */}
+                  <h3 className="mb-3 font-display text-xl font-bold tracking-tight text-slate-900 group-hover:text-red-600 transition-colors duration-200">
+                    {cardData.title}
+                  </h3>
+
+                  <p className="font-sans text-sm leading-relaxed text-slate-600">
+                    {cardData.desc}
+                  </p>
+                </div>
+
+                {/* Bottom Micro Action */}
+                <div className="relative z-10 mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400 group-hover:text-red-600 transition-colors">
+                  <span className="font-display">Programme certifié</span>
+                  <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </motion.div>
             );
