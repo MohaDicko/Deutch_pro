@@ -45,7 +45,7 @@ export default function OfficialTrustStrip({ lang = 'fr' }: { lang?: string }) {
                   : 'Cadre Pédagogique Officiel & Coopération Éducative'}
                 <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-extrabold text-emerald-700 border border-emerald-200 font-display">
                   <CheckCircle2 size={11} />
-                  Agréé & Vérifié
+                  {isDe ? 'Anerkannt & Geprüft' : 'Agréé & Vérifié'}
                 </span>
               </p>
               <p className="text-xs text-slate-500 font-medium">
@@ -58,7 +58,7 @@ export default function OfficialTrustStrip({ lang = 'fr' }: { lang?: string }) {
 
           <div className="flex items-center gap-3 text-xs font-bold text-slate-600 font-display">
             <span className="rounded-xl bg-slate-50 px-3 py-1.5 border border-slate-200 text-slate-800">
-              🏛️ Enregistrement Officiel Bamako
+              {isDe ? '🏛️ Offizielle Registrierung Bamako' : '🏛️ Enregistrement Officiel Bamako'}
             </span>
           </div>
         </div>

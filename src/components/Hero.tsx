@@ -4,15 +4,31 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, BookOpen, Video, BriefcaseBusiness, CheckCircle2, Award, Sparkles, Compass, ShieldCheck, ChevronRight } from 'lucide-react';
 
-export default function Hero({ dict }: { dict: any }) {
+export default function Hero({ dict, lang = 'de' }: { dict: any; lang?: string }) {
   const [activePhotoIdx, setActivePhotoIdx] = useState(0);
+  const isDe = lang === 'de';
 
   const heroPhotos = [
-    { src: '/images/formation/etudiants-salle-de-classe.jpeg', title: 'Élèves sur les bancs de classe — Deutsch Pro' },
-    { src: '/images/formation/cours-en-salle.jpeg', title: 'Cours magistral en salle' },
-    { src: '/images/formation/etudiante-concentree.jpeg', title: 'Étude & rigueur individuelle' },
-    { src: '/images/formation/revision-groupe-maison.jpeg', title: 'Binômes de révision intensive' },
-    { src: '/images/formation/travail-groupe-exterieur.jpeg', title: 'Ateliers de conversation orale' }
+    { 
+      src: '/images/formation/etudiants-salle-de-classe.jpeg', 
+      title: isDe ? 'Schüler im modern ausgestatteten Unterrichtsraum' : 'Élèves sur les bancs de classe — Deutsch Pro' 
+    },
+    { 
+      src: '/images/formation/cours-en-salle.jpeg', 
+      title: isDe ? 'Interaktiver Präsenzunterricht' : 'Cours magistral en salle' 
+    },
+    { 
+      src: '/images/formation/etudiante-concentree.jpeg', 
+      title: isDe ? 'Individuelles & fokussiertes Lernen' : 'Étude & rigueur individuelle' 
+    },
+    { 
+      src: '/images/formation/revision-groupe-maison.jpeg', 
+      title: isDe ? 'Intensive Tandem-Lernpaare' : 'Binômes de révision intensive' 
+    },
+    { 
+      src: '/images/formation/travail-groupe-exterieur.jpeg', 
+      title: isDe ? 'Mündliche Konversationsworkshops' : 'Ateliers de conversation orale' 
+    }
   ];
 
   const containerVariants = {
@@ -109,7 +125,7 @@ export default function Hero({ dict }: { dict: any }) {
                 href="#campus"
                 className="group inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200/90 bg-white/90 px-6 py-4 text-base font-bold text-slate-800 shadow-sm transition-all duration-300 hover:border-slate-300 hover:bg-slate-50 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 font-display"
               >
-                <span>📸 Voir les 5 photos du campus</span>
+                <span>{isDe ? '📸 5 Campus-Fotos ansehen' : '📸 Voir les 5 photos du campus'}</span>
               </a>
 
               <a
@@ -124,17 +140,17 @@ export default function Hero({ dict }: { dict: any }) {
             <motion.div variants={itemVariants} className="mb-8 flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-600">
               <span className="flex items-center gap-1.5 text-slate-900">
                 <ShieldCheck size={16} className="text-emerald-600" />
-                <span>Norme Européenne CECRL A1-B2</span>
+                <span>{isDe ? 'Europäischer Referenzrahmen GER A1-B2' : 'Norme Européenne CECRL A1-B2'}</span>
               </span>
               <span className="text-slate-300">•</span>
               <span className="flex items-center gap-1.5 text-slate-900">
                 <Award size={16} className="text-amber-600" />
-                <span>100% Goethe-Zertifikat Validé</span>
+                <span>{isDe ? '100% Goethe-Zertifikat Validiert' : '100% Goethe-Zertifikat Validé'}</span>
               </span>
               <span className="text-slate-300">•</span>
               <span className="flex items-center gap-1.5 text-slate-900">
                 <Video size={16} className="text-blue-600" />
-                <span>Matériel audio-visuel officiel</span>
+                <span>{isDe ? 'Offizielles Audiomaterial' : 'Matériel audio-visuel officiel'}</span>
               </span>
             </motion.div>
 
@@ -149,7 +165,7 @@ export default function Hero({ dict }: { dict: any }) {
                     <CheckCircle2 size={16} />
                   </div>
                   <span className="font-display text-xs font-extrabold uppercase tracking-wider text-slate-900">
-                    Pratique
+                    {isDe ? 'Praxis' : 'Pratique'}
                   </span>
                 </div>
                 <p className="text-xs font-medium text-slate-500 leading-snug">{dict.stats.students}</p>
@@ -173,7 +189,7 @@ export default function Hero({ dict }: { dict: any }) {
                     <BriefcaseBusiness size={16} />
                   </div>
                   <span className="font-display text-xs font-extrabold uppercase tracking-wider text-slate-900">
-                    Emploi
+                    {isDe ? 'Karriere' : 'Emploi'}
                   </span>
                 </div>
                 <p className="text-xs font-medium text-slate-500 leading-snug">{dict.stats.success}</p>

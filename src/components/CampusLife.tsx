@@ -4,91 +4,110 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Award, Users, BookOpen, Sparkles, CheckCircle2, Headphones, Layers, FileCheck } from 'lucide-react';
 
-const PHOTOS = [
-  {
-    src: '/images/formation/cours-en-salle.jpeg',
-    title: 'Enseignement Magistral & Méthode CECRL',
-    category: 'Cours Magistral',
-    tag: 'Accrédité A1-B2',
-    description: 'Cours structuré dispensé par nos enseignants expérimentés, articulé autour des 4 compétences fondamentales : écouter, lire, écrire et parler.',
-    metric: '100% Conforme Goethe'
-  },
-  {
-    src: '/images/formation/etudiants-salle-de-classe.jpeg',
-    title: 'Salle Multimédia & Travaux Interactifs',
-    category: 'Salles Multimédia',
-    tag: 'Haute Technologie',
-    description: 'Espace d’apprentissage climatisé équipé de systèmes audio-visuels haute fidélité pour une assimilation optimale de la phonétique et des dialogues réels.',
-    metric: 'Supports Audio Certifiés'
-  },
-  {
-    src: '/images/formation/etudiante-concentree.jpeg',
-    title: 'Rigueur Méthodique & Suivi Individuel',
-    category: 'Étude Dirigée',
-    tag: 'Excellence Académique',
-    description: 'Encadrement personnalisé avec exercices ciblés pour consolider la grammaire, la syntaxe allemande et la rédaction d’écrits formels.',
-    metric: 'Progression Individualisée'
-  },
-  {
-    src: '/images/formation/revision-groupe-maison.jpeg',
-    title: 'Groupes de Travail & Entraînement Oral',
-    category: 'Binômes de Révision',
-    tag: 'Entraide & Pratique',
-    description: 'Simulations d’examens en binômes et entraînements réguliers aux épreuves orales (Sprechen) pour développer l’aisance et la rapidité de réponse.',
-    metric: 'Simulations Réelles'
-  },
-  {
-    src: '/images/formation/travail-groupe-exterieur.jpeg',
-    title: 'Ateliers Conversationnels & Immersion',
-    category: 'Pratique Orale',
-    tag: 'Désinhibition Linguistique',
-    description: 'Séances d’expression libre et ateliers thématiques sur la culture et le quotidien en Allemagne pour préparer une intégration harmonieuse.',
-    metric: 'Immersion Réelle'
-  }
-];
-
-const GUARANTEES = [
-  {
-    icon: Users,
-    title: 'Effectifs Limités',
-    subtitle: '12 à 15 apprenants max par classe',
-    desc: 'Un taux d’encadrement garanti pour que chaque étudiant participe activement et reçoive des corrections détaillées.'
-  },
-  {
-    icon: Headphones,
-    title: 'Audio Conforme Goethe',
-    subtitle: 'Équipement haute fidélité',
-    desc: 'Matériel audio étalonné sur les conditions réelles d’examen pour s’entraîner fidèlement aux épreuves de Hören.'
-  },
-  {
-    icon: BookOpen,
-    title: 'Manuels Homologués',
-    subtitle: 'Éditions allemandes officielles',
-    desc: 'Utilisation exclusive des manuels de référence (Hueber, Klett, Cornelsen) validés par les instituts européens.'
-  },
-  {
-    icon: FileCheck,
-    title: 'Suivi & Traçabilité',
-    subtitle: 'Portail pédagogique numérique',
-    desc: 'Émargement régulier, relevés de notes transparents et attestations vérifiables pour les dossiers consulaires.'
-  }
-];
-
-export default function CampusLife({ lang = 'fr' }: { lang?: string }) {
+export default function CampusLife({ lang = 'de' }: { lang?: string }) {
   const [activeFilter, setActiveFilter] = useState('all');
+  const isDe = lang === 'de';
+
+  const photos = [
+    {
+      src: '/images/formation/etudiants-salle-de-classe.jpeg',
+      title: isDe ? 'Schüler im modern ausgestatteten Unterrichtsraum' : 'Élèves sur les bancs de classe — Salle multimédia',
+      category: 'Salles Multimédia',
+      tag: isDe ? 'Modernste Technik' : 'Haute Technologie',
+      description: isDe 
+        ? 'Klimatisierter Lernraum mit modernen audiovisuellen Systemen für optimale Phonetik und realitätsnahe Dialoge.'
+        : 'Espace d’apprentissage climatisé équipé de systèmes audio-visuels haute fidélité pour une assimilation optimale de la phonétique et des dialogues réels.',
+      metric: isDe ? 'Zertifizierte Audiomittel' : 'Supports Audio Certifiés'
+    },
+    {
+      src: '/images/formation/cours-en-salle.jpeg',
+      title: isDe ? 'Präsenzunterricht & GER-Methodik' : 'Enseignement Magistral & Méthode CECRL',
+      category: 'Cours Magistral',
+      tag: isDe ? 'Akkreditiert A1-B2' : 'Accrédité A1-B2',
+      description: isDe 
+        ? 'Strukturierter Unterricht durch erfahrene Dozenten für alle 4 Kernkompetenzen: Hören, Lesen, Schreiben und Sprechen.'
+        : 'Cours structuré dispensé par nos enseignants expérimentés, articulé autour des 4 compétences fondamentales : écouter, lire, écrire et parler.',
+      metric: isDe ? '100% Goethe-konform' : '100% Conforme Goethe'
+    },
+    {
+      src: '/images/formation/etudiante-concentree.jpeg',
+      title: isDe ? 'Individuelle Betreuung & akademische Disziplin' : 'Rigueur Méthodique & Suivi Individuel',
+      category: 'Étude Dirigée',
+      tag: isDe ? 'Akademische Exzellenz' : 'Excellence Académique',
+      description: isDe 
+        ? 'Personalisierte Förderung zur Festigung deutscher Grammatik, Satzbau und formaler Schriftkompetenz.'
+        : 'Encadrement personnalisé avec exercices ciblés pour consolider la grammaire, la syntaxe allemande et la rédaction d’écrits formels.',
+      metric: isDe ? 'Individueller Lernfortschritt' : 'Progression Individualisée'
+    },
+    {
+      src: '/images/formation/revision-groupe-maison.jpeg',
+      title: isDe ? 'Intensive Prüfungsvorbereitung in Tandems' : 'Groupes de Travail & Entraînement Oral',
+      category: 'Binômes de Révision',
+      tag: isDe ? 'Teamarbeit & Praxis' : 'Entraide & Pratique',
+      description: isDe 
+        ? 'Regelmäßige Prüfungssimulationen zu zweit und Vorbereitung auf die mündliche Prüfung (Sprechen).'
+        : 'Simulations d’examens en binômes et entraînements réguliers aux épreuves orales (Sprechen) pour développer l’aisance et la rapidité de réponse.',
+      metric: isDe ? 'Echte Simulationen' : 'Simulations Réelles'
+    },
+    {
+      src: '/images/formation/travail-groupe-exterieur.jpeg',
+      title: isDe ? 'Konversationsworkshops & Kulturelle Immersion' : 'Ateliers Conversationnels & Immersion',
+      category: 'Pratique Orale',
+      tag: isDe ? 'Freies Sprechen' : 'Désinhibition Linguistique',
+      description: isDe 
+        ? 'Freie Rede und thematische Workshops über Alltag und Kultur in Deutschland für eine reibungslose Integration.'
+        : 'Séances d’expression libre et ateliers thématiques sur la culture et le quotidien en Allemagne pour préparer une intégration harmonieuse.',
+      metric: isDe ? 'Reale Immersion' : 'Immersion Réelle'
+    }
+  ];
+
+  const guarantees = [
+    {
+      icon: Users,
+      title: isDe ? 'Kleine Lerngruppen' : 'Effectifs Limités',
+      subtitle: isDe ? 'Maximal 12 bis 15 Teilnehmer' : '12 à 15 apprenants max par classe',
+      desc: isDe 
+        ? 'Garantiert aktive Beteiligung und individuelle Korrekturen für jeden Schüler.'
+        : 'Un taux d’encadrement garanti pour que chaque étudiant participe activement et reçoive des corrections détaillées.'
+    },
+    {
+      icon: Headphones,
+      title: isDe ? 'Goethe-konforme Audiotechnik' : 'Audio Conforme Goethe',
+      subtitle: isDe ? 'High-Fidelity Akustik' : 'Équipement haute fidélité',
+      desc: isDe 
+        ? 'Audiomaterial nach offiziellen Prüfungsstandards für realistische Hörverstehens-Übungen.'
+        : 'Matériel audio étalonné sur les conditions réelles d’examen pour s’entraîner fidèlement aux épreuves de Hören.'
+    },
+    {
+      icon: BookOpen,
+      title: isDe ? 'Anerkannte Lehrwerke' : 'Manuels Homologués',
+      subtitle: isDe ? 'Originale deutsche Verlage' : 'Éditions allemandes officielles',
+      desc: isDe 
+        ? 'Ausschließliche Verwendung anerkannter Lehrwerke (Hueber, Klett, Cornelsen).'
+        : 'Utilisation exclusive des manuels de référence (Hueber, Klett, Cornelsen) validés par les instituts européens.'
+    },
+    {
+      icon: FileCheck,
+      title: isDe ? 'Transparente Leistungsnachweise' : 'Suivi & Traçabilité',
+      subtitle: isDe ? 'Digitales Lernportal' : 'Portail pédagogique numérique',
+      desc: isDe 
+        ? 'Lückenlose Anwesenheitserfassung und verifizierbare Zeugnisse für Konsulate und Arbeitgeber.'
+        : 'Émargement régulier, relevés de notes transparents et attestations vérifiables pour les dossiers consulaires.'
+    }
+  ];
 
   const categories = [
-    { id: 'all', label: lang === 'de' ? 'Alle Fotos' : 'Tous nos espaces' },
-    { id: 'Cours Magistral', label: lang === 'de' ? 'Unterricht' : 'Cours magistral' },
-    { id: 'Salles Multimédia', label: lang === 'de' ? 'Multimediaräume' : 'Salles multimédia' },
-    { id: 'Étude Dirigée', label: lang === 'de' ? 'Individuelles Lernen' : 'Étude individuelle' },
-    { id: 'Binômes de Révision', label: lang === 'de' ? 'Prüfungsvorbereitung' : 'Révisions dirigées' },
-    { id: 'Pratique Orale', label: lang === 'de' ? 'Sprachpraxis' : 'Pratique orale' }
+    { id: 'all', label: isDe ? 'Alle Fotos' : 'Tous nos espaces' },
+    { id: 'Salles Multimédia', label: isDe ? 'Multimediaräume' : 'Salles multimédia' },
+    { id: 'Cours Magistral', label: isDe ? 'Unterricht' : 'Cours magistral' },
+    { id: 'Étude Dirigée', label: isDe ? 'Individuelles Lernen' : 'Étude individuelle' },
+    { id: 'Binômes de Révision', label: isDe ? 'Prüfungsvorbereitung' : 'Révisions dirigées' },
+    { id: 'Pratique Orale', label: isDe ? 'Sprachpraxis' : 'Pratique orale' }
   ];
 
   const filteredPhotos = activeFilter === 'all' 
-    ? PHOTOS 
-    : PHOTOS.filter(p => p.category === activeFilter);
+    ? photos 
+    : photos.filter(p => p.category === activeFilter);
 
   return (
     <section id="campus" className="relative py-28 sm:py-36 bg-[#f8fafc] border-t border-slate-200/80 overflow-hidden">
@@ -199,7 +218,9 @@ export default function CampusLife({ lang = 'fr' }: { lang?: string }) {
                   <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-700">
                     <div className="flex items-center gap-1.5 text-emerald-700">
                       <CheckCircle2 size={15} />
-                      <span className="font-display">Conforme aux standards d'examen</span>
+                      <span className="font-display">
+                        {isDe ? 'Entspricht Prüfungsstandards' : "Conforme aux standards d'examen"}
+                      </span>
                     </div>
                     <span className="text-slate-400 font-display">Campus Bamako</span>
                   </div>
@@ -213,15 +234,15 @@ export default function CampusLife({ lang = 'fr' }: { lang?: string }) {
         <div className="rounded-[2.5rem] border border-slate-200/90 bg-white p-8 sm:p-12 shadow-[0_20px_50px_-15px_rgba(15,23,42,0.07)]">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-extrabold uppercase tracking-[0.22em] text-red-600 font-display block mb-2">
-              Charte Pédagogique Officielle
+              {isDe ? 'Offizielle Lehrcharta' : 'Charte Pédagogique Officielle'}
             </span>
             <h3 className="font-display text-2xl sm:text-3xl font-black text-slate-950">
-              4 Garanties Académiques & Consistantes
+              {isDe ? '4 Akademische Qualitätsgarantien' : '4 Garanties Académiques & Consistantes'}
             </h3>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {GUARANTEES.map((g, i) => {
+            {guarantees.map((g, i) => {
               const Icon = g.icon;
               return (
                 <div 

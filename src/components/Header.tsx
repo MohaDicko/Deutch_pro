@@ -43,16 +43,28 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
               <span>🇲🇱</span>
               <span className="text-slate-500">•</span>
               <span>🇩🇪</span>
-              <span className="tracking-wide">République du Mali — Coopération Éducative Allemagne</span>
+              <span className="tracking-wide">
+                {lang === 'de' 
+                  ? 'Republik Mali — Bildungskooperation Deutschland' 
+                  : 'République du Mali — Coopération Éducative Allemagne'}
+              </span>
             </div>
             <span className="text-slate-600">|</span>
-            <span className="text-slate-400 font-medium">Centre Agréé de Langue Allemande • CECRL A1 à B2</span>
+            <span className="text-slate-400 font-medium">
+              {lang === 'de' 
+                ? 'Anerkanntes deutsches Sprachzentrum • GER A1 bis B2' 
+                : 'Centre Agréé de Langue Allemande • CECRL A1 à B2'}
+            </span>
           </div>
 
           <div className="flex items-center gap-4 text-xs font-semibold">
             <span className="text-amber-300 font-display flex items-center gap-1">
               <span>🏛️</span>
-              <span>Préparation Officielle Goethe-Zertifikat</span>
+              <span>
+                {lang === 'de' 
+                  ? 'Offizielle Goethe-Zertifikat Vorbereitung' 
+                  : 'Préparation Officielle Goethe-Zertifikat'}
+              </span>
             </span>
             <span className="text-slate-600">|</span>
             <a href="tel:+22379875654" className="text-slate-300 hover:text-white transition-colors">
